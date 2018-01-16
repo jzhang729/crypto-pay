@@ -12,8 +12,12 @@
   "author": "Jordan Zhang",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
-    "nodemon": "^1.14.11"
+    "http": "0.0.0",
+    "nodemon": "^1.14.11",
+    "pug": "^2.0.0-rc.4",
+    "shopify-api-node": "^2.10.0"
   }
 }
