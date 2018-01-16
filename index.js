@@ -1,25 +1,25 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const shopifyApi = require('shopify-api-node');
 const http = require('http');
 const pug = require('pug');
+const errorHandlers = require('./handlers/errorHandlers');
+
+const routes = require('./routes/index');
 
 const app = express();
 
 app.use(bodyParser.json());
-app.set('views', './views');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
-  res.send({ Hello: 'World' });
-});
+app.use('/', routes);
 
-app.get('/:id', (req, res) => {
-  res.render('pay', {
-    title: 'Crypto Pay',
-    message: 'Hey, thanks for your interest in paying with crypo'
-  });
-});
+app.use(errorHandlers.notFound);
 
 const PORT = process.env.PORT || 5000;
 
