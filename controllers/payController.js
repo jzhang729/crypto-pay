@@ -1,7 +1,3 @@
-exports.homePage = (req, res) => {
-  res.render('index');
-};
-
 exports.pay = (req, res) => {
   res.render('pay', {
     title: 'Crypto Pay',

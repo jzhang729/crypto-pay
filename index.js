@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const shopifyApi = require('shopify-api-node');
 const http = require('http');
 const pug = require('pug');
+const dotenv = require('dotenv').config();
 const errorHandlers = require('./handlers/errorHandlers');
 
 const routes = require('./routes/index');

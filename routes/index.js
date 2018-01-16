@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+const authController = require('../controllers/authController');
 const payController = require('../controllers/payController');
 
-router.get('/', payController.homePage);
+router.get('/shopify', authController.install);
+router.get('/auth/shopify/callback', authController.authorize);
+
+router.get('/', authController.landingPage);
 router.get('/:id', payController.pay);
 
 module.exports = router;
