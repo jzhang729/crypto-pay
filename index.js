@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const shopifyApi = require('shopify-api-node');
 const http = require('http');
 const pug = require('pug');
 const dotenv = require('dotenv').config();

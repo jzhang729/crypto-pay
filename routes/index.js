@@ -4,6 +4,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 const payController = require('../controllers/payController');
 
+// Auth Routes
 router.get('/shopify', authController.install);
 router.get('/auth/shopify/callback', authController.authorize);
 

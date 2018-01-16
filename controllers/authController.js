@@ -4,9 +4,14 @@ const nonce = require('nonce')();
 const querystring = require('querystring');
 const request = require('request-promise');
 const scopes = 'read_products, write_products';
-const appUri = 'https://32ae76e3.ngrok.io';
+
+const tunnelAddress = 'https://32ae76e3.ngrok.io';
+const productionWebAddress = 'https://shopify-crypto-pay.herokuapp.com';
+const isDevelopment = process.env.NODE_ENV !== "production";
+const appUri = isDevelopment ? tunnelAddress : productionWebAddress;
 const forwardingAddress = appUri + '/auth/shopify/callback';
 const subdomain = "headphonesdotcom";
+
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 
