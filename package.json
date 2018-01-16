@@ -11,20 +11,5 @@
   },
   "author": "Jordan Zhang",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "concurrently": "^3.5.1",
-    "cookie": "^0.3.1",
-    "crypto": "^1.0.1",
-    "dotenv": "^4.0.0",
-    "express": "^4.16.2",
-    "http": "0.0.0",
-    "nodemon": "^1.14.11",
-    "nonce": "^1.0.4",
-    "path": "^0.12.7",
-    "pug": "^2.0.0-rc.4",
-    "querystring": "^0.2.0",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2"
-  }
+  "dependencies": {}
 }
