@@ -1,15 +1,22 @@
-const request = require('request-promise');
+const rp = require('request-promise');
+const shopApiKey = process.env.SHOP_API_KEY;
+const shopApiPassword = process.env.SHOP_API_PASSWORD;
+const shopHost = process.env.SHOP_HOST;
 
 exports.pay = (req, res) => {
-  request.get('https://shopify-crypto-pay.herokuapp.com/admin/products.json')
-    .then(data => { console.log(data); })
-    .catch(err => { console.log(err); });
+  const productID = req.params.productID;
+  const productApiRequestUrl = `https://${shopApiKey}:${shopApiPassword}@${shopHost}/admin/products/${productID}.json`;
 
-
-  res.render('pay', {
-    title: 'Crypto Pay',
-    message: `Hey, thanks for your interest in paying for Product (ID: ${
-      req.params.id
-    }) with crypo`
-  });
+  rp
+    .get(productApiRequestUrl)
+    .then(data => {
+      res.render('pay', {
+        title: 'Crypto Pay',
+        message: `Hey, thanks for your interest in paying for Product (ID: ${productID}) with crypo`,
+        data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };

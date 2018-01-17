@@ -5,15 +5,15 @@ const querystring = require('querystring');
 const request = require('request-promise');
 const scopes = 'read_products, write_products';
 
-const tunnelAddress = 'https://32ae76e3.ngrok.io';
+const tunnelAddress = 'https://36acbfe8.ngrok.io';
 const productionWebAddress = 'https://shopify-crypto-pay.herokuapp.com';
 const isDevelopment = process.env.NODE_ENV !== "production";
 const appUri = isDevelopment ? tunnelAddress : productionWebAddress;
 const forwardingAddress = appUri + '/auth/shopify/callback';
 const subdomain = "headphonesdotcom";
 
-const apiKey = process.env.SHOPIFY_API_KEY;
-const apiSecret = process.env.SHOPIFY_API_SECRET;
+const apiKey = process.env.SHOPIFY_APP_KEY;
+const apiSecret = process.env.SHOPIFY_APP_SECRET;
 
 exports.landingPage = (req, res) => {
   res.render('index');
@@ -51,6 +51,7 @@ exports.authorize = (req, res) => {
     delete map['hmac'];
 
     const message = querystring.stringify(map);
+
     const generatedHash = crypto
       .createHmac('sha256', apiSecret)
       .update(message)

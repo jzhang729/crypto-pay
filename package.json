@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": {
+    "node": "8.1.0",
+    "npm": "5.0.3"
+  },
   "scripts": {
     "start": "node index.js",
     "client": "npm run start --prefix client",
@@ -19,7 +23,6 @@
     "crypto": "^1.0.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "http": "0.0.0",
     "nodemon": "^1.14.11",
     "nonce": "^1.0.4",
     "path": "^0.12.7",
