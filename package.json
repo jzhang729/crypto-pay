@@ -9,10 +9,9 @@
   },
   "scripts": {
     "assets": "webpack -w --display-max-modules 0",
-    "start": "node index.js",
     "client": "npm run start --prefix client",
     "server": "nodemon index.js --ignore public/",
-    "dev": "concurrently \"npm run server\" \"npm run assets\""
+    "start": "concurrently \"npm run server\" \"npm run assets\""
   },
   "author": "Jordan Zhang",
   "license": "ISC",
