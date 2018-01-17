@@ -11,7 +11,8 @@
     "assets": "webpack -w --display-max-modules 0",
     "client": "npm run start --prefix client",
     "server": "nodemon index.js --ignore public/",
-    "start": "concurrently \"npm run server\" \"npm run assets\""
+    "dev": "concurrently \"npm run server\" \"npm run assets\"",
+    "start": "node index.js"
   },
   "author": "Jordan Zhang",
   "license": "ISC",
