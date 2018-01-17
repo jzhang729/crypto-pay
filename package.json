@@ -12,6 +12,7 @@
   "author": "Jordan Zhang",
   "license": "ISC",
   "dependencies": {
+    "@shopify/shopify-express": "^1.0.0-alpha.6",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "cookie": "^0.3.1",
@@ -25,6 +26,7 @@
     "pug": "^2.0.0-rc.4",
     "querystring": "^0.2.0",
     "request": "^2.83.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "shopify-api-node": "^2.10.1"
   }
 }

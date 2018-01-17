@@ -9,6 +9,6 @@ router.get('/shopify', authController.install);
 router.get('/auth/shopify/callback', authController.authorize);
 
 router.get('/', authController.landingPage);
-router.get('/:id', payController.pay);
+router.get('/pay/:id', payController.pay);
 
 module.exports = router;
