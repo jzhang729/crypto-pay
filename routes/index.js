@@ -10,5 +10,6 @@ router.get('/auth/shopify/callback', authController.authorize);
 
 router.get('/', authController.landingPage);
 router.get('/pay/:productID', payController.pay);
+router.post('/submit', payController.submit);
 
 module.exports = router;
