@@ -6,6 +6,11 @@ body {
   padding: 1rem;
 }
 
+.info__image {
+  display: inline-block;
+  max-width: 30vw;
+}
+
 select {
   width: 10vw;
   font-size: 1rem;
@@ -18,6 +23,7 @@ input {
 }
 
 .steps {
+  clear: both;
   margin: 2rem;
 }
 

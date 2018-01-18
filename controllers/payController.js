@@ -10,10 +10,11 @@ exports.pay = (req, res) => {
   rp
     .get(productApiRequestUrl)
     .then(data => {
+      res.setHeader('Content-Type', 'application/liquid');
+
       res.render('pay', {
         data: JSON.parse(data).product
       });
-
     })
     .catch(err => {
       console.log(err);
@@ -28,7 +29,7 @@ exports.pay = (req, res) => {
 };
 
 exports.submit = (req, res) => {
-  console.log("form submitted");
+  console.log('form submitted');
   console.log(req);
   console.log(res);
 };

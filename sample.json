@@ -1,0 +1,117 @@
+{
+  "product": {
+    "id": 9902305734,
+    "title": "Astell\u0026Kern AK T1p",
+    "body_html":
+      "\u003cp\u003eDeveloped through a collaboration with Beyerdynamic, the Astell\u0026amp;Kern AK T1p Special Edition Headphones use high-efficiency Tesla technology in a semi-open over-ear design to deliver a frequency response of 5 Hz to 50 kHz into a 32 ohm load with a maximum SPL of 126 dB. The headphones can be used with portable high-resolution audio devices such as mobile players, smartphones, tablets, and more.\u003c/p\u003e\n\u003cp\u003eFurthermore, an additional 2.5mm balanced cable for Astell\u0026amp;Kern portable audio devices is included with a 3.5mm audiophile-grade cable. Just like all of Beyerdynamic’s headphones, the AK T1p is handmade in Germany with the utmost attention to detail.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eIdeal for High-Resolution Playback\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eWith its open design, the AK T1p is particularly capable when it comes to reproducing the full musical wealth offered by high-resolution audio files. Instruments and voices separate from the headphones and create a virtual soundstage.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003ePerfection “Made in Germany”\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eThe AK T1p is manufactured entirely by hand in Heilbronn. Additional attenuation at the heart of the Tesla driver eliminates even the last traces of resonance in the high frequency range. Beyerdynamic has also optimized the geometry of the baffle design and replaced the single-layer baffle material with a more stable, high-tech compound. This reduces the vibration of the material to a minimum, which in turn delivers even clearer sound combined with precise bass.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eMobile Sound Experience Throughout your Home\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eThanks to the 32 ohm Tesla technology, the output of the AK T1p when paired with mobile players, smartphones or tablets is significantly louder than the T1 with its 600 ohm transducers. It thus becomes a universal listening device - be it when chilling on the sofa, out on the terrace, or even in bed. Discerning audiophiles and digital natives are now able to carry their high-end systems with them at all times.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eCompatible with All Player Devices\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eOwners of one of Astell\u0026amp;Kern’s high-end players can connect the AK T1p directly to the symmetrical output of their portable device using the supplied cable with its 2.5mm jack plug. As a result, the lead has virtually no impact on the sound, thus allowing listeners to enjoy studio masters with 24-bit resolution or high-res files in DSD format in their full, pure glory - just as the sound engineer in the studio intended. A standard 3.5mm jack cable is supplied for all other players.\u003c/p\u003e",
+    "vendor": "Astell\u0026Kern",
+    "product_type": "Headphones",
+    "created_at": "2017-03-09T13:07:56-08:00",
+    "handle": "astell-kern-beyerdynamic-ak-t1p-semi-open-headphones",
+    "updated_at": "2018-01-17T11:36:24-08:00",
+    "published_at": "2017-03-09T13:00:00-08:00",
+    "template_suffix": "description-bottom",
+    "published_scope": "global",
+    "tags": "1000-3000, astell-kern, headphones, over-ear, wired",
+    "variants": [
+      {
+        "id": 1130119266325,
+        "product_id": 9902305734,
+        "title": "Default Title",
+        "price": "1199.00",
+        "sku": "",
+        "position": 1,
+        "inventory_policy": "deny",
+        "compare_at_price": null,
+        "fulfillment_service": "manual",
+        "inventory_management": null,
+        "option1": "Default Title",
+        "option2": null,
+        "option3": null,
+        "created_at": "2017-12-12T14:23:23-08:00",
+        "updated_at": "2017-12-12T14:23:23-08:00",
+        "taxable": true,
+        "barcode": "821566015303",
+        "grams": 0,
+        "image_id": 23822616902,
+        "inventory_quantity": 1,
+        "weight": 0.0,
+        "weight_unit": "kg",
+        "inventory_item_id": 1127282638869,
+        "old_inventory_quantity": 1,
+        "requires_shipping": true
+      }
+    ],
+    "options": [
+      {
+        "id": 11942535046,
+        "product_id": 9902305734,
+        "name": "Title",
+        "position": 1,
+        "values": ["Default Title"]
+      }
+    ],
+    "images": [
+      {
+        "id": 23822616902,
+        "product_id": 9902305734,
+        "position": 1,
+        "created_at": "2017-03-09T13:07:58-08:00",
+        "updated_at": "2017-06-01T10:43:22-07:00",
+        "width": 1024,
+        "height": 1024,
+        "src":
+          "https://cdn.shopify.com/s/files/1/1791/0383/products/Astell_Kern_Beyerdynamic_AK_T1p_Semi-Open_Headphones_1024x1024.jpg?v=1496339002",
+        "variant_ids": [1130119266325]
+      },
+      {
+        "id": 23822617670,
+        "product_id": 9902305734,
+        "position": 2,
+        "created_at": "2017-03-09T13:08:00-08:00",
+        "updated_at": "2017-06-01T10:43:22-07:00",
+        "width": 1024,
+        "height": 1024,
+        "src":
+          "https://cdn.shopify.com/s/files/1/1791/0383/products/Astell_Kern_Beyerdynamic_AK_T1p_Semi-Open_Headphones_3_1024x1024.jpg?v=1496339002",
+        "variant_ids": []
+      },
+      {
+        "id": 23822619398,
+        "product_id": 9902305734,
+        "position": 3,
+        "created_at": "2017-03-09T13:08:02-08:00",
+        "updated_at": "2017-06-01T10:43:22-07:00",
+        "width": 1024,
+        "height": 1024,
+        "src":
+          "https://cdn.shopify.com/s/files/1/1791/0383/products/Astell_Kern_Beyerdynamic_AK_T1p_Semi-Open_Headphones_2_1024x1024.jpg?v=1496339002",
+        "variant_ids": []
+      },
+      {
+        "id": 23822620102,
+        "product_id": 9902305734,
+        "position": 4,
+        "created_at": "2017-03-09T13:08:03-08:00",
+        "updated_at": "2017-06-01T10:43:22-07:00",
+        "width": 1024,
+        "height": 1024,
+        "src":
+          "https://cdn.shopify.com/s/files/1/1791/0383/products/Astell_Kern_Beyerdynamic_AK_T1p_Semi-Open_Headphones_1_1024x1024.jpg?v=1496339002",
+        "variant_ids": []
+      }
+    ],
+    "image": {
+      "id": 23822616902,
+      "product_id": 9902305734,
+      "position": 1,
+      "created_at": "2017-03-09T13:07:58-08:00",
+      "updated_at": "2017-06-01T10:43:22-07:00",
+      "width": 1024,
+      "height": 1024,
+      "src":
+        "https://cdn.shopify.com/s/files/1/1791/0383/products/Astell_Kern_Beyerdynamic_AK_T1p_Semi-Open_Headphones_1024x1024.jpg?v=1496339002",
+      "variant_ids": [1130119266325]
+    }
+  }
+}

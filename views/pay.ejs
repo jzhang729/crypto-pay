@@ -5,8 +5,13 @@
   </head>
   <body>
     <h1>Headphones.com</h1>
-    <h2>Crypto Payment Page</h2>
+    <h2>Crypto Payments</h2>
     <p>Thanks for your interest in the <strong><%= data.title %></strong></p>
+    <p><strong>Price (USD)</strong>: $<%= data.variants[0].price %></p>
+
+    <div class="info">
+      <img class="info__image" src="<%= data.images[0].src %>" />
+    </div>
 
     <div class="steps">
       <form action="/submit" id="crypto" method="POST">
