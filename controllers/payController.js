@@ -1,7 +1,9 @@
 const rp = require('request-promise');
+const mail = require('../handlers/mail');
 const shopApiKey = process.env.SHOP_API_KEY;
 const shopApiPassword = process.env.SHOP_API_PASSWORD;
 const shopHost = process.env.SHOP_HOST;
+
 
 exports.pay = (req, res) => {
   const productID = req.params.productID;
@@ -29,7 +31,10 @@ exports.pay = (req, res) => {
 };
 
 exports.submit = (req, res) => {
-  console.log('form submitted');
-  console.log(req);
-  console.log(res);
+  const email = req.body.email;
+  mail.send(email);
+
+  res.render('emailConfirmation', {
+    email
+  });
 };
