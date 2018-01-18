@@ -4,7 +4,6 @@ const shopApiKey = process.env.SHOP_API_KEY;
 const shopApiPassword = process.env.SHOP_API_PASSWORD;
 const shopHost = process.env.SHOP_HOST;
 
-
 exports.pay = (req, res) => {
   const productID = req.params.productID;
   const productApiRequestUrl = `https://${shopApiKey}:${shopApiPassword}@${shopHost}/admin/products/${productID}.json`;
@@ -31,10 +30,19 @@ exports.pay = (req, res) => {
 };
 
 exports.submit = (req, res) => {
-  const email = req.body.email;
-  mail.send(email);
-
+  const fields = ({
+    name,
+    email,
+    currency,
+    product,
+    address1,
+    address2,
+    city,
+    state,
+    country
+  } = req.body);
+  mail.send(fields);
   res.render('emailConfirmation', {
-    email
+    fields
   });
 };

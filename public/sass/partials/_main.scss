@@ -17,16 +17,22 @@ select {
 }
 
 input {
-  width: 10vwh;
+  width: 30vw;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
 .steps {
-  // clear: both;
-  margin: 2rem;
+  margin: 3rem 0;
+}
+
+label {
+  display: block;
+  margin: 0.5rem;
+  font-weight: bold;
 }
 
 .container {
+  display: block;
   margin: 1rem;
 }

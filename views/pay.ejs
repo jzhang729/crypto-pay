@@ -9,31 +9,72 @@
         <h1>Headphones.com</h1>
         <h2>Crypto Payments</h2>
         <p>Thanks for your interest in the <strong><%= data.title %></strong></p>
+
+        <% if (data.variants.length > 1) { %>
+          <h3 style="color: red;">There are variants to choose from! (Add them here)</h3>
+        <% } %>
         <p><strong>Price (USD)</strong>: $<%= data.variants[0].price %></p>
 
         <div class="info">
           <img class="info__image" src="<%= data.images[0].src %>" />
         </div>
 
-        <div class="steps">
-          <form action="/submit" id="crypto" method="POST">
+        <form action="/submit" id="crypto" method="POST">
+          <div class="steps">
+            <h3>Step 1</h3>
+            <p>Please select from the list of coin payment options below:</p>
+            <select name="currency">
+              <option value="raiblocks">Raiblocks</option>
+            </select>
+          </div>
+          <div class="steps">
+            <h3>Step 2</h3>
+            <p>Enter your contact information:</p>
             <div class="container">
-              <h3>Step 1</h3>
-              <p>Please select from the list of coin payment options below:</p>
-              <select>
-                <option name="raiblocks">Raiblocks</option>
-              </select>
+              <label for="name">Full Name</label>
+              <input id="name" type="text" autocomplete="false" name="name" />
             </div>
+
             <div class="container">
-              <h3>Step 2</h3>
-              <p>Enter your e-mail address:</p>
-              <input type="email" name="email" />
+              <label for="email">E-mail</label>
+              <input id="email" type="email" name="email" />
             </div>
+          </div>
+
+          <div class="steps">
+            <h3>Step 3</h3>
+            <p>Enter your shipping details:</p>
             <div class="container">
-              <input type="submit" value="Submit">
+              <label for="address1">Address Line 1</label>
+              <input id="address1" type="text" autocomplete="false" name="address1" />
             </div>
-          </form>
-        </div>
+
+            <div class="container">
+              <label for="address2">Address Line 2</label>
+              <input id="address2" type="text" autocomplete="false" name="address2" />
+            </div>
+
+            <div class="container">
+              <label for="city">City</label>
+              <input id="city" type="text" autocomplete="false" name="city" />
+            </div>
+
+            <div class="container">
+              <label for="state">State</label>
+              <input id="state" type="text" autocomplete="false" name="state" />
+            </div>
+
+            <div class="container">
+              <label for="country">Country</label>
+              <input id="country" type="text" autocomplete="false" name="country" />
+            </div>
+          </div>
+          <div class="container">
+            <input type="hidden" name="product" value="<%= data.title %>" />
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+
       </div>
     </div>
   </body>
