@@ -1,35 +1,69 @@
-<div id="page--crypto-pay">
-  <div class="content">
-    <h1>Headphones.com</h1>
-    <h2>Crypto Payments</h2>
-    <p>Thanks for your interest in the <strong><%= data.title %></strong></p>
-    <p><strong>Price (USD)</strong>: $<%= data.variants[0].price %></p>
+<html>
+  <head>
+    <title>Crypto Pay</title>
+    <style>
+      body {
+        background-color: #ffffff;
+        font-family: arial;
+        font-size: 16px;
+        text-align: center;
+        padding: 1rem; }
 
-    <div class="info">
-      <img class="info__image" src="<%= data.images[0].src %>" />
+      .info__image {
+        display: inline-block;
+        max-width: 30vw; }
+
+      select {
+        width: 10vw;
+        font-size: 1rem; }
+
+      input {
+        width: 10vwh;
+        padding: 0.5rem;
+        font-size: 1rem; }
+
+      .steps {
+        margin: 2rem; }
+
+      .container {
+        margin: 1rem; }
+    </style>
+  </head>
+  <body>
+    <div id="page--crypto-pay">
+      <div class="content">
+        <h1>Headphones.com</h1>
+        <h2>Crypto Payments</h2>
+        <p>Thanks for your interest in the <strong><%= data.title %></strong></p>
+        <p><strong>Price (USD)</strong>: $<%= data.variants[0].price %></p>
+
+        <div class="info">
+          <img class="info__image" src="<%= data.images[0].src %>" />
+        </div>
+
+        <div class="steps">
+          <form action="/submit" id="crypto" method="POST">
+            <div class="container">
+              <h3>Step 1</h3>
+              <p>Please select from the list of coin payment options below:</p>
+              <select>
+                <option name="raiblocks">Raiblocks</option>
+              </select>
+            </div>
+
+            <div class="container">
+              <h3>Step 2</h3>
+              <p>Enter your e-mail address:</p>
+              <input type="email" />
+            </div>
+
+            <div class="container">
+              <input type="submit" value="Submit">
+            </div>
+
+          </form>
+        </div>
+      </div>
     </div>
-
-    <div class="steps">
-      <form action="/submit" id="crypto" method="POST">
-        <div class="container">
-          <h3>Step 1</h3>
-          <p>Please select from the list of coin payment options below:</p>
-          <select>
-            <option name="raiblocks">Raiblocks</option>
-          </select>
-        </div>
-
-        <div class="container">
-          <h3>Step 2</h3>
-          <p>Enter your e-mail address:</p>
-          <input type="email" />
-        </div>
-
-        <div class="container">
-          <input type="submit" value="Submit">
-        </div>
-      </form>
-    </div>
-
-  </div>
-</div>
+  </body>
+</html>

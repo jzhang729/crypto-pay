@@ -10,7 +10,7 @@ exports.pay = (req, res) => {
   rp
     .get(productApiRequestUrl)
     .then(data => {
-      res.setHeader('Content-Type', 'application/liquid');
+      // res.setHeader('Content-Type', 'application/liquid');
 
       res.render('pay', {
         data: JSON.parse(data).product
