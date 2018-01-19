@@ -15,10 +15,6 @@ const subdomain = "headphonesdotcom";
 const apiKey = process.env.SHOPIFY_APP_KEY;
 const apiSecret = process.env.SHOPIFY_APP_SECRET;
 
-exports.landingPage = (req, res) => {
-  res.render('index');
-};
-
 exports.install = (req, res) => {
   const shop = req.query.shop;
   const state = nonce();
