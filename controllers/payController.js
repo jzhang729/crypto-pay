@@ -11,8 +11,6 @@ exports.pay = (req, res) => {
   rp
     .get(productApiRequestUrl)
     .then(data => {
-      // res.setHeader('Content-Type', 'application/liquid');
-
       res.render('pay', {
         data: JSON.parse(data).product
       });
@@ -42,7 +40,9 @@ exports.submit = (req, res) => {
     country
   } = req.body);
   mail.send(fields);
+
   res.render('emailConfirmation', {
     fields
   });
+
 };
