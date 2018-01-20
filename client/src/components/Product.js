@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { Card } from '@shopify/polaris';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class Product extends Component {
+  componentDidMount() {
+    const productId = this.props.match.params.productId;
+    this.props.fetchProduct(productId);
+  }
+
   render() {
-    return (
-      <div className="container">
-        <h1>Product</h1>
-      </div>
-    );
+    return <Card title="Product" />;
   }
 }
 
-export default Product;
+function mapStateToProps({ product }) {
+  return { product };
+}
+
+export default connect(mapStateToProps, actions)(Product);
