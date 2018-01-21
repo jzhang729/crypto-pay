@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import VariantSelector from './VariantSelector';
 
 class ProductVariants extends Component {
   render() {
     return (
       <div>
         <p>Please choose from the following variants:</p>
-        <strong>Product Variants go here!</strong>
+        <VariantSelector variants={this.props.variants} />
       </div>
     );
   }

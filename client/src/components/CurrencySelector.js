@@ -28,7 +28,6 @@ class CurrencySelector extends Component {
               value: 'raiblocks'
             }
           ]}
-          selected={['']}
         />
       </div>
     );

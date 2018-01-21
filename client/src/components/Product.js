@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, DisplayText, Link } from '@shopify/polaris';
+import { Card, DisplayText } from '@shopify/polaris';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Loading from './Loading';
