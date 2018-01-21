@@ -12,8 +12,6 @@ class Product extends Component {
     this.props.fetchProduct(productId);
   }
 
-  onClick() {}
-
   render() {
     return (
       <div className="product">

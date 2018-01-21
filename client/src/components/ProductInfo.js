@@ -3,7 +3,7 @@ import { Card, Thumbnail, TextContainer } from '@shopify/polaris';
 import VariantSelector from './VariantSelector';
 
 const ProductInfo = ({ product }) => {
-  const { image, options, title, variants } = product;
+  const { image, title, variants } = product;
   return (
     <div className="product__info">
       <Card title={title} sectioned={true}>

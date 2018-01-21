@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import React, { Component } from 'react';
 import { TextContainer, ChoiceList } from '@shopify/polaris';
 
