@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Thumbnail, TextContainer } from '@shopify/polaris';
 import VariantSelector from './VariantSelector';
 
-const ProductInfo = ({ product }) => {
-  const { image, title, variants } = product;
+const ProductInfo = ({ info }) => {
+  const { image, title, variants } = info;
   return (
     <div className="product__info">
       <Card title={title} sectioned={true}>

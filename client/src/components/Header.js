@@ -1,21 +1,20 @@
 import React from 'react';
-import { Card, TextContainer } from '@shopify/polaris';
-import CurrencySelector from './CurrencySelector';
+import { Card, DisplayText, Layout, TextContainer } from '@shopify/polaris';
 
 const Header = () => {
   return (
-    <Card title="Welcome to Cryto Pay" sectioned={true}>
-      <TextContainer>
-        <p>
-          We will guide you through using cryptocurrency to purchase your
-          product from <strong>Headphones.com</strong>.
-        </p>
-      </TextContainer>
-
-      <Card.Section title="Let's start by selecting your choice of cryptocurrency:">
-        <CurrencySelector />
-      </Card.Section>
-    </Card>
+    <div>
+      <Layout.Section title="Crypto Pay">
+        <Card title="Welcome to Cryto Pay" sectioned={true}>
+          <TextContainer>
+            <p>
+              We will guide you through using cryptocurrency to purchase your
+              product from <strong>Headphones.com</strong>.
+            </p>
+          </TextContainer>
+        </Card>
+      </Layout.Section>
+    </div>
   );
 };
 

@@ -7,7 +7,7 @@ import ProductInfo from './ProductInfo';
 import '../styles/Product.css';
 
 class Product extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const productId = this.props.match.params.productId;
     this.props.fetchProduct(productId);
   }
@@ -16,14 +16,14 @@ class Product extends Component {
     return (
       <div className="product">
         <DisplayText size="large" element="h1">
-          Step 1
+          Step 2
         </DisplayText>
         <Card
           title="Confirm Your Product"
           primaryFooterAction={{ content: 'Next', url: '/test' }}>
           <Card.Section>
             {this.props.product ? (
-              <ProductInfo product={this.props.product} />
+              <ProductInfo info={this.props.product.info} />
             ) : (
               <Loading />
             )}
@@ -34,8 +34,8 @@ class Product extends Component {
   }
 }
 
-const mapStateToProps = ({ product }) => {
+function mapStateToProps({ product }) {
   return { product };
-};
+}
 
 export default connect(mapStateToProps, actions)(Product);

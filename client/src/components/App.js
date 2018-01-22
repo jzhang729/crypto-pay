@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import * as actions from '../actions';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Layout, Page } from '@shopify/polaris';
 import Header from './Header';
 import Product from './Product';
+import Currency from './Currency';
 import '../styles/App.css';
 
 class App extends Component {
@@ -15,10 +14,9 @@ class App extends Component {
           <Layout>
             <BrowserRouter>
               <div style={{ width: '100%', display: 'block' }}>
-                <Layout.Section title="Crypto Pay">
-                  <Route path="/" component={Header} />
-                </Layout.Section>
-                <Layout.Section title="Crypto Pay">
+                <Route path="/" component={Header} />
+                <Route path="/" component={Currency} />
+                <Layout.Section>
                   <Route path="/product/:productId" component={Product} />
                 </Layout.Section>
               </div>
