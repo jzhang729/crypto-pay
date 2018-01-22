@@ -17,5 +17,4 @@ exports.submit = (req, res) => {
   res.render('emailConfirmation', {
     fields
   });
-
 };

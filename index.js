@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 require('./routes/authRoutes')(app);
-require('./routes/payRoutes')(app);
+require('./routes/productRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets like our main.js file or main.css file

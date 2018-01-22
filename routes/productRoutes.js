@@ -1,4 +1,4 @@
-const payController = require('../controllers/payController');
+const productController = require('../controllers/productController');
 const rp = require('request-promise');
 const shopApiKey = process.env.SHOP_API_KEY;
 const shopApiPassword = process.env.SHOP_API_PASSWORD;
@@ -17,5 +17,5 @@ module.exports = app => {
       .catch(err => res.send(err));
   });
 
-  app.post('/submit', payController.submit);
+  app.post('/submit', productController.submit);
 };
