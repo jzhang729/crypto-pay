@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Thumbnail, TextContainer } from '@shopify/polaris';
-import VariantSelector from './VariantSelector';
+import ProductVariantSelector from './ProductVariantSelector';
 
 const ProductInfo = ({ info }) => {
   const { image, title, variants } = info;
@@ -11,7 +11,7 @@ const ProductInfo = ({ info }) => {
           <p>
             <Thumbnail size="large" source={image.src} alt={title} />
           </p>
-          {variants.length > 1 ? <VariantSelector variants={variants} /> : null}
+          {variants.length > 1 ? <ProductVariantSelector variants={variants} /> : null}
         </TextContainer>
       </Card>
     </div>

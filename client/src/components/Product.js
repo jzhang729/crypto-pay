@@ -13,6 +13,8 @@ class Product extends Component {
   }
 
   render() {
+    const { info } = this.props.product;
+
     return (
       <div className="product">
         <DisplayText size="large" element="h1">
@@ -22,11 +24,7 @@ class Product extends Component {
           title="Confirm Your Product"
           primaryFooterAction={{ content: 'Next', url: '/test' }}>
           <Card.Section>
-            {this.props.product ? (
-              <ProductInfo info={this.props.product.info} />
-            ) : (
-              <Loading />
-            )}
+            {this.props.product ? <ProductInfo info={info} /> : <Loading />}
           </Card.Section>
         </Card>
       </div>

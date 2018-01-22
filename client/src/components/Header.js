@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, DisplayText, Layout, TextContainer } from '@shopify/polaris';
+import { Card, Layout, TextContainer } from '@shopify/polaris';
 
 const Header = () => {
   return (

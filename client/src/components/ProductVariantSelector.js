@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextContainer, ChoiceList } from '@shopify/polaris';
 
-class VariantSelector extends Component {
+class ProductVariantSelector extends Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +14,7 @@ class VariantSelector extends Component {
     this.setState({ selected });
   }
 
-  renderVariantSelector(variants) {
+  renderProductVariantSelector(variants) {
     const choices = variants.map(({ title, id }) => {
       return { label: title, value: id };
     });
@@ -31,7 +31,7 @@ class VariantSelector extends Component {
   render() {
     return (
       <TextContainer spacing="loose">
-        {this.renderVariantSelector(this.props.variants)}
+        {this.renderProductVariantSelector(this.props.variants)}
         <p>
           <strong>${this.props.variants[0].price} USD</strong>
         </p>
@@ -40,4 +40,4 @@ class VariantSelector extends Component {
   }
 }
 
-export default VariantSelector;
+export default ProductVariantSelector;
