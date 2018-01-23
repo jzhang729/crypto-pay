@@ -1,35 +1,55 @@
 import React, { Component } from 'react';
-import { Card, DisplayText, Layout } from '@shopify/polaris';
-import Currency from './Currency';
-import Product from './Product';
+import { connect } from 'react-redux';
+import WizardFormFirstPage from './WizardFormFirstPage';
+import * as actions from '../actions';
 
 class WizardForm extends Component {
   constructor(props) {
     super(props);
 
+    this.nextPage = this.nextPage.bind(this);
+    this.previousPage = this.previousPage.bind(this);
+
     this.state = {
-      step: 1
+      page: 1
     };
   }
+
+  componentDidMount() {
+    this.props.fetchProduct(this.props.match.params.productId);
+  }
+
+  nextPage() {
+    this.setState({ page: this.state.page + 1 });
+  }
+
+  previousPage() {
+    this.setState({ page: this.state.page - 1 });
+  }
+
   render() {
+    const { page } = this.state;
+
+    const { product, currency, switchCurrency, switchVariant } = this.props;
+
     return (
       <div>
-        <Layout.Section>
-          <DisplayText size="large" element="h1">
-            Step {this.state.step}
-          </DisplayText>
-          <Card>
-            <Card.Section title="Choose your cryptocurrency">
-              <Currency />
-            </Card.Section>
-            <Card.Section title="Confirm your product choice">
-              <Product productId={this.props.match.params.productId} />
-            </Card.Section>
-          </Card>
-        </Layout.Section>
+        {page === 1 && (
+          <WizardFormFirstPage
+            product={product}
+            currency={currency}
+            onSubmit={this.nextPage}
+            switchCurrency={switchCurrency}
+            switchVariant={switchVariant}
+          />
+        )}
       </div>
     );
   }
 }
 
-export default WizardForm;
+function mapStateToProps({ app: { currency }, product }) {
+  return { currency, product };
+}
+
+export default connect(mapStateToProps, actions)(WizardForm);

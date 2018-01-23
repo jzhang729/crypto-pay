@@ -8,12 +8,13 @@ class ProductVariantSelector extends Component {
     this.state = {
       selected: ['']
     };
+
+    this._handleChange = this._handleChange.bind(this);
   }
 
-  _onChange(selectedVariantId) {
+  _handleChange(selectedVariantId) {
     this.setState({ selected: selectedVariantId });
-
-    this.props.switchVariant(selectedVariantId[0]);
+    this.props.onChange(selectedVariantId[0]);
   }
 
   _renderProductVariantSelector() {
@@ -26,7 +27,7 @@ class ProductVariantSelector extends Component {
         <ChoiceList
           choices={choices}
           selected={this.state.selected}
-          onChange={this._onChange.bind(this)}
+          onChange={this._handleChange}
         />
       </Card.Section>
     );
@@ -36,7 +37,6 @@ class ProductVariantSelector extends Component {
     return (
       <div className="product__variant-selector">
         <div>{this._renderProductVariantSelector()}</div>
-        {/* <div>{this._renderProductInfo()}</div> */}
       </div>
     );
   }
