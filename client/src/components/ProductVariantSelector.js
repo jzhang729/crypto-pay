@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import React, { Component } from 'react';
 import { Card, ChoiceList } from '@shopify/polaris';
 
@@ -18,6 +19,12 @@ class ProductVariantSelector extends Component {
   }
 
   _renderProductVariantSelector() {
+    const { selectedVariant } = this.props;
+
+    const selected = _.isEmpty(selectedVariant)
+      ? this.state.selected
+      : [selectedVariant.id];
+
     const choices = this.props.variants.map(({ title, id }) => {
       return { label: title, value: id };
     });
@@ -26,7 +33,7 @@ class ProductVariantSelector extends Component {
       <Card.Section>
         <ChoiceList
           choices={choices}
-          selected={this.state.selected}
+          selected={selected}
           onChange={this._handleChange}
         />
       </Card.Section>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
+import WizardFormSecondPage from './WizardFormSecondPage';
 import * as actions from '../actions';
 
 class WizardForm extends Component {
@@ -30,7 +31,13 @@ class WizardForm extends Component {
   render() {
     const { page } = this.state;
 
-    const { product, currency, switchCurrency, switchVariant } = this.props;
+    const {
+      product,
+      currency,
+      switchCurrency,
+      switchVariant,
+      updateProgress
+    } = this.props;
 
     return (
       <div>
@@ -41,6 +48,14 @@ class WizardForm extends Component {
             onSubmit={this.nextPage}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
+            updateProgress={updateProgress}
+          />
+        )}
+        {page === 2 && (
+          <WizardFormSecondPage
+            updateProgress={updateProgress}
+            onBack={this.previousPage}
+            onSubmit={this.nextPage}
           />
         )}
       </div>

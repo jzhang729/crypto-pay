@@ -1,5 +1,6 @@
+import _ from 'underscore';
 import React, { Component } from 'react';
-import { Card, DisplayText, Layout } from '@shopify/polaris';
+import { Button, Card, DisplayText, Layout } from '@shopify/polaris';
 import CurrencySelector from './CurrencySelector';
 import Product from './Product';
 
@@ -9,16 +10,22 @@ class WizardFormFirstPage extends Component {
     this._renderNextButton = this._renderNextButton.bind(this);
   }
 
+  componentDidMount() {
+    this.props.updateProgress(0);
+  }
+
   _renderNextButton() {
     const { currency, product: { selectedVariant } } = this.props;
 
-    if (!!currency || !!selectedVariant) {
+    if (!currency || _.isEmpty(selectedVariant)) {
       return null;
     }
 
     return (
-      <div>
-        <button>Next</button>
+      <div style={{ float: 'right', margin: '1rem 0' }}>
+        <Button primary onClick={this.props.onSubmit}>
+          Next
+        </Button>
       </div>
     );
   }
@@ -54,6 +61,7 @@ class WizardFormFirstPage extends Component {
               </Card.Section>
             ) : null}
           </Card>
+          {this._renderNextButton()}
         </Layout.Section>
       </div>
     );

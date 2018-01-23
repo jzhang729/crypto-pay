@@ -15,13 +15,12 @@ const Product = ({
     <div className="product">
       {!loading ? (
         <div className="product__info">
-          <strong>{title}</strong>
+          <h1>{title}</h1>
           {selectedVariant.title && selectedVariant.price ? (
-            <p>
-              <span className="product__variant-info">
-                {selectedVariant.title} | {selectedVariant.price}
-              </span>
-            </p>
+            <div className="product__variant-info">
+              <i>{selectedVariant.title}</i>
+              <p>Price: ${selectedVariant.price} USD</p>
+            </div>
           ) : null}
 
           <div className="product__thumbnail">
