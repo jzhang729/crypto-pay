@@ -1,12 +1,9 @@
+const PORT = process.env.PORT || 5000;
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const ejs = require('ejs');
 const dotenv = require('dotenv').config();
 const app = express();
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -26,8 +23,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Listening on Port ${PORT}`);

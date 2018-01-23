@@ -45,9 +45,9 @@ class WizardForm extends Component {
           <WizardFormFirstPage
             product={product}
             currency={currency}
-            onSubmit={this.nextPage}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
+            onSubmit={this.nextPage}
             updateProgress={updateProgress}
           />
         )}

@@ -1,8 +1,9 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
+import { ReduxForm, Field } from 'redux-form';
 import { Button, Card, DisplayText, Layout } from '@shopify/polaris';
-import CurrencySelector from './CurrencySelector';
-import Product from './Product';
+import Step1 from './steps/Step1';
+import Step2 from './steps/Step2';
 
 class WizardFormFirstPage extends Component {
   constructor(props) {
@@ -41,27 +42,37 @@ class WizardFormFirstPage extends Component {
 
     return (
       <div>
+        <Step1 currency={currency} switchCurrency={switchCurrency} />
+
+        <Step2
+          loading={loading}
+          title={title}
+          image={image}
+          variants={variants}
+          selectedVariant={selectedVariant}
+          switchVariant={switchVariant}
+        />
+
+        {this._renderNextButton()}
+
         <Layout.Section>
           <DisplayText size="large" element="h1">
-            Step 1
+            Step 3
           </DisplayText>
-          <Card>
-            <Card.Section title="Choose your cryptocurrency">
-              <CurrencySelector currency={currency} onChange={switchCurrency} />
+          <Card title="Enter your shipping details">
+            <Card.Section>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
             </Card.Section>
-            {!loading ? (
-              <Card.Section title="Confirm your product choice">
-                <Product
-                  title={title}
-                  image={image}
-                  variants={variants}
-                  selectedVariant={selectedVariant}
-                  onChange={switchVariant}
-                />
-              </Card.Section>
-            ) : null}
           </Card>
-          {this._renderNextButton()}
+          {/* {this._renderButtons()} */}
         </Layout.Section>
       </div>
     );

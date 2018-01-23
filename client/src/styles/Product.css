@@ -6,8 +6,21 @@
   max-width: 50vw;
 }
 
+.product__info {
+}
+
+.product__info--content {
+  padding: 1rem;
+}
+
+.product__info--image {
+}
+
 .product__thumbnail {
   margin: 1rem;
+  max-width: 500px;
+  min-width: 250px;
+  width: 40%;
 }
 
 .product__variant-info {
