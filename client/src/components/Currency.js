@@ -1,21 +1,26 @@
-import React from 'react';
-import { Card, DisplayText, Layout } from '@shopify/polaris';
+import React, { Component } from 'react';
+// import { Card } from '@shopify/polaris';
 import CurrencySelector from './CurrencySelector';
+import { switchCurrency } from '../actions';
+import { connect } from 'react-redux';
 
-const Currency = () => {
-  return (
-    <Layout.Section>
-      <DisplayText size="large" element="h1">
-        Step 1
-      </DisplayText>
+class Currency extends Component {
+  render() {
+    const { currency, switchCurrency } = this.props;
 
-      <Card title="Choose your cryptocurrency">
-        <Card.Section>
-          <CurrencySelector />
-        </Card.Section>
-      </Card>
-    </Layout.Section>
-  );
-};
+    return (
+      <div>
+        <CurrencySelector
+          currency={currency}
+          onSwitchCurrency={switchCurrency}
+        />
+      </div>
+    );
+  }
+}
 
-export default Currency;
+function mapStateToProps({ app: { currency } }) {
+  return { currency };
+}
+
+export default connect(mapStateToProps, { switchCurrency })(Currency);

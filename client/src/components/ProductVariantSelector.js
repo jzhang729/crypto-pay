@@ -1,41 +1,43 @@
 import React, { Component } from 'react';
-import { TextContainer, ChoiceList } from '@shopify/polaris';
+import { Card, ChoiceList } from '@shopify/polaris';
 
 class ProductVariantSelector extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selected: [props.variants[0].id]
+      selected: ['']
     };
   }
 
-  onChange(selected) {
-    this.setState({ selected });
+  _onChange(selectedVariantId) {
+    this.setState({ selected: selectedVariantId });
+
+    this.props.switchVariant(selectedVariantId[0]);
   }
 
-  renderProductVariantSelector(variants) {
-    const choices = variants.map(({ title, id }) => {
+  _renderProductVariantSelector() {
+    const choices = this.props.variants.map(({ title, id }) => {
       return { label: title, value: id };
     });
 
     return (
-      <ChoiceList
-        choices={choices}
-        selected={this.state.selected}
-        onChange={this.onChange.bind(this)}
-      />
+      <Card.Section>
+        <ChoiceList
+          choices={choices}
+          selected={this.state.selected}
+          onChange={this._onChange.bind(this)}
+        />
+      </Card.Section>
     );
   }
 
   render() {
     return (
-      <TextContainer spacing="loose">
-        {this.renderProductVariantSelector(this.props.variants)}
-        <p>
-          <strong>${this.props.variants[0].price} USD</strong>
-        </p>
-      </TextContainer>
+      <div className="product__variant-selector">
+        <div>{this._renderProductVariantSelector()}</div>
+        {/* <div>{this._renderProductInfo()}</div> */}
+      </div>
     );
   }
 }

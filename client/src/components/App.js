@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Layout, Page } from '@shopify/polaris';
-import Header from './Header';
-import Product from './Product';
-import Currency from './Currency';
+import TopHeader from './TopHeader';
+import WizardForm from './WizardForm';
 import '../styles/App.css';
 
 class App extends Component {
@@ -14,11 +13,8 @@ class App extends Component {
           <Layout>
             <BrowserRouter>
               <div style={{ width: '100%', display: 'block' }}>
-                <Route path="/" component={Header} />
-                <Route path="/" component={Currency} />
-                <Layout.Section>
-                  <Route path="/product/:productId" component={Product} />
-                </Layout.Section>
+                <Route path="/" component={TopHeader} />
+                <Route path="/product/:productId" component={WizardForm} />
               </div>
             </BrowserRouter>
           </Layout>

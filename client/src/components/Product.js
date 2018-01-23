@@ -1,32 +1,48 @@
 import React, { Component } from 'react';
-import { Card, DisplayText } from '@shopify/polaris';
+import { Spinner, Thumbnail } from '@shopify/polaris';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import Loading from './Loading';
-import ProductInfo from './ProductInfo';
+import { fetchProduct, switchVariant } from '../actions';
+import ProductVariantSelector from './ProductVariantSelector';
 import '../styles/Product.css';
 
 class Product extends Component {
   componentDidMount() {
-    const productId = this.props.match.params.productId;
-    this.props.fetchProduct(productId);
+    this.props.fetchProduct(this.props.productId);
   }
 
   render() {
-    const { info } = this.props.product;
+    const {
+      info: { image, title, variants },
+      loading,
+      selectedVariant
+    } = this.props.product;
 
     return (
       <div className="product">
-        <DisplayText size="large" element="h1">
-          Step 2
-        </DisplayText>
-        <Card
-          title="Confirm Your Product"
-          primaryFooterAction={{ content: 'Next', url: '/test' }}>
-          <Card.Section>
-            {this.props.product ? <ProductInfo info={info} /> : <Loading />}
-          </Card.Section>
-        </Card>
+        {!loading ? (
+          <div className="product__info">
+            <strong>{title}</strong>
+            {selectedVariant.title && selectedVariant.price ? (
+              <p>
+                <span className="product__variant-info">
+                  {selectedVariant.title} | {selectedVariant.price}
+                </span>
+              </p>
+            ) : null}
+
+            <div className="product__thumbnail">
+              <Thumbnail size="large" source={image.src} alt={title} />
+            </div>
+
+            <ProductVariantSelector
+              variants={variants}
+              switchVariant={this.props.switchVariant}
+              selectedVariant={selectedVariant}
+            />
+          </div>
+        ) : (
+          <Spinner />
+        )}
       </div>
     );
   }
@@ -36,4 +52,7 @@ function mapStateToProps({ product }) {
   return { product };
 }
 
-export default connect(mapStateToProps, actions)(Product);
+export default connect(mapStateToProps, {
+  fetchProduct,
+  switchVariant
+})(Product);
