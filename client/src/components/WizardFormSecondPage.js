@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { reduxForm, Field } from 'redux-form';
-// import { Button, Card, DisplayText, Layout } from '@shopify/polaris';
+import { Button } from '@shopify/polaris';
+import Step3 from './steps/Step3';
 
 class WizardFormSecondPage extends Component {
   constructor(props) {
@@ -16,18 +16,22 @@ class WizardFormSecondPage extends Component {
   _renderButtons() {
     return (
       <div style={{ float: 'right', margin: '1rem 0' }}>
-        {/* <Button secondary onClick={this.props.onBack}>
+        <Button secondary onClick={this.props.onBack}>
           Back
         </Button>
         <Button primary onClick={this.props.onSubmit}>
           Next
-        </Button> */}
+        </Button>
       </div>
     );
   }
 
   render() {
-    return <div />;
+    return (
+      <div>
+        <Step3 />
+      </div>
+    );
   }
 }
 

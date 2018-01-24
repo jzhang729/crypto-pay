@@ -1,4 +1,3 @@
-const productController = require('../controllers/productController');
 const rp = require('request-promise');
 const shopApiKey = process.env.SHOP_API_KEY;
 const shopApiPassword = process.env.SHOP_API_PASSWORD;
@@ -29,5 +28,13 @@ module.exports = app => {
       .catch(err => res.send(err));
   });
 
-  app.post('/submit', productController.submit);
+  app.get('/api/countries/', (req, res) => {
+    const requestUrl = `${baseURI}/admin/countries.json`;
+    rp
+      .get(requestUrl)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => res.send(err));
+  });
 };

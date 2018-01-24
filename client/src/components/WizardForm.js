@@ -28,6 +28,10 @@ class WizardForm extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
+  handleSubmit() {
+    console.log('submitting the form');
+  }
+
   render() {
     const { page } = this.state;
 
@@ -55,7 +59,7 @@ class WizardForm extends Component {
           <WizardFormSecondPage
             updateProgress={updateProgress}
             onBack={this.previousPage}
-            onSubmit={this.nextPage}
+            onSubmit={this.handleSubmit}
           />
         )}
       </div>
