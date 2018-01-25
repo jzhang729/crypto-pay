@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
-import { Button } from '@shopify/polaris';
-import Step3 from './steps/Step3';
+import { Card, Layout } from '@shopify/polaris';
+import { reduxForm } from 'redux-form';
+import Step from './Step';
+// import { validate } from '../utils/validate';
+import ShippingDetails from './ShippingDetails';
+import NavButtons from './NavButtons';
 
 class WizardFormSecondPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this._renderButtons = this._renderButtons.bind(this);
-  }
-
   componentDidMount() {
-    this.props.updateProgress(20);
-  }
-
-  _renderButtons() {
-    return (
-      <div style={{ float: 'right', margin: '1rem 0' }}>
-        <Button secondary onClick={this.props.onBack}>
-          Back
-        </Button>
-        <Button primary onClick={this.props.onSubmit}>
-          Next
-        </Button>
-      </div>
-    );
+    this.props.updateProgress(33);
   }
 
   render() {
+    const { pageTitle, subTitle, onBack, handleSubmit, onSubmit } = this.props;
+
     return (
-      <div>
-        <Step3 />
-      </div>
+      <Layout.Section>
+        {pageTitle && subTitle ? (
+          <Card title={pageTitle} sectioned={true}>
+            <p>{subTitle}</p>
+          </Card>
+        ) : null}
+        <Step order="3" title="Enter your shipping details">
+          <ShippingDetails />
+        </Step>
+        <NavButtons onBack={onBack} onSubmit={handleSubmit(onSubmit)} />
+      </Layout.Section>
     );
   }
 }
 
-export default WizardFormSecondPage;
+export default reduxForm({
+  form: 'wizard',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true
+  // validate
+})(WizardFormSecondPage);

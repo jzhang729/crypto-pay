@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
+import WizardFormThirdPage from './WizardFormThirdPage';
+import { CSSTransitionGroup } from 'react-transition-group';
 import * as actions from '../actions';
 
 class WizardForm extends Component {
@@ -10,6 +12,7 @@ class WizardForm extends Component {
 
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
+    this.submitPageTwo = this.submitPageTwo.bind(this);
 
     this.state = {
       page: 1
@@ -28,8 +31,8 @@ class WizardForm extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
-  handleSubmit() {
-    console.log('submitting the form');
+  submitPageTwo(values) {
+    console.log('submitting the form', values);
   }
 
   render() {
@@ -44,9 +47,16 @@ class WizardForm extends Component {
     } = this.props;
 
     return (
-      <div>
+      <CSSTransitionGroup
+        transitionName="slide"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
+        transitionAppear={false}>
         {page === 1 && (
           <WizardFormFirstPage
+            pageTitle="Welcome to Cryto Pay"
+            subTitle="We will guide you through using cryptocurrency to purchase your
+            product from Headphones.com."
             product={product}
             currency={currency}
             switchCurrency={switchCurrency}
@@ -59,10 +69,24 @@ class WizardForm extends Component {
           <WizardFormSecondPage
             updateProgress={updateProgress}
             onBack={this.previousPage}
-            onSubmit={this.handleSubmit}
+            onSubmit={values => {
+              this.submitPageTwo(values);
+              this.nextPage();
+            }}
           />
         )}
-      </div>
+        {page === 3 && (
+          <WizardFormThirdPage
+            title="Almost there!"
+            subTitle="Ajdslfjsdlfjldsfjjsdfsf"
+            updateProgress={updateProgress}
+            onBack={this.previousPage}
+            onSubmit={() => {
+              console.log('trying to go to next page');
+            }}
+          />
+        )}
+      </CSSTransitionGroup>
     );
   }
 }

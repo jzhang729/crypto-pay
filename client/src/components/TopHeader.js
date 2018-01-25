@@ -6,21 +6,15 @@ import { updateProgress } from '../actions';
 class TopHeader extends Component {
   render() {
     return (
-      <div>
+      <div className="topHeader">
         <Layout.Section title="Crypto Pay">
-          <Card title="Welcome to Cryto Pay" sectioned={true}>
-            <TextContainer spacing="loose">
-              <p>
-                We will guide you through using cryptocurrency to purchase your
-                product from <strong>Headphones.com</strong>.
-              </p>
-              <div>
-                <TextContainer>
-                  <strong>Progress</strong>
-                  <ProgressBar progress={this.props.progress} />
-                </TextContainer>
-              </div>
-            </TextContainer>
+          <Card>
+            <Card.Section>
+              <TextContainer>
+                <strong>Progress</strong>
+                <ProgressBar progress={this.props.progress} />
+              </TextContainer>
+            </Card.Section>
           </Card>
         </Layout.Section>
       </div>

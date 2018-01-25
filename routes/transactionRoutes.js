@@ -1,9 +1,25 @@
+const rp = 'request-promise';
 const mongoose = require('mongoose');
 const Transaction = mongoose.model('transactions');
 const Customer = mongoose.model('customers');
 
 module.exports = app => {
-  app.post('/transactions', async (req, res) => {
+  app.get('/api/currency/:currencyId', (req, res) => {
+    const requestUrl = `https://api.coinmarketcap.com/v1/ticker/${
+      req.params.currencyId
+    }`;
+
+    rp
+      .get(requestUrl)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  });
+
+  app.post('/api/transactions', async (req, res) => {
     const customer = new Customer({
       firstName: 'Jordan',
       lastName: 'Zaaang',
@@ -29,8 +45,7 @@ module.exports = app => {
       ],
       totalPriceCurrency: 2343,
       date: Date.now(),
-      paid: false,
-      paidDate: Date.now()
+      paid: false
     });
 
     try {

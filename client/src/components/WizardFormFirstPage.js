@@ -1,20 +1,23 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { Button } from '@shopify/polaris';
-import Step1 from './steps/Step1';
-import Step2 from './steps/Step2';
+import { Button, Card, Layout } from '@shopify/polaris';
+import Step from './Step';
+import CurrencySelector from './CurrencySelector';
+import Product from './Product';
 
 class WizardFormFirstPage extends Component {
   constructor(props) {
     super(props);
-    this._renderNextButton = this._renderNextButton.bind(this);
+    this.renderNextButton = this.renderNextButton.bind(this);
   }
 
   componentDidMount() {
     this.props.updateProgress(0);
   }
 
-  _renderNextButton() {
+  renderNextButton() {
+    // This function carries special logic to not render the Next button if currency or variant are not selected.
+    // Cannot use the shared NavButtons in this case.
     const { currency, product: { selectedVariant } } = this.props;
 
     if (!currency || _.isEmpty(selectedVariant)) {
@@ -33,27 +36,40 @@ class WizardFormFirstPage extends Component {
   render() {
     const {
       currency,
-      loading,
       product: { info: { title, image, variants }, selectedVariant },
       switchCurrency,
-      switchVariant
+      switchVariant,
+      pageTitle,
+      subTitle
     } = this.props;
 
     return (
-      <div>
-        <Step1 currency={currency} switchCurrency={switchCurrency} />
+      <Layout.Section>
+        {pageTitle && subTitle ? (
+          <Card title={pageTitle} sectioned={true}>
+            <p>{subTitle}</p>
+          </Card>
+        ) : null}
 
-        <Step2
-          loading={loading}
-          title={title}
-          image={image}
-          variants={variants}
-          selectedVariant={selectedVariant}
-          switchVariant={switchVariant}
-        />
+        <Step order="1" title="Choose your cryptocurrency">
+          <CurrencySelector currency={currency} onChange={switchCurrency} />
+          <sub>
+            Don't see a currency listed that you think we should add?{' '}
+            <a href="mailto:info@headphones.com">Let us know</a>!
+          </sub>
+        </Step>
 
-        {this._renderNextButton()}
-      </div>
+        <Step order="2" title="Confirm your product choice">
+          <Product
+            title={title}
+            image={image}
+            variants={variants}
+            selectedVariant={selectedVariant}
+            onChange={switchVariant}
+          />
+        </Step>
+        {this.renderNextButton()}
+      </Layout.Section>
     );
   }
 }
