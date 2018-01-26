@@ -2,27 +2,33 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export default ({ input, label, small, meta: { error, touched } }) => {
-  const classes = classNames({
+export default ({
+  input,
+  maxLength,
+  label,
+  small,
+  meta: { error, touched }
+}) => {
+  const failedValidation = touched && error;
+
+  const outerDivClasses = classNames({
     form__field: true,
     'form__field--small': small
   });
 
-  const failedValidation = touched && error;
+  const inputClasses = classNames({
+    'form__error--input': failedValidation
+  });
+
   return (
-    <div className={classes}>
+    <div className={outerDivClasses}>
       <div style={{ display: 'block' }}>
         <label>{label}</label>
         {failedValidation ? (
           <span className="form__error--label">{error}</span>
         ) : null}
       </div>
-
-      {failedValidation ? (
-        <input {...input} className="form__error--input" />
-      ) : (
-        <input {...input} />
-      )}
+      <input {...input} maxLength={maxLength} className={inputClasses} />
     </div>
   );
 };

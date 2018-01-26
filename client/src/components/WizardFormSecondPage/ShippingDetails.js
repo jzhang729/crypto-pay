@@ -7,6 +7,12 @@ class ShippingDetails extends Component {
   render() {
     return (
       <div>
+        {/* <Field
+          name="customerId"
+          component="input"
+          type="hidden"
+          value={this.props.customerId}
+        /> */}
         <div className="form__section">
           <Field
             name="firstName"
@@ -61,6 +67,7 @@ class ShippingDetails extends Component {
             label="State / Province"
             component={FormTextField}
             type="text"
+            maxLength={2}
             small={true}
           />
         </div>
@@ -70,6 +77,14 @@ class ShippingDetails extends Component {
             name="country"
             label="Country"
             component={FormSelectDropdown}
+          />
+          <Field
+            name="postalZip"
+            label="Zip Code / Province"
+            component={FormTextField}
+            type="text"
+            small={true}
+            maxLength={7}
           />
         </div>
       </div>

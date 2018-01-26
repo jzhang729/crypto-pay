@@ -1,13 +1,12 @@
 import axios from 'axios';
 import productData from '../mocks/product';
 import variantData from '../mocks/variant';
-
-// TODO: Uncomment these when not in DEV environment
 // import _ from 'underscore';
 
 import {
   FETCH_PRODUCT,
   FETCH_CURRENCY,
+  SET_CUSTOMER,
   SET_LOADING,
   SWITCH_CURRENCY,
   SWITCH_VARIANT,
@@ -15,7 +14,6 @@ import {
 } from './types';
 
 export const setLoading = bool => {
-  console.log('set loading to ', bool);
   return { type: SET_LOADING, payload: bool };
 };
 
@@ -32,6 +30,12 @@ export const fetchProduct = productId => async dispatch => {
   // const payload = _.omit(res.data.product, 'body_html');
   const payload = productData.product;
   dispatch({ type: FETCH_PRODUCT, payload });
+};
+
+export const setCustomer = customer => async dispatch => {
+  const res = await axios.post(`/api/customers/new`, customer);
+  const payload = res.data;
+  dispatch({ type: SET_CUSTOMER, payload });
 };
 
 export const switchCurrency = currency => async dispatch => {

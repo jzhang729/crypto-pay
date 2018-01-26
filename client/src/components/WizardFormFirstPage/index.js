@@ -22,7 +22,7 @@ class WizardFormFirstPage extends Component {
   renderNextButton() {
     // This function carries special logic to not render the Next button if currency or variant are not selected.
     // Cannot use the shared NavButtons in this case.
-    const { currency, product: { selectedVariant } } = this.props;
+    const { currency, selectedVariant } = this.props;
 
     if (!currency || _.isEmpty(selectedVariant)) {
       return null;
@@ -40,7 +40,8 @@ class WizardFormFirstPage extends Component {
   render() {
     const {
       currency,
-      product: { info: { title, image, variants }, selectedVariant },
+      product: { info: { title, image, variants } },
+      selectedVariant,
       switchCurrency,
       switchVariant,
       pageTitle,

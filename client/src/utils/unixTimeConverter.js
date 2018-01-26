@@ -1,3 +1,10 @@
+function addZero(i) {
+  if (i < 10) {
+    i = '0' + i;
+  }
+  return i;
+}
+
 export const unixTimeConverter = unixTimeStamp => {
   var a = new Date(unixTimeStamp * 1000);
   var months = [
@@ -16,10 +23,10 @@ export const unixTimeConverter = unixTimeStamp => {
   ];
   var year = a.getFullYear();
   var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
+  var date = addZero(a.getDate());
+  var hour = addZero(a.getHours());
+  var min = addZero(a.getMinutes());
+  var sec = addZero(a.getSeconds());
   var time =
     date + ' ' + month + ' ' + year + ' at ' + hour + ':' + min + ':' + sec;
   return time;

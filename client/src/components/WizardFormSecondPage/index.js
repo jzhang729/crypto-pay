@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+// import { connect } from 'react-redux';
 import { Card, Layout } from '@shopify/polaris';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Form } from 'redux-form';
 import Step from '../Step';
-// import { validate } from '../utils/validate';
+// import { validate } from '../../utils/validate';
 import ShippingDetails from './ShippingDetails';
 import NavButtons from '../NavButtons';
 
@@ -13,7 +14,14 @@ class WizardFormSecondPage extends Component {
   }
 
   render() {
-    const { pageTitle, subTitle, onBack, handleSubmit, onSubmit } = this.props;
+    const {
+      pageTitle,
+      subTitle,
+      onBack,
+      handleSubmit,
+      onSubmit,
+      customer: { _id }
+    } = this.props;
 
     return (
       <Layout.Section>
@@ -23,13 +31,21 @@ class WizardFormSecondPage extends Component {
           </Card>
         ) : null}
         <Step order="3" title="Enter your shipping details">
-          <ShippingDetails />
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <ShippingDetails customerId={_id} />
+          </Form>
         </Step>
         <NavButtons onBack={onBack} onSubmit={handleSubmit(onSubmit)} />
       </Layout.Section>
     );
   }
 }
+
+// function mapStateToProps(state, { customer }) {
+//   return {
+//     customerId: customer._id
+//   };
+// }
 
 export default reduxForm({
   form: 'wizard',

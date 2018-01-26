@@ -20,26 +20,35 @@ module.exports = app => {
       });
   });
 
-  app.post('/api/transactions', async (req, res) => {
-    const customer = new Customer({
-      firstName: 'Jordan',
-      lastName: 'Zaaang',
-      email: 'jz@sfdf.com',
-      address1: '123 Fake St',
-      address2: 'unit 1',
-      city: 'Vancouver',
-      stateProv: 'BC',
-      country: 'Canada',
-      postalZip: 'V43 443'
-    });
+  app.post('/api/customers/new', async (req, res) => {
+    try {
+      if (!req.body._id) {
+        req.body._id = new mongoose.mongo.ObjectID();
+        console.log('over here', req.body);
+      }
 
+      const customerRecord = await Customer.findOneAndUpdate(
+        { _id: req.body._id },
+        req.body,
+        {
+          new: true,
+          upsert: true
+        }
+      );
+      res.status(200).send(customerRecord);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  app.post('/api/transactions', async (req, res) => {
     const transaction = new Transaction({
       productID: 1234,
       variantID: 2234,
       totalPriceUSD: 3334,
       currency: [
         {
-          name: 'rayblocks',
+          name: 'raiblocks',
           conversionRateUSD: 0.2,
           conversionRateDate: Date.now()
         }

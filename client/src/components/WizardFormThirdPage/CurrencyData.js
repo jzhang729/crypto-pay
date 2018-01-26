@@ -56,9 +56,11 @@ const CurrencyData = ({
         </div>
       )}
 
-      <Button outline onClick={() => fetchCurrency(currency)}>
-        Refresh
-      </Button>
+      <div style={{ margin: '1rem 0' }}>
+        <Button outline onClick={() => fetchCurrency(currency)}>
+          Refresh
+        </Button>
+      </div>
     </div>
   );
 };

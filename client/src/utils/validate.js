@@ -26,8 +26,15 @@ export const validate = values => {
   if (!values.city) {
     errors.city = 'Required';
   }
+
   if (!values.stateProv) {
     errors.stateProv = 'Required';
+  }
+
+  if (!values.postalZip) {
+    errors.postalZip = 'Required';
+  } else if (values.postalZip.length < 5) {
+    errors.postalZip = 'Invalid postal/zip code';
   }
 
   if (!values.country) {

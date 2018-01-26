@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'underscore';
 import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
@@ -12,10 +13,10 @@ class WizardForm extends Component {
 
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
-    this.submitPageTwo = this.submitPageTwo.bind(this);
+    // this.submitPageTwo = this.submitPageTwo.bind(this);
 
     this.state = {
-      page: 3
+      page: 2
     };
   }
 
@@ -27,20 +28,18 @@ class WizardForm extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
-  submitPageTwo(values) {
-    console.log('submitting the form', values);
-  }
-
   render() {
     const { page } = this.state;
 
     const {
       currency,
       currencyData,
+      customer,
       fetchProduct,
       fetchCurrency,
       loading,
       product,
+      selectedVariant,
       switchCurrency,
       switchVariant,
       updateProgress,
@@ -63,6 +62,7 @@ class WizardForm extends Component {
             currency={currency}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
+            selectedVariant={selectedVariant}
             onSubmit={this.nextPage}
             updateProgress={updateProgress}
             fetchProduct={fetchProduct}
@@ -70,10 +70,13 @@ class WizardForm extends Component {
         )}
         {page === 2 && (
           <WizardFormSecondPage
+            customer={customer}
             updateProgress={updateProgress}
             onBack={this.previousPage}
             onSubmit={values => {
-              this.submitPageTwo(values);
+              const valuesWithId = _.extend(values, { _id: customer._id });
+              this.props.setCustomer(valuesWithId);
+              console.log('submitting the form', valuesWithId);
               this.nextPage();
             }}
           />
@@ -99,10 +102,17 @@ class WizardForm extends Component {
 }
 
 function mapStateToProps({
-  app: { currency, currencyData, loading },
+  app: { currency, currencyData, loading, selectedVariant, customer },
   product
 }) {
-  return { currency, currencyData, loading, product };
+  return {
+    currency,
+    currencyData,
+    customer,
+    loading,
+    product,
+    selectedVariant
+  };
 }
 
 export default connect(mapStateToProps, actions)(WizardForm);

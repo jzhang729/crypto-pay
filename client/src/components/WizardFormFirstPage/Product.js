@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Spinner } from '@shopify/polaris';
 import ProductVariantSelector from './ProductVariantSelector';
 
 const Product = ({ title, image, variants, selectedVariant, onChange }) => {
