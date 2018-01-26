@@ -12,7 +12,11 @@ class WizardFormFirstPage extends Component {
   }
 
   componentDidMount() {
-    this.props.updateProgress(0);
+    window.scrollTo(0, 0);
+    const { updateProgress, fetchProduct, productId } = this.props;
+
+    fetchProduct(productId);
+    updateProgress(0);
   }
 
   renderNextButton() {

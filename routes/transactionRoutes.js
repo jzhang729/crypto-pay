@@ -1,13 +1,14 @@
-const rp = 'request-promise';
+const rp = require('request-promise');
 const mongoose = require('mongoose');
 const Transaction = mongoose.model('transactions');
 const Customer = mongoose.model('customers');
 
 module.exports = app => {
   app.get('/api/currency/:currencyId', (req, res) => {
+    // Note that a trailing slash is required for the API endpoint to work
     const requestUrl = `https://api.coinmarketcap.com/v1/ticker/${
       req.params.currencyId
-    }`;
+    }/`;
 
     rp
       .get(requestUrl)

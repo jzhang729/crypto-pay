@@ -1,10 +1,16 @@
 // FormTextField contains logic to render a single label and text input
 import React from 'react';
+import classNames from 'classnames';
 
-export default ({ input, label, meta: { error, touched } }) => {
+export default ({ input, label, small, meta: { error, touched } }) => {
+  const classes = classNames({
+    form__field: true,
+    'form__field--small': small
+  });
+
   const failedValidation = touched && error;
   return (
-    <div className="form__field">
+    <div className={classes}>
       <div style={{ display: 'block' }}>
         <label>{label}</label>
         {failedValidation ? (

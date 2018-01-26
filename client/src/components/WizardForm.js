@@ -19,10 +19,6 @@ class WizardForm extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchProduct(this.props.match.params.productId);
-  }
-
   nextPage() {
     this.setState({ page: this.state.page + 1 });
   }
@@ -39,17 +35,22 @@ class WizardForm extends Component {
     const { page } = this.state;
 
     const {
-      product,
       currency,
+      currencyData,
+      fetchProduct,
+      fetchCurrency,
+      loading,
+      product,
       switchCurrency,
       switchVariant,
-      updateProgress
+      updateProgress,
+      match: { params: { productId } }
     } = this.props;
 
     return (
       <CSSTransitionGroup
         transitionName="slide"
-        transitionEnterTimeout={500}
+        transitionEnterTimeout={300}
         transitionLeaveTimeout={300}
         transitionAppear={false}>
         {page === 1 && (
@@ -58,11 +59,13 @@ class WizardForm extends Component {
             subTitle="We will guide you through using cryptocurrency to purchase your
             product from Headphones.com."
             product={product}
+            productId={productId}
             currency={currency}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
             onSubmit={this.nextPage}
             updateProgress={updateProgress}
+            fetchProduct={fetchProduct}
           />
         )}
         {page === 2 && (
@@ -84,6 +87,10 @@ class WizardForm extends Component {
             onSubmit={() => {
               console.log('trying to go to next page');
             }}
+            currency={currency}
+            currencyData={currencyData}
+            fetchCurrency={fetchCurrency}
+            loading={loading}
           />
         )}
       </CSSTransitionGroup>
@@ -91,8 +98,11 @@ class WizardForm extends Component {
   }
 }
 
-function mapStateToProps({ app: { currency }, product }) {
-  return { currency, product };
+function mapStateToProps({
+  app: { currency, currencyData, loading },
+  product
+}) {
+  return { currency, currencyData, loading, product };
 }
 
 export default connect(mapStateToProps, actions)(WizardForm);

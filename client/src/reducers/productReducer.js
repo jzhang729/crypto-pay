@@ -1,7 +1,6 @@
 import { FETCH_PRODUCT, SWITCH_VARIANT } from '../actions/types';
 
 const initialState = {
-  loading: false,
   info: {
     image: { src: '' },
     title: '',

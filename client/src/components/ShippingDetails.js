@@ -61,6 +61,7 @@ class ShippingDetails extends Component {
             label="State / Province"
             component={FormTextField}
             type="text"
+            small={true}
           />
         </div>
 
@@ -69,12 +70,6 @@ class ShippingDetails extends Component {
             name="country"
             label="Country"
             component={FormSelectDropdown}
-          />
-          <Field
-            name="country"
-            label="Country"
-            type="hidden"
-            component="input"
           />
         </div>
       </div>

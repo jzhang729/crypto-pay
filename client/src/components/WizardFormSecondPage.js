@@ -8,6 +8,7 @@ import NavButtons from './NavButtons';
 
 class WizardFormSecondPage extends Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.updateProgress(33);
   }
 

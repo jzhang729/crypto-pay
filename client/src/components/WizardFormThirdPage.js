@@ -2,14 +2,27 @@ import React, { Component } from 'react';
 import { Card, Layout } from '@shopify/polaris';
 import Step from './Step';
 import NavButtons from './NavButtons';
+import CurrencyData from './CurrencyData';
 
 class WizardFormThirdPage extends Component {
   componentDidMount() {
-    this.props.updateProgress(66);
+    window.scrollTo(0, 0);
+    const { updateProgress, fetchCurrency, currency } = this.props;
+    updateProgress(66);
+    fetchCurrency(currency);
   }
 
   render() {
-    const { pageTitle, subTitle, onSubmit, onBack } = this.props;
+    const {
+      pageTitle,
+      subTitle,
+      onSubmit,
+      onBack,
+      loading,
+      currency,
+      currencyData,
+      fetchCurrency
+    } = this.props;
     return (
       <Layout.Section>
         {pageTitle && subTitle ? (
@@ -18,10 +31,12 @@ class WizardFormThirdPage extends Component {
           </Card>
         ) : null}
         <Step order="4" title="Converting to selected currency">
-          <div>
-            We have sent the wallet address to your e-mail entered in the last
-            step.
-          </div>
+          <CurrencyData
+            currency={currency}
+            loading={loading}
+            currencyData={currencyData}
+            fetchCurrency={fetchCurrency}
+          />
         </Step>
         <NavButtons onBack={onBack} onSubmit={onSubmit} />
       </Layout.Section>

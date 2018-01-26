@@ -23,5 +23,16 @@ export const validate = values => {
     errors.address1 = 'Required';
   }
 
+  if (!values.city) {
+    errors.city = 'Required';
+  }
+  if (!values.stateProv) {
+    errors.stateProv = 'Required';
+  }
+
+  if (!values.country) {
+    errors.country = 'Required';
+  }
+
   return errors;
 };
