@@ -1,7 +1,18 @@
 import React from 'react';
 import { Button, Card, List, Spinner } from '@shopify/polaris';
+import { unixTimeConverter } from '../../utils/unixTimeConverter';
 
-const CurrencyData = ({ loading, currencyData, fetchCurrency, currency }) => {
+const CurrencyData = ({
+  loading,
+  currencyData: {
+    price_usd: priceUSD,
+    name,
+    symbol,
+    last_updated: lastUpdated
+  },
+  fetchCurrency,
+  currency
+}) => {
   return (
     <div className="currency__data">
       {loading ? (
@@ -16,19 +27,19 @@ const CurrencyData = ({ loading, currencyData, fetchCurrency, currency }) => {
               <List>
                 <List.Item>
                   <strong>XRB / USD: </strong>
-                  {currencyData.price_usd}
+                  {priceUSD}
                 </List.Item>
                 <List.Item>
                   <strong>Name: </strong>
-                  {currencyData.name}
+                  {name}
                 </List.Item>
                 <List.Item>
                   <strong>Symbol: </strong>
-                  {currencyData.symbol}
+                  {symbol}
                 </List.Item>
                 <List.Item>
                   <strong>Last Updated: </strong>
-                  {currencyData.last_updated}
+                  {unixTimeConverter(lastUpdated)}
                 </List.Item>
               </List>
             </Card.Section>
@@ -45,7 +56,7 @@ const CurrencyData = ({ loading, currencyData, fetchCurrency, currency }) => {
         </div>
       )}
 
-      <Button plain onClick={() => fetchCurrency(currency)}>
+      <Button outline onClick={() => fetchCurrency(currency)}>
         Refresh
       </Button>
     </div>

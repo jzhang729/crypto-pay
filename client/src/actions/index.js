@@ -19,7 +19,7 @@ export const setLoading = bool => {
   return { type: SET_LOADING, payload: bool };
 };
 
-export const fetchCurrency = currencyId => async dispatch => {
+export const fetchCurrency = (currencyId = 'raiblocks') => async dispatch => {
   dispatch(setLoading(true));
   const res = await axios.get(`/api/currency/${currencyId}`);
   const payload = res.data[0];

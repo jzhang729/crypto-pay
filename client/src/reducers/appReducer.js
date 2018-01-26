@@ -8,7 +8,7 @@ import {
 const initialState = {
   loading: false,
   progress: 0,
-  currency: null,
+  currency: undefined,
   currencyData: {
     price_usd: ''
   }

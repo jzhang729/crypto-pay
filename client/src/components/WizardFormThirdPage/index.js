@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Layout } from '@shopify/polaris';
-import Step from './Step';
-import NavButtons from './NavButtons';
+import Step from '../Step';
+import NavButtons from '../NavButtons';
 import CurrencyData from './CurrencyData';
 
 class WizardFormThirdPage extends Component {

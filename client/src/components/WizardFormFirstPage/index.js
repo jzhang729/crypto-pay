@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
 import { Button, Card, Layout } from '@shopify/polaris';
-import Step from './Step';
+import Step from '../Step';
 import CurrencySelector from './CurrencySelector';
 import Product from './Product';
 

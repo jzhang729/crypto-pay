@@ -15,7 +15,7 @@ class WizardForm extends Component {
     this.submitPageTwo = this.submitPageTwo.bind(this);
 
     this.state = {
-      page: 1
+      page: 3
     };
   }
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Card, Layout } from '@shopify/polaris';
 import { reduxForm } from 'redux-form';
-import Step from './Step';
+import Step from '../Step';
 // import { validate } from '../utils/validate';
 import ShippingDetails from './ShippingDetails';
-import NavButtons from './NavButtons';
+import NavButtons from '../NavButtons';
 
 class WizardFormSecondPage extends Component {
   componentDidMount() {
