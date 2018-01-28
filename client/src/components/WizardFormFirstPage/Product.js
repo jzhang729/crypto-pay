@@ -17,7 +17,11 @@ const Product = ({ title, image, variants, selectedVariant, onChange }) => {
         {selectedVariant.title && selectedVariant.price ? (
           <div className="product__variant-info">
             <strong>
-              <i>{selectedVariant.title}</i>
+              <i>
+                {selectedVariant.title === 'Default Title'
+                  ? null
+                  : selectedVariant.title}
+              </i>
             </strong>
             <p>Price: ${selectedVariant.price} USD</p>
           </div>

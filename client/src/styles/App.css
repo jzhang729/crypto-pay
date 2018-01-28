@@ -24,6 +24,10 @@ sub {
   font-size: 1rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   padding: 3rem;
 }
@@ -117,4 +121,23 @@ sub {
 .product__variant-info {
   margin: 2rem 0;
   font-style: italic;
+}
+
+dl {
+  max-width: 30vw;
+}
+
+dl div {
+  display: block;
+  margin: 1rem 0;
+}
+
+dt {
+  display: block;
+}
+
+dd {
+  display: block;
+  margin-left: 0;
+  margin-bottom: 1rem;
 }

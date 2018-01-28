@@ -17,7 +17,6 @@
   "author": "Jordan Zhang",
   "license": "ISC",
   "dependencies": {
-    "@shopify/shopify-express": "^1.0.0-alpha.6",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "cookie": "^0.3.1",
@@ -36,16 +35,5 @@
     "request-promise": "^4.2.2",
     "shopify-api-node": "^2.10.1"
   },
-  "devDependencies": {
-    "autoprefixer": "^7.2.5",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
-    "css-loader": "^0.28.9",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "node-sass": "^4.7.2",
-    "postcss-loader": "^2.0.10",
-    "sass-loader": "^6.0.6",
-    "webpack": "^3.10.0"
-  }
+  "devDependencies": {}
 }

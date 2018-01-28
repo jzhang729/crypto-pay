@@ -7,24 +7,20 @@ class ShippingDetails extends Component {
   render() {
     return (
       <div>
-        {/* <Field
-          name="customerId"
-          component="input"
-          type="hidden"
-          value={this.props.customerId}
-        /> */}
         <div className="form__section">
           <Field
             name="firstName"
             label="First Name"
             component={FormTextField}
             type="text"
+            maxLength={50}
           />
           <Field
             name="lastName"
             label="Last Name"
             component={FormTextField}
             type="text"
+            maxLength={50}
           />
         </div>
 
@@ -34,6 +30,7 @@ class ShippingDetails extends Component {
             label="E-mail"
             component={FormTextField}
             type="email"
+            maxLength={100}
           />
         </div>
 
@@ -43,6 +40,7 @@ class ShippingDetails extends Component {
             label="Address (Line 1)"
             component={FormTextField}
             type="text"
+            maxLength={255}
           />
         </div>
 
@@ -52,6 +50,7 @@ class ShippingDetails extends Component {
             label="Address (Line 2)"
             component={FormTextField}
             type="text"
+            maxLength={255}
           />
         </div>
 
@@ -61,6 +60,7 @@ class ShippingDetails extends Component {
             label="City"
             component={FormTextField}
             type="text"
+            maxLength={255}
           />
           <Field
             name="stateProv"

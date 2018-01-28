@@ -13,10 +13,10 @@ module.exports = app => {
     rp
       .get(requestUrl)
       .then(data => {
-        res.send(data);
+        res.status(200).send(data);
       })
       .catch(err => {
-        res.send(err);
+        res.status(422).send(err);
       });
   });
 
@@ -24,7 +24,6 @@ module.exports = app => {
     try {
       if (!req.body._id) {
         req.body._id = new mongoose.mongo.ObjectID();
-        console.log('over here', req.body);
       }
 
       const customerRecord = await Customer.findOneAndUpdate(
@@ -61,7 +60,7 @@ module.exports = app => {
     try {
       await customer.save();
       await transaction.save();
-      res.send({ success: 'true' });
+      res.status(200).send({ success: 'true' });
     } catch (err) {
       res.status(422).send(err);
     }

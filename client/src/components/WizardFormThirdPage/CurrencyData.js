@@ -1,15 +1,13 @@
 import React from 'react';
-import { Button, Card, List, Spinner } from '@shopify/polaris';
+import { Card, List, Spinner } from '@shopify/polaris';
 import { unixTimeConverter } from '../../utils/unixTimeConverter';
 
 const CurrencyData = ({
   loading,
-  currencyData: {
-    price_usd: priceUSD,
-    name,
-    symbol,
-    last_updated: lastUpdated
-  },
+  priceUSD,
+  name,
+  symbol,
+  lastUpdated,
   fetchCurrency,
   currency
 }) => {
@@ -50,17 +48,12 @@ const CurrencyData = ({
               href="http://www.coinmarketcap.com"
               target="_blank"
               rel="noopener noreferrer">
+              {' '}
               Coin Market Cap
             </a>
           </sub>
         </div>
       )}
-
-      <div style={{ margin: '1rem 0' }}>
-        <Button outline onClick={() => fetchCurrency(currency)}>
-          Refresh
-        </Button>
-      </div>
     </div>
   );
 };

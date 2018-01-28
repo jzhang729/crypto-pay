@@ -13,10 +13,9 @@ class WizardForm extends Component {
 
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
-    // this.submitPageTwo = this.submitPageTwo.bind(this);
 
     this.state = {
-      page: 2
+      page: 3
     };
   }
 
@@ -83,17 +82,19 @@ class WizardForm extends Component {
         )}
         {page === 3 && (
           <WizardFormThirdPage
-            title="Almost there!"
-            subTitle="Ajdslfjsdlfjldsfjjsdfsf"
+            pageTitle="Almost there!"
+            subTitle="The value of crytocurrency changes often, so we need you to confirm the exchange rate by clicking the &quot;Lock In&quot; button."
             updateProgress={updateProgress}
             onBack={this.previousPage}
             onSubmit={() => {
               console.log('trying to go to next page');
             }}
             currency={currency}
+            switchCurrency={switchCurrency}
             currencyData={currencyData}
             fetchCurrency={fetchCurrency}
             loading={loading}
+            selectedVariant={selectedVariant}
           />
         )}
       </CSSTransitionGroup>

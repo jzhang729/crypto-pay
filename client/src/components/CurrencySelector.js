@@ -15,6 +15,14 @@ const CurrencySelector = ({ onChange, currency }) => {
           {
             label: 'Raiblocks',
             value: 'raiblocks'
+          },
+          {
+            label: 'Dogecoin',
+            value: 'dogecoin'
+          },
+          {
+            label: 'Ripple',
+            value: 'ripple'
           }
         ]}
       />

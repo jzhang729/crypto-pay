@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 import { Card, Layout } from '@shopify/polaris';
 import { reduxForm, Form } from 'redux-form';
 import Step from '../Step';
@@ -40,12 +39,6 @@ class WizardFormSecondPage extends Component {
     );
   }
 }
-
-// function mapStateToProps(state, { customer }) {
-//   return {
-//     customerId: customer._id
-//   };
-// }
 
 export default reduxForm({
   form: 'wizard',

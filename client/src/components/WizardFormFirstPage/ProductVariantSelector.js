@@ -19,15 +19,20 @@ class ProductVariantSelector extends Component {
   }
 
   _renderProductVariantSelector() {
-    const { selectedVariant } = this.props;
+    const { selectedVariant, variants } = this.props;
+
+    if (variants.length === 1) {
+      this.props.onChange(variants[0].id);
+      return null;
+    }
+
+    const choices = variants.map(({ title, id }) => {
+      return { label: title, value: id };
+    });
 
     const selected = _.isEmpty(selectedVariant)
       ? this.state.selected
       : [selectedVariant.id];
-
-    const choices = this.props.variants.map(({ title, id }) => {
-      return { label: title, value: id };
-    });
 
     return (
       <Card.Section>

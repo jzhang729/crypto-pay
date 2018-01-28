@@ -1,16 +1,12 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { Button, Card, Layout } from '@shopify/polaris';
+import { Card, Layout } from '@shopify/polaris';
 import Step from '../Step';
-import CurrencySelector from './CurrencySelector';
+import CurrencySelector from '../CurrencySelector';
+import NavButtons from '../NavButtons';
 import Product from './Product';
 
 class WizardFormFirstPage extends Component {
-  constructor(props) {
-    super(props);
-    this.renderNextButton = this.renderNextButton.bind(this);
-  }
-
   componentDidMount() {
     window.scrollTo(0, 0);
     const { updateProgress, fetchProduct, productId } = this.props;
@@ -19,33 +15,16 @@ class WizardFormFirstPage extends Component {
     updateProgress(0);
   }
 
-  renderNextButton() {
-    // This function carries special logic to not render the Next button if currency or variant are not selected.
-    // Cannot use the shared NavButtons in this case.
-    const { currency, selectedVariant } = this.props;
-
-    if (!currency || _.isEmpty(selectedVariant)) {
-      return null;
-    }
-
-    return (
-      <div style={{ float: 'right', margin: '1rem 0' }}>
-        <Button primary onClick={this.props.onSubmit}>
-          Next
-        </Button>
-      </div>
-    );
-  }
-
   render() {
     const {
       currency,
+      onSubmit,
+      pageTitle,
       product: { info: { title, image, variants } },
       selectedVariant,
+      subTitle,
       switchCurrency,
-      switchVariant,
-      pageTitle,
-      subTitle
+      switchVariant
     } = this.props;
 
     return (
@@ -73,7 +52,10 @@ class WizardFormFirstPage extends Component {
             onChange={switchVariant}
           />
         </Step>
-        {this.renderNextButton()}
+        <NavButtons
+          nextHidden={!currency || _.isEmpty(selectedVariant)}
+          onSubmit={onSubmit}
+        />
       </Layout.Section>
     );
   }

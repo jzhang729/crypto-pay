@@ -11,5 +11,6 @@ module.exports = {
   MG_API_KEY: process.env.MG_API_KEY,
   MG_API_SECRET: process.env.MG_API_SECRET,
   MG_MAIL_RECIPIENTS: process.env.MG_MAIL_RECIPIENTS,
-  RAIBLOCKS_WALLET: process.env.RAIBLOCKS_WALLET
+  RAIBLOCKS_WALLET: process.env.RAIBLOCKS_WALLET,
+  MONGO_URI: process.env.MONGO_URI
 };

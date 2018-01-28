@@ -1,3 +1,5 @@
+// import variantData from '../mocks/variant';
+
 import {
   SET_CUSTOMER,
   SET_LOADING,
@@ -11,11 +13,10 @@ const initialState = {
   loading: false,
   progress: 0,
   currency: undefined,
-  currencyData: {
-    price_usd: ''
-  },
+  currencyData: {},
   customer: { _id: '' },
   selectedVariant: {}
+  // selectedVariant: variantData.variant
 };
 
 export default function(state = initialState, { payload, type }) {
