@@ -10,7 +10,8 @@ const CustomerSchema = new Schema({
   city: { type: String, required: 'You must supply a city.' },
   stateProv: String,
   country: String,
-  postalZip: String
+  postalZip: String,
+  transactions: [{ type: Schema.Types.ObjectId, ref: 'Transaction' }]
 });
 
 mongoose.model('customers', CustomerSchema);

@@ -62,8 +62,13 @@ class WizardFormThirdPage extends Component {
       currency,
       currencyData,
       fetchCurrency,
+      product: { info: { title: productTitle, id: productId } },
       setTransaction,
-      selectedVariant: { price: variantPriceUSD }
+      selectedVariant: {
+        id: variantId,
+        price: variantPriceUSD,
+        title: variantTitle
+      }
     } = this.props;
 
     const {
@@ -148,7 +153,11 @@ class WizardFormThirdPage extends Component {
                   onClick={() => {
                     this.setState({ lockedIn: true });
                     setTransaction({
+                      productTitle,
+                      productId,
+                      variantId,
                       variantPriceUSD, // the price of the item in USD
+                      variantTitle,
                       currency: {
                         coinName,
                         coinSymbol,

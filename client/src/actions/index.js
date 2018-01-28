@@ -59,3 +59,10 @@ export const switchVariant = variantId => async dispatch => {
 export const updateProgress = progress => async dispatch => {
   dispatch({ type: UPDATE_PROGRESS, payload: progress });
 };
+
+export const submitForm = transaction => async dispatch => {
+  dispatch(setLoading(true));
+  const res = await axios.post(`/api/transactions/new`, transaction);
+  dispatch(setLoading(false));
+  console.log('response', res);
+};

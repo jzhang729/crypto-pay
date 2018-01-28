@@ -26,13 +26,15 @@ class WizardFormLastPage extends Component {
         country,
         postalZip
       },
+      onSubmit,
       product: { info: { title: productTitle } },
       selectedVariant: { title: variantTitle },
       transaction: {
         variantPriceUSD,
         priceInCrypto,
         currency: { coinPriceUSD, coinName, coinSymbol, coinLastUpdated }
-      }
+      },
+      transaction
     } = this.props;
     return (
       <Layout.Section>
@@ -68,7 +70,13 @@ class WizardFormLastPage extends Component {
           </Card>
         </Step>
 
-        <NavButtons nextButtonText="Submit" />
+        <NavButtons
+          nextButtonText="Submit"
+          onSubmit={() => {
+            onSubmit(transaction);
+            console.log('trying to go to the congrats page');
+          }}
+        />
       </Layout.Section>
     );
   }

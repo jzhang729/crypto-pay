@@ -3,15 +3,16 @@ const CurrencySchema = require('./Currency');
 const { Schema } = mongoose;
 
 const TransactionSchema = new Schema({
-  productID: Number,
-  variantID: Number,
-  variantPriceUSD: Number,
-  currency: [CurrencySchema],
-  priceInCrypto: Number,
+  productTitle: String,
+  productId: Number,
+  variantTitle: String,
+  variantId: Number,
+  currency: CurrencySchema,
+  variantPriceUSD: String,
+  priceInCrypto: String,
   _customer: { type: Schema.Types.ObjectId, ref: 'Customer' },
   date: Date,
-  paid: { type: Boolean, default: false },
-  paidDate: Date
+  sentEmail: { type: Boolean, default: false }
 });
 
 mongoose.model('transactions', TransactionSchema);

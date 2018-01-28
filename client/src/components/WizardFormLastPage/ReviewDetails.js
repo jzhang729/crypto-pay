@@ -66,7 +66,7 @@ const ReviewDetails = ({
           <p>
             <strong>Price (USD): </strong>
             <br />
-            {variantPriceUSD}
+            {variantPriceUSD} USD
           </p>
           <p>
             <strong>Selected Coin: </strong>

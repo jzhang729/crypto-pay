@@ -16,7 +16,7 @@ module.exports = app => {
         res.status(200).send(data);
       })
       .catch(err => {
-        res.status(422).send(err);
+        res.send(err);
       });
   });
 
@@ -41,29 +41,37 @@ module.exports = app => {
   });
 
   app.post('/api/transactions/new', async (req, res) => {
-    const transaction = new Transaction({
-      productID: 1234,
-      variantID: 2234,
-      totalPriceUSD: 3334,
-      currency: [
-        {
-          name: 'raiblocks',
-          conversionRateUSD: 0.2,
-          conversionRateDate: Date.now()
-        }
-      ],
-      _customer: '5a6d667f4a85293e0f60884a',
-      priceInCrypto: 2343,
-      date: Date.now(),
-      paid: false,
-      paidDate: ''
+    const {
+      productId,
+      productTitle,
+      variantId,
+      variantPriceUSD,
+      currency: { coinName, coinSymbol, coinPriceUSD, coinLastUpdated },
+      _customer,
+      priceInCrypto
+    } = req.body;
+
+    const transactionRecord = new Transaction({
+      productId,
+      productTitle,
+      variantId,
+      variantPriceUSD,
+      currency: {
+        coinName,
+        coinSymbol,
+        coinPriceUSD,
+        coinLastUpdated
+      },
+      _customer,
+      priceInCrypto,
+      date: Date.now()
     });
 
     try {
-      await transaction.save();
+      await transactionRecord.save();
       res.status(200).send({ success: 'true' });
     } catch (err) {
-      res.status(422).send(err);
+      res.send(err);
     }
   });
 };

@@ -41,6 +41,7 @@ class WizardForm extends Component {
       product,
       selectedVariant,
       setTransaction,
+      submitForm,
       switchCurrency,
       switchVariant,
       transaction,
@@ -78,7 +79,6 @@ class WizardForm extends Component {
             onSubmit={values => {
               const valuesWithId = _.extend(values, { _id: customer._id });
               this.props.setCustomer(valuesWithId);
-              console.log('submitting the form', valuesWithId);
               this.nextPage();
             }}
           />
@@ -92,6 +92,7 @@ class WizardForm extends Component {
             onSubmit={this.nextPage}
             currency={currency}
             customer={customer}
+            product={product}
             switchCurrency={switchCurrency}
             currencyData={currencyData}
             fetchCurrency={fetchCurrency}
@@ -107,9 +108,7 @@ class WizardForm extends Component {
             subTitle="Please make sure that all of this information is correct. An e-mail will be sent to you with the wallet address to make payment to."
             updateProgress={updateProgress}
             onBack={this.previousPage}
-            onSubmit={() => {
-              console.log('submitting');
-            }}
+            onSubmit={submitForm}
             goToPage={this.goToPage}
             selectedVariant={selectedVariant}
             product={product}
