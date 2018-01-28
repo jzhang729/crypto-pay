@@ -1,8 +1,8 @@
 import axios from 'axios';
-import productData from '../mocks/product';
-import variantData from '../mocks/variant';
-import customerData from '../mocks/customer';
 import _ from 'underscore';
+// import productData from '../mocks/product';
+// import variantData from '../mocks/variant';
+// import customerData from '../mocks/customer';
 
 import {
   FETCH_PRODUCT,
@@ -32,16 +32,16 @@ export const fetchCurrency = (currencyId = 'raiblocks') => async dispatch => {
 };
 
 export const fetchProduct = productId => async dispatch => {
-  // const res = await axios.get(`/api/product/${productId}`);
-  const res = productData;
+  const res = await axios.get(`/api/product/${productId}`);
+  // const res = productData;
   const payload = _.omit(res.data.product, 'body_html');
   dispatch({ type: FETCH_PRODUCT, payload });
 };
 
 export const setCustomer = customer => async dispatch => {
-  // const res = await axios.post(`/api/customers/new`, customer);
-  // const payload = res.data;
-  const payload = customerData.customer;
+  const res = await axios.post(`/api/customers/new`, customer);
+  const payload = res.data;
+  // const payload = customerData.customer;
   dispatch({ type: SET_CUSTOMER, payload });
 };
 
@@ -50,9 +50,9 @@ export const switchCurrency = currency => async dispatch => {
 };
 
 export const switchVariant = variantId => async dispatch => {
-  // const res = await axios.get(`/api/variants/${variantId}`);
-  // const payload = res.data.variant;
-  const payload = variantData.variant;
+  const res = await axios.get(`/api/variants/${variantId}`);
+  const payload = res.data.variant;
+  // const payload = variantData.variant;
   dispatch({ type: SWITCH_VARIANT, payload });
 };
 

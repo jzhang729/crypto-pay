@@ -1,5 +1,5 @@
-import variantData from '../mocks/variant';
-import customerData from '../mocks/customer';
+// import variantData from '../mocks/variant';
+// import customerData from '../mocks/customer';
 
 import {
   SET_CUSTOMER,
@@ -16,11 +16,11 @@ const initialState = {
   progress: 0,
   currency: undefined,
   currencyData: {},
-  // customer: { _id: '' },
-  // selectedVariant: {}
-  customer: customerData.customer,
-  selectedVariant: variantData.variant,
+  customer: { _id: '' },
+  selectedVariant: {},
   transaction: {}
+  // customer: customerData.customer,
+  // selectedVariant: variantData.variant,
 };
 
 export default function(state = initialState, { payload, type }) {
