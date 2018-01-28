@@ -32,8 +32,10 @@ module.exports = app => {
         {
           new: true,
           upsert: true
+          // setDefaultsOnInsert: true
         }
       );
+
       res.status(200).send(customerRecord);
     } catch (err) {
       res.status(422).send(err);
@@ -67,8 +69,14 @@ module.exports = app => {
       date: Date.now()
     });
 
+    const customerUpdate = Customer.updateOne(
+      { _id: _customer },
+      { $push: { transactions: transactionRecord._id } }
+    );
+
     try {
       await transactionRecord.save();
+      await customerUpdate.exec();
       res.status(200).send({ success: 'true' });
     } catch (err) {
       res.send(err);
