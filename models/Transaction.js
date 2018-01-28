@@ -5,9 +5,9 @@ const { Schema } = mongoose;
 const TransactionSchema = new Schema({
   productID: Number,
   variantID: Number,
-  totalPriceUSD: Number,
+  variantPriceUSD: Number,
   currency: [CurrencySchema],
-  totalPriceCurrency: Number,
+  priceInCrypto: Number,
   _customer: { type: Schema.Types.ObjectId, ref: 'Customer' },
   date: Date,
   paid: { type: Boolean, default: false },

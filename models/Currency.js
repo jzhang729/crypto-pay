@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const CurrencySchema = new Schema({
-  name: String,
-  conversionRateUSD: Number,
-  conversionRateDate: Date
+  coinName: String,
+  coinSymbol: String,
+  coinPriceUSD: Number,
+  coinLastUpdated: Date
 });
 
 module.exports = CurrencySchema;

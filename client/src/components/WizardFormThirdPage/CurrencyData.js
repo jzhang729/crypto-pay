@@ -4,10 +4,10 @@ import { unixTimeConverter } from '../../utils/unixTimeConverter';
 
 const CurrencyData = ({
   loading,
-  priceUSD,
-  name,
-  symbol,
-  lastUpdated,
+  coinPriceUSD,
+  coinName,
+  coinSymbol,
+  coinLastUpdated,
   fetchCurrency,
   currency
 }) => {
@@ -25,19 +25,19 @@ const CurrencyData = ({
               <List>
                 <List.Item>
                   <strong>XRB / USD: </strong>
-                  {priceUSD}
+                  {coinPriceUSD} USD
                 </List.Item>
                 <List.Item>
                   <strong>Name: </strong>
-                  {name}
+                  {coinName}
                 </List.Item>
                 <List.Item>
                   <strong>Symbol: </strong>
-                  {symbol}
+                  {coinSymbol}
                 </List.Item>
                 <List.Item>
                   <strong>Last Updated: </strong>
-                  {unixTimeConverter(lastUpdated)}
+                  {unixTimeConverter(coinLastUpdated)}
                 </List.Item>
               </List>
             </Card.Section>
@@ -59,34 +59,3 @@ const CurrencyData = ({
 };
 
 export default CurrencyData;
-
-// 24h_volume_usd:
-// "20180400.0"
-// available_supply:
-// "133248289.0"
-// id:
-// "raiblocks"
-// last_updated:
-// "1516859353"
-// market_cap_usd:
-// "1857827597.0"
-// max_supply:
-// "133248290.0"
-// name:
-// "RaiBlocks"
-// percent_change_1h:
-// "0.29"
-// percent_change_24h:
-// "-0.57"
-// percent_change_7d:
-// "-19.22"
-// price_btc:
-// "0.00120426"
-// price_usd:
-// "13.9426"
-// rank:
-// "23"
-// symbol:
-// "XRB"
-// total_supply:
-// "133248289.0"

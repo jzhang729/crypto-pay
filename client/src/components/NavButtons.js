@@ -5,6 +5,8 @@ const NavButtons = ({
   onBack,
   onSubmit,
   backHidden,
+  backButtonText,
+  nextButtonText,
   nextHidden,
   nextDisabled
 }) => {
@@ -13,7 +15,7 @@ const NavButtons = ({
       <ButtonGroup>
         {onBack && !backHidden ? (
           <Button secondary onClick={onBack} accessibilityLabel="Back">
-            Back
+            {backButtonText}
           </Button>
         ) : null}
 
@@ -23,7 +25,7 @@ const NavButtons = ({
             disabled={nextDisabled}
             onClick={onSubmit}
             accessibilityLabel="Next">
-            Next
+            {nextButtonText}
           </Button>
         ) : null}
       </ButtonGroup>
@@ -34,7 +36,9 @@ const NavButtons = ({
 NavButtons.defaultProps = {
   backHidden: false,
   nextDisabled: false,
-  nextHidden: false
+  nextHidden: false,
+  backButtonText: 'Back',
+  nextButtonText: 'Next'
 };
 
 export default NavButtons;

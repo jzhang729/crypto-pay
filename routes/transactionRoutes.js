@@ -40,7 +40,7 @@ module.exports = app => {
     }
   });
 
-  app.post('/api/transactions', async (req, res) => {
+  app.post('/api/transactions/new', async (req, res) => {
     const transaction = new Transaction({
       productID: 1234,
       variantID: 2234,
@@ -52,13 +52,14 @@ module.exports = app => {
           conversionRateDate: Date.now()
         }
       ],
-      totalPriceCurrency: 2343,
+      _customer: '5a6d667f4a85293e0f60884a',
+      priceInCrypto: 2343,
       date: Date.now(),
-      paid: false
+      paid: false,
+      paidDate: ''
     });
 
     try {
-      await customer.save();
       await transaction.save();
       res.status(200).send({ success: 'true' });
     } catch (err) {

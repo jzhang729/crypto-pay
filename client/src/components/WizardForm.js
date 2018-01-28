@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
+import WizardFormLastPage from './WizardFormLastPage';
 import { CSSTransitionGroup } from 'react-transition-group';
 import * as actions from '../actions';
 
@@ -15,7 +16,7 @@ class WizardForm extends Component {
     this.previousPage = this.previousPage.bind(this);
 
     this.state = {
-      page: 3
+      page: 1
     };
   }
 
@@ -39,8 +40,10 @@ class WizardForm extends Component {
       loading,
       product,
       selectedVariant,
+      setTransaction,
       switchCurrency,
       switchVariant,
+      transaction,
       updateProgress,
       match: { params: { productId } }
     } = this.props;
@@ -86,15 +89,33 @@ class WizardForm extends Component {
             subTitle="The value of crytocurrency changes often, so we need you to confirm the exchange rate by clicking the &quot;Lock In&quot; button."
             updateProgress={updateProgress}
             onBack={this.previousPage}
-            onSubmit={() => {
-              console.log('trying to go to next page');
-            }}
+            onSubmit={this.nextPage}
             currency={currency}
+            customer={customer}
             switchCurrency={switchCurrency}
             currencyData={currencyData}
             fetchCurrency={fetchCurrency}
             loading={loading}
             selectedVariant={selectedVariant}
+            setTransaction={setTransaction}
+          />
+        )}
+
+        {page === 4 && (
+          <WizardFormLastPage
+            pageTitle="Last but Important Step!"
+            subTitle="Please make sure that all of this information is correct. An e-mail will be sent to you with the wallet address to make payment to."
+            updateProgress={updateProgress}
+            onBack={this.previousPage}
+            onSubmit={() => {
+              console.log('submitting');
+            }}
+            goToPage={this.goToPage}
+            selectedVariant={selectedVariant}
+            product={product}
+            customer={customer}
+            currencyData={currencyData}
+            transaction={transaction}
           />
         )}
       </CSSTransitionGroup>
@@ -103,7 +124,14 @@ class WizardForm extends Component {
 }
 
 function mapStateToProps({
-  app: { currency, currencyData, loading, selectedVariant, customer },
+  app: {
+    currency,
+    currencyData,
+    loading,
+    selectedVariant,
+    customer,
+    transaction
+  },
   product
 }) {
   return {
@@ -112,7 +140,8 @@ function mapStateToProps({
     customer,
     loading,
     product,
-    selectedVariant
+    selectedVariant,
+    transaction
   };
 }
 

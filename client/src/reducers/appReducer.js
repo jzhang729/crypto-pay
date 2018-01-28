@@ -1,8 +1,10 @@
-// import variantData from '../mocks/variant';
+import variantData from '../mocks/variant';
+import customerData from '../mocks/customer';
 
 import {
   SET_CUSTOMER,
   SET_LOADING,
+  SET_TRANSACTION,
   FETCH_CURRENCY,
   SWITCH_CURRENCY,
   SWITCH_VARIANT,
@@ -14,9 +16,11 @@ const initialState = {
   progress: 0,
   currency: undefined,
   currencyData: {},
-  customer: { _id: '' },
-  selectedVariant: {}
-  // selectedVariant: variantData.variant
+  // customer: { _id: '' },
+  // selectedVariant: {}
+  customer: customerData.customer,
+  selectedVariant: variantData.variant,
+  transaction: {}
 };
 
 export default function(state = initialState, { payload, type }) {
@@ -27,6 +31,8 @@ export default function(state = initialState, { payload, type }) {
       return { ...state, customer: payload };
     case SET_LOADING:
       return { ...state, loading: payload };
+    case SET_TRANSACTION:
+      return { ...state, transaction: payload };
     case SWITCH_CURRENCY:
       return { ...state, currency: payload };
     case SWITCH_VARIANT:

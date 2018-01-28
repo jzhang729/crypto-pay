@@ -1,6 +1,7 @@
 import axios from 'axios';
-// import productData from '../mocks/product';
-// import variantData from '../mocks/variant';
+import productData from '../mocks/product';
+import variantData from '../mocks/variant';
+import customerData from '../mocks/customer';
 import _ from 'underscore';
 
 import {
@@ -8,6 +9,7 @@ import {
   FETCH_CURRENCY,
   SET_CUSTOMER,
   SET_LOADING,
+  SET_TRANSACTION,
   SWITCH_CURRENCY,
   SWITCH_VARIANT,
   UPDATE_PROGRESS
@@ -15,6 +17,10 @@ import {
 
 export const setLoading = bool => {
   return { type: SET_LOADING, payload: bool };
+};
+
+export const setTransaction = transactionData => {
+  return { type: SET_TRANSACTION, payload: transactionData };
 };
 
 export const fetchCurrency = (currencyId = 'raiblocks') => async dispatch => {
@@ -26,15 +32,16 @@ export const fetchCurrency = (currencyId = 'raiblocks') => async dispatch => {
 };
 
 export const fetchProduct = productId => async dispatch => {
-  const res = await axios.get(`/api/product/${productId}`);
+  // const res = await axios.get(`/api/product/${productId}`);
+  const res = productData;
   const payload = _.omit(res.data.product, 'body_html');
-  // const payload = productData.product;
   dispatch({ type: FETCH_PRODUCT, payload });
 };
 
 export const setCustomer = customer => async dispatch => {
-  const res = await axios.post(`/api/customers/new`, customer);
-  const payload = res.data;
+  // const res = await axios.post(`/api/customers/new`, customer);
+  // const payload = res.data;
+  const payload = customerData.customer;
   dispatch({ type: SET_CUSTOMER, payload });
 };
 
@@ -43,9 +50,9 @@ export const switchCurrency = currency => async dispatch => {
 };
 
 export const switchVariant = variantId => async dispatch => {
-  const res = await axios.get(`/api/variants/${variantId}`);
-  const payload = res.data.variant;
-  // const payload = variantData.variant;
+  // const res = await axios.get(`/api/variants/${variantId}`);
+  // const payload = res.data.variant;
+  const payload = variantData.variant;
   dispatch({ type: SWITCH_VARIANT, payload });
 };
 

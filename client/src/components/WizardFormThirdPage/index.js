@@ -24,6 +24,7 @@ class WizardFormThirdPage extends Component {
 
     this._changeCurrency = this._changeCurrency.bind(this);
     this._onCurrencySelect = this._onCurrencySelect.bind(this);
+    this._calculatePriceInCrypto = this._calculatePriceInCrypto.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,10 @@ class WizardFormThirdPage extends Component {
     const { updateProgress, fetchCurrency, currency } = this.props;
     updateProgress(66);
     fetchCurrency(currency);
+  }
+
+  _calculatePriceInCrypto(variantPriceUSD, coinPriceUSD) {
+    return (parseFloat(variantPriceUSD) / parseFloat(coinPriceUSD)).toFixed(4);
   }
 
   _changeCurrency() {
@@ -48,6 +53,7 @@ class WizardFormThirdPage extends Component {
 
   render() {
     const {
+      customer,
       pageTitle,
       subTitle,
       onSubmit,
@@ -56,19 +62,21 @@ class WizardFormThirdPage extends Component {
       currency,
       currencyData,
       fetchCurrency,
-      selectedVariant: { price: variantPrice }
+      setTransaction,
+      selectedVariant: { price: variantPriceUSD }
     } = this.props;
 
     const {
-      price_usd: priceUSD,
-      name,
-      symbol,
-      last_updated: lastUpdated
+      price_usd: coinPriceUSD,
+      name: coinName,
+      symbol: coinSymbol,
+      last_updated: coinLastUpdated
     } = currencyData;
 
-    const priceInCrypto = (
-      parseFloat(variantPrice) / parseFloat(priceUSD)
-    ).toFixed(4);
+    const priceInCrypto = this._calculatePriceInCrypto(
+      variantPriceUSD,
+      coinPriceUSD
+    );
 
     return (
       <Layout.Section>
@@ -88,10 +96,10 @@ class WizardFormThirdPage extends Component {
               loading={loading}
               currency={currency}
               currencyData={currencyData}
-              priceUSD={priceUSD}
-              name={name}
-              symbol={symbol}
-              lastUpdated={lastUpdated}
+              coinPriceUSD={coinPriceUSD}
+              coinName={coinName}
+              coinSymbol={coinSymbol}
+              coinLastUpdated={coinLastUpdated}
             />
           )}
 
@@ -120,13 +128,17 @@ class WizardFormThirdPage extends Component {
                     <dt>
                       <TextStyle variation="strong">Price in USD</TextStyle>
                     </dt>
-                    <dd>${variantPrice}</dd>
+                    <dd>${variantPriceUSD}</dd>
                   </div>
                   <div>
                     <dt>
-                      <TextStyle variation="strong">Price in {name}</TextStyle>
+                      <TextStyle variation="strong">
+                        Price in {coinName}
+                      </TextStyle>
                     </dt>
-                    <dd>{priceInCrypto}</dd>
+                    <dd>
+                      {priceInCrypto} {coinSymbol}
+                    </dd>
                   </div>
                 </dl>
               </TextContainer>
@@ -135,6 +147,17 @@ class WizardFormThirdPage extends Component {
                   primary
                   onClick={() => {
                     this.setState({ lockedIn: true });
+                    setTransaction({
+                      variantPriceUSD, // the price of the item in USD
+                      currency: {
+                        coinName,
+                        coinSymbol,
+                        coinPriceUSD,
+                        coinLastUpdated
+                      },
+                      priceInCrypto,
+                      _customer: customer._id
+                    });
                   }}>
                   Lock In!
                 </Button>
