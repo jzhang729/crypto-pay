@@ -21,7 +21,7 @@ class ProductVariantSelector extends Component {
   }
 
   _renderProductVariantSelector() {
-    const { variants, switchVariant, selectedVariant } = this.props;
+    const { variants, selectedVariant } = this.props;
 
     const choices = variants.map(({ title, id }) => {
       return { label: title, value: id };
