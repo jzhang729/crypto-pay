@@ -66,13 +66,16 @@ const ReviewDetails = ({
           <p>
             <strong>Price (USD): </strong>
             <br />
-            {variantPriceUSD} USD
+            ${variantPriceUSD} USD
           </p>
           <p>
             <strong>Selected Coin: </strong>
             <br />
             {coinName} ({coinSymbol})<br />
-            ${coinPriceUSD} USD - {unixTimeConverter(coinLastUpdated)}
+            <em>
+              1 {coinSymbol} = ${coinPriceUSD} USD<br />
+              @ {unixTimeConverter(coinLastUpdated)}
+            </em>
           </p>
 
           <p>

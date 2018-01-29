@@ -3,15 +3,25 @@ const transport = require('mailgun-js')({
   domain: 'mg.premiumsound.com'
 });
 
-exports.send = ({ fields }) => {
+exports.sendEmail = (
+  firstName,
+  lastName,
+  email,
+  productTitle,
+  coinName,
+  coinSymbol
+) => {
   transport.messages().send(
     {
       from: 'Crypto Pay <info@premiumsound.com>',
-      to: process.env.MG_MAIL_RECIPIENTS,
+      to: email,
       subject: 'Customer wants to pay with Crypto!',
-      text: `${name} at ${email} is interested in buying the ${product} with ${currency}. Please calculate the cost of shipping and then send them the wallet address of ${
-        process.env.RAIBLOCKS_WALLET
-      } and total amount due.`
+      html: `
+          <div>\
+            <p>Hi ${firstName},</p>\
+            <p>Thanks for your interest in buying the ${productTitle} in ${coinName} (${coinSymbol}).</p>\
+          </div>          
+        `
     },
     (error, body) => {
       if (error) {

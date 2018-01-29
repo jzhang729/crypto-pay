@@ -5,10 +5,22 @@ import Step from '../Step';
 import ReviewDetails from './ReviewDetails';
 
 class WizardFormLastPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this._handleSubmit = this._handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
     const { updateProgress } = this.props;
     updateProgress(95);
+  }
+
+  _handleSubmit(data) {
+    const { onSubmit, submitForm, transaction } = this.props;
+    submitForm(transaction);
+    onSubmit(); // Go to the next page
   }
 
   render() {
@@ -26,15 +38,13 @@ class WizardFormLastPage extends Component {
         country,
         postalZip
       },
-      onSubmit,
       product: { info: { title: productTitle } },
       selectedVariant: { title: variantTitle },
       transaction: {
         variantPriceUSD,
         priceInCrypto,
         currency: { coinPriceUSD, coinName, coinSymbol, coinLastUpdated }
-      },
-      transaction
+      }
     } = this.props;
     return (
       <Layout.Section>
@@ -70,13 +80,7 @@ class WizardFormLastPage extends Component {
           </Card>
         </Step>
 
-        <NavButtons
-          nextButtonText="Submit"
-          onSubmit={() => {
-            onSubmit(transaction);
-            console.log('trying to go to the congrats page');
-          }}
-        />
+        <NavButtons nextButtonText="Submit" onSubmit={this._handleSubmit} />
       </Layout.Section>
     );
   }

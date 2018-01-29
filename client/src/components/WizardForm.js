@@ -5,6 +5,7 @@ import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
 import WizardFormLastPage from './WizardFormLastPage';
+import Confirmation from './Confirmation';
 import { CSSTransitionGroup } from 'react-transition-group';
 import * as actions from '../actions';
 
@@ -108,13 +109,21 @@ class WizardForm extends Component {
             subTitle="Please make sure that all of this information is correct. An e-mail will be sent to you with the wallet address to make payment to."
             updateProgress={updateProgress}
             onBack={this.previousPage}
-            onSubmit={submitForm}
-            goToPage={this.goToPage}
+            onSubmit={this.nextPage}
             selectedVariant={selectedVariant}
             product={product}
             customer={customer}
             currencyData={currencyData}
             transaction={transaction}
+            submitForm={submitForm}
+          />
+        )}
+
+        {page === 5 && (
+          <Confirmation
+            updateProgress={updateProgress}
+            transaction={transaction}
+            customer={customer}
           />
         )}
       </CSSTransitionGroup>

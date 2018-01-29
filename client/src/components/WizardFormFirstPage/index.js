@@ -49,7 +49,7 @@ class WizardFormFirstPage extends Component {
             image={image}
             variants={variants}
             selectedVariant={selectedVariant}
-            onChange={switchVariant}
+            switchVariant={switchVariant}
           />
         </Step>
         <NavButtons

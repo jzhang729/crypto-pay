@@ -1,7 +1,6 @@
 const rp = require('request-promise');
 const mongoose = require('mongoose');
-const Transaction = mongoose.model('transactions');
-const Customer = mongoose.model('customers');
+const transactionController = require('../controllers/transactionController');
 
 module.exports = app => {
   app.get('/api/currency/:currencyId', (req, res) => {
@@ -20,66 +19,15 @@ module.exports = app => {
       });
   });
 
-  app.post('/api/customers/new', async (req, res) => {
-    try {
-      if (!req.body._id) {
-        req.body._id = new mongoose.mongo.ObjectID();
-      }
+  app.post('/api/customers/new', transactionController.saveCustomer);
 
-      const customerRecord = await Customer.findOneAndUpdate(
-        { _id: req.body._id },
-        req.body,
-        {
-          new: true,
-          upsert: true
-          // setDefaultsOnInsert: true
-        }
-      );
-
-      res.status(200).send(customerRecord);
-    } catch (err) {
-      res.status(422).send(err);
-    }
-  });
-
-  app.post('/api/transactions/new', async (req, res) => {
-    const {
-      productId,
-      productTitle,
-      variantId,
-      variantPriceUSD,
-      currency: { coinName, coinSymbol, coinPriceUSD, coinLastUpdated },
-      _customer,
-      priceInCrypto
-    } = req.body;
-
-    const transactionRecord = new Transaction({
-      productId,
-      productTitle,
-      variantId,
-      variantPriceUSD,
-      currency: {
-        coinName,
-        coinSymbol,
-        coinPriceUSD,
-        coinLastUpdated
-      },
-      _customer,
-      priceInCrypto,
-      date: Date.now()
-    });
-
-    const customerUpdate = Customer.updateOne(
-      { _id: _customer },
-      { $push: { transactions: transactionRecord._id } }
-    );
-
-    try {
-      await transactionRecord.save();
-      await customerUpdate.exec();
+  app.post(
+    '/api/transactions/new',
+    transactionController.saveTransaction,
+    transactionController.updateCustomer,
+    transactionController.sendMail,
+    (req, res) => {
       res.status(200).send({ success: 'true' });
-    } catch (err) {
-      res.send(err);
     }
-  });
+  );
 };

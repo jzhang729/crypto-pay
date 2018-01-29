@@ -152,6 +152,7 @@ class WizardFormThirdPage extends Component {
                   primary
                   onClick={() => {
                     this.setState({ lockedIn: true });
+
                     setTransaction({
                       productTitle,
                       productId,

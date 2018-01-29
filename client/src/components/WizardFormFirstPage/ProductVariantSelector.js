@@ -15,14 +15,14 @@ class ProductVariantSelector extends Component {
 
   _handleChange(selectedVariantId) {
     this.setState({ selected: selectedVariantId });
-    this.props.onChange(selectedVariantId[0]);
+    this.props.switchVariant(selectedVariantId[0]);
   }
 
   _renderProductVariantSelector() {
     const { selectedVariant, variants } = this.props;
 
     if (variants.length === 1) {
-      this.props.onChange(variants[0].id);
+      this.props.switchVariant(variants[0].id);
       return null;
     }
 
@@ -46,9 +46,22 @@ class ProductVariantSelector extends Component {
   }
 
   render() {
+    const {
+      selectedVariant: { title: variantTitle, price: variantPrice }
+    } = this.props;
     return (
       <div className="product__variant-selector">
         <div>{this._renderProductVariantSelector()}</div>
+
+        <div className="product__variant-info">
+          {variantTitle === 'Default Title' || !variantTitle ? null : (
+            <strong>
+              <em>{variantTitle}</em>
+            </strong>
+          )}
+
+          {variantPrice ? <p>Price: ${variantPrice} USD</p> : null}
+        </div>
       </div>
     );
   }
