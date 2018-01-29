@@ -1,6 +1,7 @@
 const transport = require('mailgun-js')({
   apiKey: process.env.MG_API_SECRET,
-  domain: 'mg.premiumsound.com'
+  // domain: 'mg.premiumsound.com'
+  domain: 'sandbox2dfbe3a4b772492dab3d705cc07dd57c.mailgun.org'
 });
 
 exports.sendEmail = (
@@ -8,24 +9,38 @@ exports.sendEmail = (
   lastName,
   email,
   productTitle,
+  variantTitle,
   coinName,
   coinSymbol,
   _id,
-  date
+  date,
+  priceInCrypto
 ) => {
+  if (variantTitle === 'Default Title') {
+    variantTitle = '';
+  }
+
   transport.messages().send(
     {
-      from: 'Headphones.com <info@premiumsound.com>',
+      from: 'Headphones.com <info@headphones.com>',
       to: email,
-      bcc: 'info@headphones.com',
-      subject: `Headphones.com - Crypto Pay - Order: ${_id}`,
+      bcc: 'jordan@headphones.com',
+      subject: `Headphones.com - Crypto Pay`,
       html: `
           <div>\
             <p>Hi ${firstName},</p>\
             <p>Thanks for your interest in buying the ${productTitle} in ${coinName} (${coinSymbol}).</p>\
-            <p>Please send your payment to the following wallet address:</p>\
-            <p><blockquote>${process.env.RAIBLOCKS_WALLET}</blockquote></p>\
-            <p>This transaction must be received within 30 minutes of <strong>${date}</strong> to be valid.</p>
+            <p>Please send your payment of <strong>${priceInCrypto} ${coinSymbol}</strong> to the following wallet address:</p>\
+            <p><blockquote style="margin: 15px;">${
+              process.env.RAIBLOCKS_WALLET
+            }</blockquote></p>\
+            <p>This transaction must be received within 30 minutes of <strong>${date}</strong> to be valid.</p>\
+            <p><em>If you need to contact us in reference to this order, you can reference this order number as: ${_id}.</em></p>\
+            <div style="text-align: center; margin: 0 auto; display: block; width: 75%; background-color: #EEEEEE">\
+              <h4>Headphones.com</h4>\
+              <p>Email: info@headphones.com</p>\
+              <p>Phone: Headphones.com</p>\
+            </div>
           </div>
         `
     },

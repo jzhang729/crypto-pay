@@ -10,6 +10,9 @@ class ProductVariantSelector extends Component {
       selected: ['']
     };
 
+    this._renderProductVariantSelector = this._renderProductVariantSelector.bind(
+      this
+    );
     this._handleChange = this._handleChange.bind(this);
   }
 
@@ -19,20 +22,17 @@ class ProductVariantSelector extends Component {
   }
 
   _renderProductVariantSelector() {
-    const { selectedVariant, variants } = this.props;
-
-    if (variants.length === 1) {
-      this.props.switchVariant(variants[0].id);
-      return null;
-    }
+    const { variants, switchVariant } = this.props;
 
     const choices = variants.map(({ title, id }) => {
       return { label: title, value: id };
     });
 
-    const selected = _.isEmpty(selectedVariant)
-      ? this.state.selected
-      : [selectedVariant.id];
+    if (variants.length === 1) {
+      switchVariant(variants[0].id);
+    }
+
+    const selected = this.state.selected;
 
     return (
       <Card.Section>
@@ -47,7 +47,8 @@ class ProductVariantSelector extends Component {
 
   render() {
     const {
-      selectedVariant: { title: variantTitle, price: variantPrice }
+      selectedVariant: { title: variantTitle, price: variantPrice },
+      variants
     } = this.props;
     return (
       <div className="product__variant-selector">

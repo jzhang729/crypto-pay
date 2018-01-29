@@ -91,7 +91,9 @@ exports.sendMail = async (req, res, next) => {
     const {
       _id,
       productTitle,
+      variantTitle,
       currency: { coinName, coinSymbol },
+      priceInCrypto,
       date
     } = transactionRecord;
 
@@ -100,10 +102,12 @@ exports.sendMail = async (req, res, next) => {
       lastName,
       email,
       productTitle,
+      variantTitle,
       coinName,
       coinSymbol,
       _id,
-      date
+      date,
+      priceInCrypto
     );
   } catch (err) {
     console.log(err);
