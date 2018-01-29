@@ -38,9 +38,9 @@ exports.sendEmail = (
             <p><em>If you need to contact us in reference to this order, you can reference this order number as: ${_id}.</em></p>\
             <div style="text-align: center; margin: 0 auto; display: block; width: 75%; background-color: #EEEEEE">\
               <h4>Headphones.com</h4>\
-              <p>Email: info@headphones.com</p>\
-              <p>Phone: Headphones.com</p>\
-            </div>
+              <p>Email: <a href="mailto:info@headphones.com">info@headphones.com</a></p>\
+              <p>Phone: <a href="tel:18004383191">1-800-438-3191</a></p>\
+            </div>\
           </div>
         `
     },

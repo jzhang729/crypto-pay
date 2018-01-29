@@ -36,6 +36,8 @@ export const fetchProduct = productId => async dispatch => {
   // const res = productData;
   const payload = _.omit(res.data.product, 'body_html');
   dispatch({ type: FETCH_PRODUCT, payload });
+  const firstVariant = payload.variants[0];
+  dispatch({ type: SWITCH_VARIANT, payload: firstVariant });
 };
 
 export const setCustomer = customer => async dispatch => {

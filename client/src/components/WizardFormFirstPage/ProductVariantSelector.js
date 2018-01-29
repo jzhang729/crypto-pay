@@ -27,11 +27,6 @@ class ProductVariantSelector extends Component {
       return { label: title, value: id };
     });
 
-    if (variants && variants.length === 1) {
-      switchVariant(variants[0].id);
-      return null;
-    }
-
     const selected = [selectedVariant.id] || this.state.selected;
 
     return (
