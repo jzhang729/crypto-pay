@@ -13,6 +13,7 @@ const Product = ({
       <div className="product__info">
         <h1>{title}</h1>
         <img src={image.src} alt={title} className="product__thumbnail" />
+
         <ProductVariantSelector
           variants={variants}
           selectedVariant={selectedVariant}

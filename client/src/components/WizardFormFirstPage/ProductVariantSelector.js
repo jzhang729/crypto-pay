@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import React, { Component } from 'react';
 import { Card, ChoiceList } from '@shopify/polaris';
 
@@ -22,17 +21,18 @@ class ProductVariantSelector extends Component {
   }
 
   _renderProductVariantSelector() {
-    const { variants, switchVariant } = this.props;
+    const { variants, switchVariant, selectedVariant } = this.props;
 
     const choices = variants.map(({ title, id }) => {
       return { label: title, value: id };
     });
 
-    if (variants.length === 1) {
+    if (variants && variants.length === 1) {
       switchVariant(variants[0].id);
+      return null;
     }
 
-    const selected = this.state.selected;
+    const selected = [selectedVariant.id] || this.state.selected;
 
     return (
       <Card.Section>
@@ -47,9 +47,9 @@ class ProductVariantSelector extends Component {
 
   render() {
     const {
-      selectedVariant: { title: variantTitle, price: variantPrice },
-      variants
+      selectedVariant: { title: variantTitle, price: variantPrice }
     } = this.props;
+
     return (
       <div className="product__variant-selector">
         <div>{this._renderProductVariantSelector()}</div>
