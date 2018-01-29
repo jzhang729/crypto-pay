@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { Card, Layout } from '@shopify/polaris';
+import { Card, Layout, Spinner } from '@shopify/polaris';
 import Step from '../Step';
 import CurrencySelector from '../CurrencySelector';
 import NavButtons from '../NavButtons';
@@ -44,13 +44,17 @@ class WizardFormFirstPage extends Component {
         </Step>
 
         <Step order="2" title="Confirm your product choice">
-          <Product
-            title={title}
-            image={image}
-            variants={variants}
-            selectedVariant={selectedVariant}
-            switchVariant={switchVariant}
-          />
+          {!title || !image.src || variants.length === 0 ? (
+            <Spinner />
+          ) : (
+            <Product
+              title={title}
+              image={image}
+              variants={variants}
+              selectedVariant={selectedVariant}
+              switchVariant={switchVariant}
+            />
+          )}
         </Step>
         <NavButtons
           nextHidden={!currency || _.isEmpty(selectedVariant)}

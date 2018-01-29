@@ -11,7 +11,7 @@ const NavButtons = ({
   nextDisabled
 }) => {
   return (
-    <div style={{ float: 'right', margin: '1rem 0' }}>
+    <div className="nav-buttons">
       <ButtonGroup>
         {onBack && !backHidden ? (
           <Button secondary onClick={onBack} accessibilityLabel="Back">

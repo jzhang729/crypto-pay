@@ -98,6 +98,11 @@ sub {
   transition: all 100ms ease;
 }
 
+.nav-buttons {
+  float: right;
+  margin: 1rem 0;
+}
+
 .product {
   margin: 1rem;
 }
@@ -125,6 +130,21 @@ sub {
 .product__variant-info {
   margin: 2rem 0;
   font-style: italic;
+}
+
+.review {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.review__section {
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 680px) {
+  .review__section {
+    margin-bottom: 2rem;
+  }
 }
 
 dl {

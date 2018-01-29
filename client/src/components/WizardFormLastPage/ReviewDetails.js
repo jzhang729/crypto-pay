@@ -22,8 +22,8 @@ const ReviewDetails = ({
   coinLastUpdated
 }) => {
   return (
-    <div style={{ display: 'flex' }}>
-      <div style={{ flex: '0 1 50%' }}>
+    <div className="review">
+      <div className="review__section">
         <TextContainer spacing="loose">
           <p>
             <strong>Name: </strong>
@@ -49,7 +49,7 @@ const ReviewDetails = ({
           <Button>Change</Button>
         </TextContainer>
       </div>
-      <div style={{ flex: '0 1 50%' }}>
+      <div className="review__section">
         <TextContainer>
           <p>
             <strong>Product: </strong>
@@ -64,9 +64,9 @@ const ReviewDetails = ({
             </p>
           ) : null}
           <p>
-            <strong>Price (USD): </strong>
+            <strong>Price in USD: </strong>
             <br />
-            ${variantPriceUSD} USD
+            ${variantPriceUSD}
           </p>
           <p>
             <strong>Selected Coin: </strong>
@@ -79,9 +79,11 @@ const ReviewDetails = ({
           </p>
 
           <p>
-            <strong>Total in {coinName}: </strong>
+            <strong>
+              Price in {coinName} ({coinSymbol}):{' '}
+            </strong>
             <br />
-            ${priceInCrypto} {coinSymbol}
+            ${priceInCrypto}
           </p>
         </TextContainer>
       </div>

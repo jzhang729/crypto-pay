@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Layout, TextContainer } from '@shopify/polaris';
+import { Button, Card, Layout, TextContainer } from '@shopify/polaris';
 
 class Confirmation extends Component {
   constructor(props) {
@@ -69,6 +69,15 @@ class Confirmation extends Component {
             </TextContainer>
           </div>
         </Card>
+        <div className="nav-buttons">
+          <Button
+            primary
+            onClick={() => {
+              window.location = 'https://www.headphones.com';
+            }}>
+            Back to Headphones.com
+          </Button>
+        </div>
       </Layout.Section>
     );
   }

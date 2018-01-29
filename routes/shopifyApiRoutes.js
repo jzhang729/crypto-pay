@@ -12,9 +12,11 @@ module.exports = app => {
     rp
       .get(requestUrl)
       .then(data => {
-        res.send(data);
+        res.status(200).send(data);
       })
-      .catch(err => res.send(err));
+      .catch(err => {
+        res.status(422).send(err);
+      });
   });
 
   app.get('/api/variants/:variantId', (req, res) => {
@@ -23,18 +25,18 @@ module.exports = app => {
     rp
       .get(requestUrl)
       .then(data => {
-        res.send(data);
+        res.status(200).send(data);
       })
-      .catch(err => res.send(err));
+      .catch(err => res.status(422).send(err));
   });
 
-  app.get('/api/countries/', (req, res) => {
-    const requestUrl = `${baseURI}/admin/countries.json`;
-    rp
-      .get(requestUrl)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => res.send(err));
-  });
+  // app.get('/api/countries/', (req, res) => {
+  //   const requestUrl = `${baseURI}/admin/countries.json`;
+  //   rp
+  //     .get(requestUrl)
+  //     .then(data => {
+  //       res.send(data);
+  //     })
+  //     .catch(err => res.send(err));
+  // });
 };

@@ -15,7 +15,6 @@ const CurrencyData = ({
     <div className="currency__data">
       {loading ? (
         <div className="currency__data--loading">
-          <p>Please wait while we fetch the latest currency data:</p>
           <Spinner />
         </div>
       ) : (
