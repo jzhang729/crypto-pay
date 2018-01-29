@@ -37,21 +37,16 @@ class Confirmation extends Component {
           <div className="confirmation">
             <TextContainer spacing="loose">
               <p>{firstName},</p>
-
               <p>Thanks for your interest in purchasing the:</p>
-
               <p>
                 <strong>
                   {productTitle} - {variantTitle}
                 </strong>
               </p>
-
               <p>We have sent a confirmation e-mail to:</p>
-
               <p>
                 <strong>{email}</strong>
               </p>
-
               <p>
                 This e-mail will contain the wallet address of our
                 <strong>
@@ -61,7 +56,6 @@ class Confirmation extends Component {
                 account to send payment to. Upon receipt, we will send out
                 another e-mail to confirm.
               </p>
-
               <p>
                 <em>
                   Please note that the transaction must be received within 30
@@ -69,10 +63,9 @@ class Confirmation extends Component {
                   be valid.
                 </em>
               </p>
-
-              <h2>
+              <p>
                 Thanks for supporting Headphones.com and the Crypto community!
-              </h2>
+              </p>
             </TextContainer>
           </div>
         </Card>

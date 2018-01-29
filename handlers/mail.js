@@ -9,18 +9,24 @@ exports.sendEmail = (
   email,
   productTitle,
   coinName,
-  coinSymbol
+  coinSymbol,
+  _id,
+  date
 ) => {
   transport.messages().send(
     {
-      from: 'Crypto Pay <info@premiumsound.com>',
+      from: 'Headphones.com <info@premiumsound.com>',
       to: email,
-      subject: 'Customer wants to pay with Crypto!',
+      bcc: 'info@headphones.com',
+      subject: `Headphones.com - Crypto Pay - Order: ${_id}`,
       html: `
           <div>\
             <p>Hi ${firstName},</p>\
             <p>Thanks for your interest in buying the ${productTitle} in ${coinName} (${coinSymbol}).</p>\
-          </div>          
+            <p>Please send your payment to the following wallet address:</p>\
+            <p><blockquote>${process.env.RAIBLOCKS_WALLET}</blockquote></p>\
+            <p>This transaction must be received within 30 minutes of <strong>${date}</strong> to be valid.</p>
+          </div>
         `
     },
     (error, body) => {

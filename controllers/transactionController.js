@@ -88,14 +88,23 @@ exports.sendMail = async (req, res, next) => {
     const customerRecord = await Customer.findOne({ _id: _customer });
     const { firstName, lastName, email } = customerRecord;
 
-    console.log(transactionRecord);
-
     const {
+      _id,
       productTitle,
-      currency: { coinName, coinSymbol }
+      currency: { coinName, coinSymbol },
+      date
     } = transactionRecord;
 
-    sendEmail(firstName, lastName, email, productTitle, coinName, coinSymbol);
+    sendEmail(
+      firstName,
+      lastName,
+      email,
+      productTitle,
+      coinName,
+      coinSymbol,
+      _id,
+      date
+    );
   } catch (err) {
     console.log(err);
     res.send(err);
