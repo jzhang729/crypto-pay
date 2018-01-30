@@ -15,7 +15,12 @@ const initialState = {
   loading: false,
   progress: 0,
   currency: undefined,
-  currencyData: {},
+  currencyData: {
+    price_usd: '',
+    name: '',
+    symbol: '',
+    last_updated: ''
+  },
   customer: { _id: '' },
   selectedVariant: {},
   transaction: {}

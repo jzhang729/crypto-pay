@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, List, Spinner } from '@shopify/polaris';
-import { unixTimeConverter } from '../../utils/unixTimeConverter';
+import { unixTimeConverter } from '../utils/unixTimeConverter';
 
 const CurrencyData = ({
   loading,
@@ -55,6 +56,16 @@ const CurrencyData = ({
       )}
     </div>
   );
+};
+
+CurrencyData.propTypes = {
+  loading: PropTypes.bool,
+  coinPriceUSD: PropTypes.string,
+  coinName: PropTypes.string,
+  coinSymbol: PropTypes.string,
+  coinLastUpdated: PropTypes.string,
+  fetchCurrency: PropTypes.func,
+  currency: PropTypes.string
 };
 
 export default CurrencyData;

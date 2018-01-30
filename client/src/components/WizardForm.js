@@ -57,17 +57,20 @@ class WizardForm extends Component {
         transitionAppear={false}>
         {page === 1 && (
           <WizardFormFirstPage
+            loading={loading}
             pageTitle="Welcome to Cryto Pay"
             subTitle="We will guide you through using cryptocurrency to purchase your
             product from Headphones.com."
             product={product}
             productId={productId}
             currency={currency}
+            currencyData={currencyData}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
             selectedVariant={selectedVariant}
             onSubmit={this.nextPage}
             updateProgress={updateProgress}
+            fetchCurrency={fetchCurrency}
             fetchProduct={fetchProduct}
           />
         )}

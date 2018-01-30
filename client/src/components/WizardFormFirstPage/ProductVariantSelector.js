@@ -42,12 +42,15 @@ class ProductVariantSelector extends Component {
 
   render() {
     const {
+      variants,
       selectedVariant: { title: variantTitle, price: variantPrice }
     } = this.props;
 
     return (
       <div className="product__variant-selector">
-        <div>{this._renderProductVariantSelector()}</div>
+        {variants.length > 1 ? (
+          <div>{this._renderProductVariantSelector()}</div>
+        ) : null}
 
         <div className="product__variant-info">
           {variantTitle === 'Default Title' || !variantTitle ? null : (

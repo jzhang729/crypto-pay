@@ -10,7 +10,7 @@ import {
 } from '@shopify/polaris';
 import Step from '../Step';
 import NavButtons from '../NavButtons';
-import CurrencyData from './CurrencyData';
+import CurrencyData from '../CurrencyData';
 import CurrencySelector from '../CurrencySelector';
 
 class WizardFormThirdPage extends Component {
@@ -61,6 +61,12 @@ class WizardFormThirdPage extends Component {
       loading,
       currency,
       currencyData,
+      currencyData: {
+        price_usd: coinPriceUSD,
+        name: coinName,
+        symbol: coinSymbol,
+        last_updated: coinLastUpdated
+      },
       fetchCurrency,
       product: { info: { title: productTitle, id: productId } },
       setTransaction,
@@ -70,13 +76,6 @@ class WizardFormThirdPage extends Component {
         title: variantTitle
       }
     } = this.props;
-
-    const {
-      price_usd: coinPriceUSD,
-      name: coinName,
-      symbol: coinSymbol,
-      last_updated: coinLastUpdated
-    } = currencyData;
 
     const priceInCrypto = this._calculatePriceInCrypto(
       variantPriceUSD,
@@ -100,7 +99,6 @@ class WizardFormThirdPage extends Component {
             <CurrencyData
               loading={loading}
               currency={currency}
-              currencyData={currencyData}
               coinPriceUSD={coinPriceUSD}
               coinName={coinName}
               coinSymbol={coinSymbol}

@@ -23,12 +23,12 @@ export const setTransaction = transactionData => {
   return { type: SET_TRANSACTION, payload: transactionData };
 };
 
-export const fetchCurrency = (currencyId = 'raiblocks') => async dispatch => {
+export const fetchCurrency = currencyId => async dispatch => {
   dispatch(setLoading(true));
   const res = await axios.get(`/api/currency/${currencyId}`);
   const payload = res.data[0];
-  dispatch(setLoading(false));
   dispatch({ type: FETCH_CURRENCY, payload });
+  dispatch(setLoading(false));
 };
 
 export const fetchProduct = productId => async dispatch => {
