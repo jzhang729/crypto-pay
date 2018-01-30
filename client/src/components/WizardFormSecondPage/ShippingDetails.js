@@ -80,7 +80,7 @@ class ShippingDetails extends Component {
           />
           <Field
             name="postalZip"
-            label="Zip Code / Province"
+            label="Zip / Postal Code"
             component={FormTextField}
             type="text"
             small={true}

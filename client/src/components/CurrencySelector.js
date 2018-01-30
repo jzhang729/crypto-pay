@@ -7,11 +7,8 @@ const CurrencySelector = ({ onChange, currency }) => {
       <Select
         onChange={onChange}
         value={currency}
+        placeholder="Select from the list"
         options={[
-          {
-            label: 'Select from the list',
-            value: ''
-          },
           {
             label: 'Bitcoin',
             value: 'bitcoin'
