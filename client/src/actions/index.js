@@ -41,10 +41,7 @@ export const fetchProduct = productId => async dispatch => {
 };
 
 export const setCustomer = customer => async dispatch => {
-  const res = await axios.post(`/api/customers/new`, customer);
-  const payload = res.data;
-  // const payload = customerData.customer;
-  dispatch({ type: SET_CUSTOMER, payload });
+  dispatch({ type: SET_CUSTOMER, payload: customer });
 };
 
 export const switchCurrency = currency => async dispatch => {
@@ -62,9 +59,13 @@ export const updateProgress = progress => async dispatch => {
   dispatch({ type: UPDATE_PROGRESS, payload: progress });
 };
 
-export const submitForm = transaction => async dispatch => {
+export const submitForm = (customer, transaction) => async dispatch => {
+  const obj = {
+    customer,
+    transaction
+  };
+
   dispatch(setLoading(true));
-  const res = await axios.post(`/api/transactions/new`, transaction);
+  await axios.post(`/api/transactions/new`, obj);
   dispatch(setLoading(false));
-  console.log('response', res);
 };

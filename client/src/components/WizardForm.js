@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'underscore';
 import { connect } from 'react-redux';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
@@ -78,8 +77,7 @@ class WizardForm extends Component {
             updateProgress={updateProgress}
             onBack={this.previousPage}
             onSubmit={values => {
-              const valuesWithId = _.extend(values, { _id: customer._id });
-              this.props.setCustomer(valuesWithId);
+              this.props.setCustomer(values);
               this.nextPage();
             }}
           />

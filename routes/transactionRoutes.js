@@ -19,10 +19,11 @@ module.exports = app => {
       });
   });
 
-  app.post('/api/customers/new', transactionController.saveCustomer);
+  // app.post('/api/customers/new', transactionController.saveCustomer);
 
   app.post(
     '/api/transactions/new',
+    transactionController.saveCustomer,
     transactionController.saveTransaction,
     transactionController.updateCustomer,
     transactionController.sendMail,

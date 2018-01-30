@@ -18,8 +18,8 @@ class WizardFormLastPage extends Component {
   }
 
   _handleSubmit(data) {
-    const { onSubmit, submitForm, transaction } = this.props;
-    submitForm(transaction);
+    const { customer, onSubmit, submitForm, transaction } = this.props;
+    submitForm(customer, transaction);
     onSubmit(); // Go to the next page
   }
 
