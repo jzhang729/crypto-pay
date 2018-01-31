@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Transaction = mongoose.model('transactions');
 const Customer = mongoose.model('customers');
-const { sendEmail } = require('../handlers/mail');
+const { sendEmail } = require('../services/mail');
 
 exports.saveCustomer = async (req, res, next) => {
   console.log(req.body);
@@ -95,11 +95,11 @@ exports.sendMail = async (req, res, next) => {
 
   try {
     sendEmail(
+      variantTitle,
       firstName,
       lastName,
       email,
       productTitle,
-      variantTitle,
       coinName,
       coinSymbol,
       _id,
