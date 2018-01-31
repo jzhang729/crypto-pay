@@ -65,10 +65,12 @@ class WizardForm extends Component {
             productId={productId}
             currency={currency}
             currencyData={currencyData}
+            setTransaction={setTransaction}
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
             selectedVariant={selectedVariant}
             onSubmit={this.nextPage}
+            transaction={transaction}
             updateProgress={updateProgress}
             fetchCurrency={fetchCurrency}
             fetchProduct={fetchProduct}

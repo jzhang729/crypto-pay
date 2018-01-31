@@ -40,7 +40,10 @@ class Confirmation extends Component {
               <p>Thanks for your interest in purchasing the:</p>
               <p>
                 <strong>
-                  {productTitle} - {variantTitle}
+                  {productTitle}{' '}
+                  {variantTitle !== 'Default Title'
+                    ? `- ${variantTitle}`
+                    : null}
                 </strong>
               </p>
               <p>We have sent a confirmation e-mail to:</p>

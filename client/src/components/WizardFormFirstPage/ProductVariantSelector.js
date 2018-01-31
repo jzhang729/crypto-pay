@@ -42,8 +42,10 @@ class ProductVariantSelector extends Component {
 
   render() {
     const {
-      variants,
-      selectedVariant: { title: variantTitle, price: variantPrice }
+      coinSymbol,
+      selectedVariant: { title: variantTitle, price: variantPrice },
+      transaction: { priceInCrypto },
+      variants
     } = this.props;
 
     return (
@@ -59,7 +61,20 @@ class ProductVariantSelector extends Component {
             </strong>
           )}
 
-          {variantPrice ? <p>Price: ${variantPrice} USD</p> : null}
+          <div>
+            {!variantPrice ? null : (
+              <p>
+                <strong>USD Price: </strong>
+                {variantPrice}
+              </p>
+            )}{' '}
+            {!priceInCrypto ? null : (
+              <p>
+                <strong>{coinSymbol} Price: </strong>
+                {priceInCrypto}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     );

@@ -23,7 +23,15 @@ const initialState = {
   },
   customer: { _id: '' },
   selectedVariant: {},
-  transaction: {}
+  transaction: {
+    priceInCrypto: '',
+    currency: {
+      coinName: '',
+      coinSymbol: '',
+      coinPriceUSD: '',
+      coinLastUpdated: ''
+    }
+  }
   // customer: customerData.customer,
   // selectedVariant: variantData.variant,
 };

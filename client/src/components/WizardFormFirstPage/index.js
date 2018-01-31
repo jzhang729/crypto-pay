@@ -6,6 +6,7 @@ import CurrencySelector from '../CurrencySelector';
 import CurrencyData from '../CurrencyData';
 import NavButtons from '../NavButtons';
 import Product from './Product';
+import calculatePriceInCrypto from '../../utils/convert';
 
 class WizardFormFirstPage extends Component {
   constructor(props) {
@@ -19,6 +20,24 @@ class WizardFormFirstPage extends Component {
 
     fetchProduct(productId);
     updateProgress(0);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { setTransaction } = this.props;
+    const {
+      selectedVariant: { price: variantPrice },
+      currencyData,
+      currencyData: { price_usd: coinPriceUSD }
+    } = nextProps;
+
+    if (currencyData !== this.props.currencyData) {
+      const priceInCrypto = calculatePriceInCrypto(variantPrice, coinPriceUSD);
+
+      const obj = {};
+      obj.priceInCrypto = priceInCrypto;
+
+      setTransaction(obj);
+    }
   }
 
   _handleChange(value) {
@@ -44,7 +63,8 @@ class WizardFormFirstPage extends Component {
       product: { info: { title, image, variants } },
       selectedVariant,
       subTitle,
-      switchVariant
+      switchVariant,
+      transaction
     } = this.props;
 
     return (
@@ -72,6 +92,7 @@ class WizardFormFirstPage extends Component {
                 coinSymbol={coinSymbol}
                 coinLastUpdated={coinLastUpdated}
               />
+
               <div style={{ margin: '1rem 0' }}>
                 <Button outline onClick={() => fetchCurrency(currency)}>
                   Refresh
@@ -91,6 +112,8 @@ class WizardFormFirstPage extends Component {
               variants={variants}
               selectedVariant={selectedVariant}
               switchVariant={switchVariant}
+              transaction={transaction}
+              coinSymbol={coinSymbol}
             />
           )}
         </Step>

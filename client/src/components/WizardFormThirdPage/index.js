@@ -12,6 +12,7 @@ import Step from '../Step';
 import NavButtons from '../NavButtons';
 import CurrencyData from '../CurrencyData';
 import CurrencySelector from '../CurrencySelector';
+import calculatePriceInCrypto from '../../utils/convert';
 
 class WizardFormThirdPage extends Component {
   constructor(props) {
@@ -24,7 +25,6 @@ class WizardFormThirdPage extends Component {
 
     this._changeCurrency = this._changeCurrency.bind(this);
     this._onCurrencySelect = this._onCurrencySelect.bind(this);
-    this._calculatePriceInCrypto = this._calculatePriceInCrypto.bind(this);
   }
 
   componentDidMount() {
@@ -32,10 +32,6 @@ class WizardFormThirdPage extends Component {
     const { updateProgress, fetchCurrency, currency } = this.props;
     updateProgress(66);
     fetchCurrency(currency);
-  }
-
-  _calculatePriceInCrypto(variantPriceUSD, coinPriceUSD) {
-    return (parseFloat(variantPriceUSD) / parseFloat(coinPriceUSD)).toFixed(4);
   }
 
   _changeCurrency() {
@@ -77,10 +73,7 @@ class WizardFormThirdPage extends Component {
       }
     } = this.props;
 
-    const priceInCrypto = this._calculatePriceInCrypto(
-      variantPriceUSD,
-      coinPriceUSD
-    );
+    const priceInCrypto = calculatePriceInCrypto(variantPriceUSD, coinPriceUSD);
 
     return (
       <Layout.Section>
