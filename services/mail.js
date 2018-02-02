@@ -10,11 +10,11 @@ RAIBLOCKS_WALLET =
   'xrb_38ptjd8uzno3ht1oxpk3jb41bybhozg7oewm4wyjwjhtjbc733yauszzmnbq';
 
 exports.sendEmail = async (
+  variantTitle,
+  email,
   firstName,
   lastName,
-  email,
   productTitle,
-  variantTitle,
   coinName,
   coinSymbol,
   _id,

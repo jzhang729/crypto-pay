@@ -1,7 +1,8 @@
 const rp = require('request-promise');
-const shopApiKey = process.env.SHOP_API_KEY;
-const shopApiPassword = process.env.SHOP_API_PASSWORD;
-const shopHost = process.env.SHOP_HOST;
+const keys = require('../config/keys');
+const shopApiKey = keys.SHOP_API_KEY;
+const shopApiPassword = keys.SHOP_API_PASSWORD;
+const shopHost = keys.SHOP_HOST;
 const baseURI = `https://${shopApiKey}:${shopApiPassword}@${shopHost}`;
 
 module.exports = app => {

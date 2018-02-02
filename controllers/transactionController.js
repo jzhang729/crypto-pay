@@ -96,9 +96,9 @@ exports.sendMail = async (req, res, next) => {
   try {
     sendEmail(
       variantTitle,
+      email,
       firstName,
       lastName,
-      email,
       productTitle,
       coinName,
       coinSymbol,
