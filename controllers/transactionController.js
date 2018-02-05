@@ -4,8 +4,6 @@ const Customer = mongoose.model('customers');
 const { sendEmail } = require('../services/mail');
 
 exports.saveCustomer = async (req, res, next) => {
-  console.log(req.body);
-
   if (!req.body.customer._id) {
     req.body.customer._id = new mongoose.mongo.ObjectID();
   }
@@ -94,7 +92,7 @@ exports.sendMail = async (req, res, next) => {
   } = req.body.transactionRecord;
 
   try {
-    sendEmail(
+    const args = {
       variantTitle,
       email,
       firstName,
@@ -105,7 +103,9 @@ exports.sendMail = async (req, res, next) => {
       _id,
       date,
       priceInCrypto
-    );
+    };
+
+    sendEmail(args);
   } catch (err) {
     console.log(err);
     res.status(422).send(err);

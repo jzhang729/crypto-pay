@@ -1,4 +1,6 @@
 const keys = require('../config/keys');
+const constants = require('../constants');
+const template = require('./emailTemplate');
 
 const transport = require('mailgun-js')({
   apiKey: keys.MG_API_SECRET,
@@ -6,22 +8,32 @@ const transport = require('mailgun-js')({
   domain: 'sandbox2dfbe3a4b772492dab3d705cc07dd57c.mailgun.org'
 });
 
-RAIBLOCKS_WALLET =
-  'xrb_38ptjd8uzno3ht1oxpk3jb41bybhozg7oewm4wyjwjhtjbc733yauszzmnbq';
+const _getWalletAddress = symbol => {
+  switch (symbol) {
+    case 'ETH':
+      return constants.ETHEREUM_WALLET;
+      break;
+    case 'LTC':
+      return constants.LITECOIN_WALLET;
+      break;
+    case 'REQ':
+      return constants.REQUEST_WALLET;
+      break;
+    case 'XRP':
+      return constants.RIPPLE_WALLET;
+      break;
+    case 'XRB':
+      return constants.NANO_WALLET;
+      break;
+    case 'ZRX':
+      return constants.ZRX_WALLET;
+      break;
+    default:
+      return 'No wallet address found for this currency';
+  }
+};
 
-LITECOIN_WALLET = 'LWMxo4NA6XjgNpXegKibKb8x1CV2bUHDt4';
-
-ETHEREUM_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
-
-ZRX_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
-
-REQUEST_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
-
-RIPPLE_WALLET = 'rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh';
-
-RIPPLE_DEPOSIT_TAG = '100978107';
-
-exports.sendEmail = async (
+const _generateOptions = ({
   variantTitle,
   email,
   firstName,
@@ -32,32 +44,41 @@ exports.sendEmail = async (
   _id,
   date,
   priceInCrypto
-) => {
-  if (variantTitle === 'Default Title') {
-    variantTitle = '';
-  }
+}) => {
+  // Get coin wallet addresss from constants file based on symbol.
+  const walletAddress = _getWalletAddress(coinSymbol);
 
-  const options = {
+  // Context is an object used by Handlebars to interpolate values inside of the e-mail body.
+  const context = {
+    _id,
+    firstName,
+    productTitle,
+    variantTitle,
+    coinName,
+    coinSymbol,
+    date,
+    priceInCrypto,
+    walletAddress
+  };
+
+  // Use Handlebars to interpolate variables into the e-mail body
+  const confirmation = template(context);
+
+  return {
     from: 'Headphones.com <info@headphones.com>',
     to: email,
     bcc: 'jordan@headphones.com',
     subject: `Headphones.com - Crypto Pay`,
-    html: `
-        <div>\
-          <p>Hi ${firstName},</p>\
-          <p>Thanks for your interest in buying the ${productTitle} in ${coinName} (${coinSymbol}).</p>\
-          <p>Please send your payment of <strong>${priceInCrypto} ${coinSymbol}</strong> to the following wallet address:</p>\
-          <p><blockquote style="margin: 15px;">${RAIBLOCKS_WALLET}</blockquote></p>\
-          <p>This transaction must be received within 30 minutes of <strong>${date}</strong> to be valid.</p>\
-          <p><em>If you need to contact us in reference to this order, you can reference this order number as: ${_id}.</em></p>\
-          <div style="text-align: center; margin: 0 auto; display: block; width: 75%; background-color: #EEEEEE">\
-            <h4>Headphones.com</h4>\
-            <p>Email: <a href="mailto:info@headphones.com">info@headphones.com</a></p>\
-            <p>Phone: <a href="tel:18004383191">1-800-438-3191</a></p>\
-          </div>\
-        </div>
-      `
+    html: confirmation
   };
+};
+
+exports.sendEmail = async args => {
+  if (args.variantTitle === 'Default Title') {
+    args.variantTitle = '';
+  }
+
+  const options = _generateOptions(args);
 
   try {
     const message = await transport.messages().send(options);

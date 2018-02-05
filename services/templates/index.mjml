@@ -1,0 +1,79 @@
+<mjml
+  background-color="#FFFFFF"
+  font-size="16px"
+>
+<mj-head>
+  <mj-title>Headphones.com - Crypto Pay</mj-title>
+  <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <mj-style inline="inline">
+    .important {
+      color: red;
+    }
+  </mj-style>
+</mj-head>
+<mj-body>
+  <mj-container>
+    <mj-section>
+      <mj-column>
+        <mj-text
+          font-size="2rem"
+          text-transform="uppercase"
+          align="center"
+        >
+          Headphones.com
+        </mj-text>
+        <mj-divider
+          border-color="#000000"
+          border-width="2px"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text>
+          Here is everything you need to buy your <strong>{{ productTitle }}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong>.
+        </mj-text>
+        <mj-text>
+          Send <strong>{{ priceInCrypto }} {{ coinSymbol }}</strong> to the wallet address below and we'll send an e-mail confirmation as soon as your payment has been processed.
+        </mj-text>
+        <mj-divider border-color="#000000" border-width="1px"></mj-divider>
+        <mj-text
+          align="center"
+          font-size="1.5rem"
+          letter-spacing="2px"
+          text-transform="uppercase">
+          {{ walletAddress }}
+        </mj-text>
+        <mj-divider border-color="#000000" border-width="1px"></mj-divider>
+        <mj-text>
+          Only send {{ coinName }} to this address otherwise your funds could be lost.
+        </mj-text>
+        <mj-text>
+          The funds must be received with 30 minutes of:
+        </mj-text>
+        <mj-text
+          align="center"
+          font-size="1rem"
+          letter-spacing="2px"
+          text-transform="uppercase">
+          <strong>{{ date }}</strong>
+        </mj-text>
+        <mj-text>If the funds are not received by the deadline, this transaction will be canceled.</mj-text>
+        </mj-text>
+        <mj-text>
+          Your order ID is <strong>{{ _id }}</strong>.
+        </mj-text>
+        <mj-text>
+          If you have any questions, send an e-mail to info@headphones.com.
+        </mj-text>
+        <mj-text>
+          Thanks for the order, we hope you love the new gear!
+        </mj-text>
+        <mj-text>
+          All the best,<br />
+          Headphones.com
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-container>
+</mj-body>
+</mjml>
