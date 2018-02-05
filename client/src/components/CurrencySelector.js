@@ -10,24 +10,32 @@ const CurrencySelector = ({ onChange, currency }) => {
         placeholder="Select from the list"
         options={[
           {
-            label: 'Bitcoin',
-            value: 'bitcoin'
+            label: '0x',
+            value: '0x'
           },
           {
-            label: 'Dogecoin',
-            value: 'dogecoin'
+            label: 'Bitcoin',
+            value: 'bitcoin'
           },
           {
             label: 'Ethereum',
             value: 'ethereum'
           },
           {
-            label: 'Ripple',
-            value: 'ripple'
+            label: 'Litecoin',
+            value: 'litecoin'
           },
           {
-            label: 'Raiblocks',
+            label: 'Nano',
             value: 'raiblocks'
+          },
+          {
+            label: 'Request Network',
+            value: 'request-network'
+          },
+          {
+            label: 'Ripple',
+            value: 'ripple'
           }
         ]}
       />

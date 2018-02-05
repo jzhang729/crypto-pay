@@ -24,7 +24,7 @@ const CurrencyData = ({
             <Card.Section subdued>
               <List>
                 <List.Item>
-                  <strong>XRB / USD: </strong>
+                  <strong>{coinSymbol} / USD: </strong>
                   {coinPriceUSD} USD
                 </List.Item>
                 <List.Item>

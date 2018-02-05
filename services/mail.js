@@ -9,6 +9,18 @@ const transport = require('mailgun-js')({
 RAIBLOCKS_WALLET =
   'xrb_38ptjd8uzno3ht1oxpk3jb41bybhozg7oewm4wyjwjhtjbc733yauszzmnbq';
 
+LITECOIN_WALLET = 'LWMxo4NA6XjgNpXegKibKb8x1CV2bUHDt4';
+
+ETHEREUM_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
+
+ZRX_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
+
+REQUEST_WALLET = '0x29e5c42bcaad14eda7abbdbe10109a399a951372';
+
+RIPPLE_WALLET = 'rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh';
+
+RIPPLE_DEPOSIT_TAG = '100978107';
+
 exports.sendEmail = async (
   variantTitle,
   email,
