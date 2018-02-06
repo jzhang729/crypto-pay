@@ -86,6 +86,7 @@ exports.sendMail = async (req, res, next) => {
     _id,
     productTitle,
     variantTitle,
+    variantPriceUSD,
     currency: { coinName, coinSymbol },
     priceInCrypto,
     date
@@ -94,6 +95,7 @@ exports.sendMail = async (req, res, next) => {
   try {
     const args = {
       variantTitle,
+      variantPriceUSD,
       email,
       firstName,
       lastName,

@@ -35,6 +35,7 @@ const _getWalletAddress = symbol => {
 
 const _generateOptions = ({
   variantTitle,
+  variantPriceUSD,
   email,
   firstName,
   lastName,
@@ -54,23 +55,29 @@ const _generateOptions = ({
     firstName,
     productTitle,
     variantTitle,
+    variantPriceUSD,
     coinName,
     coinSymbol,
     date,
     priceInCrypto,
-    walletAddress
+    walletAddress,
+    companyName: constants.COMPANY_NAME,
+    companyEmail: constants.COMPANY_EMAIL,
+    companyPhone: constants.COMPANY_PHONE
   };
 
   // Use Handlebars to interpolate variables into the e-mail body
   const confirmation = template(context);
 
-  return {
-    from: 'Headphones.com <info@headphones.com>',
+  const options = {
+    from: `${constants.COMPANY_NAME} <info@headphones.com>`,
     to: email,
     bcc: 'jordan@headphones.com',
-    subject: `Headphones.com - Crypto Pay`,
+    subject: `${constants.COMPANY_NAME} - Crypto Pay`,
     html: confirmation
   };
+
+  return options;
 };
 
 exports.sendEmail = async args => {

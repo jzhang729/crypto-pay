@@ -14,10 +14,6 @@ const CurrencySelector = ({ onChange, currency }) => {
             value: '0x'
           },
           {
-            label: 'Bitcoin',
-            value: 'bitcoin'
-          },
-          {
             label: 'Ethereum',
             value: 'ethereum'
           },
