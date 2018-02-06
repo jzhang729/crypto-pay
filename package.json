@@ -11,9 +11,13 @@
     "start": "NODE_ENV=production node index.js",
     "client": "npm run start --prefix client",
     "server": "nodemon index.js --ignore public/",
-    "dev": "NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
-    "email-build": "mjml ./services/templates/index.mjml -o ./services/emails/index.html",
-    "email-watch": "mjml --watch ./services/templates/index.mjml -o ./services/emails/index.html"
+    "dev":
+      "NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "ssh jordan@165.227.215.149",
+    "email-build":
+      "mjml ./services/templates/index.mjml -o ./services/emails/index.html",
+    "email-watch":
+      "mjml --watch ./services/templates/index.mjml -o ./services/emails/index.html"
   },
   "author": "Jordan Zhang",
   "license": "ISC",
