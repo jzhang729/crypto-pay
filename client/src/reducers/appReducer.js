@@ -8,12 +8,16 @@ import {
   FETCH_CURRENCY,
   SWITCH_CURRENCY,
   SWITCH_VARIANT,
-  UPDATE_PROGRESS
+  UPDATE_PROGRESS,
+  INCREMENT_PAGE,
+  DECREMENT_PAGE,
+  GO_TO_PAGE
 } from '../actions/types';
 
 const initialState = {
   loading: false,
   progress: 0,
+  page: 1,
   currency: undefined,
   currencyData: {
     price_usd: '',
@@ -55,6 +59,12 @@ export default function(state = initialState, { payload, type }) {
       };
     case UPDATE_PROGRESS:
       return { ...state, progress: payload };
+    case INCREMENT_PAGE:
+      return { ...state, page: state.page + 1 };
+    case DECREMENT_PAGE:
+      return { ...state, page: state.page - 1 };
+    case GO_TO_PAGE:
+      return { ...state, page: payload };
     default:
       return state;
   }

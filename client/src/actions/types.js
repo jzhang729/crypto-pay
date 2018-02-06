@@ -1,6 +1,9 @@
 export const FETCH_CURRENCY = 'fetch_currency';
 export const FETCH_PRODUCT = 'fetch_product';
 export const FETCH_VARIANT = 'fetch_variant';
+export const INCREMENT_PAGE = 'increment_page';
+export const DECREMENT_PAGE = 'decrement_page';
+export const GO_TO_PAGE = 'go_to_page';
 export const SET_CUSTOMER = 'set_customer';
 export const SET_LOADING = 'set_loading';
 export const SET_TRANSACTION = 'set_transaction';

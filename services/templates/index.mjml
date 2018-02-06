@@ -34,7 +34,7 @@
       <mj-section>
         <mj-column>
           <mj-text>
-            Here is everything you need to buy your <strong>{{ productTitle }} {{#if variantTitle !== '' }} - {{ variantTitle }}{{/if}}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong> from {{ companyName }}.
+            Here is everything you need to buy your <strong>{{ productTitle }}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong> from {{ companyName }}.
           </mj-text>
           <mj-text>
             Send the specified amount to the wallet address below and we'll send an e-mail confirmation as soon as your payment has been processed.

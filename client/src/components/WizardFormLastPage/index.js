@@ -44,7 +44,8 @@ class WizardFormLastPage extends Component {
         variantPriceUSD,
         priceInCrypto,
         currency: { coinPriceUSD, coinName, coinSymbol, coinLastUpdated }
-      }
+      },
+      goToPage
     } = this.props;
     return (
       <Layout.Section>
@@ -75,6 +76,7 @@ class WizardFormLastPage extends Component {
                 coinName={coinName}
                 coinSymbol={coinSymbol}
                 coinLastUpdated={coinLastUpdated}
+                goToPage={goToPage}
               />
             </Card.Section>
           </Card>

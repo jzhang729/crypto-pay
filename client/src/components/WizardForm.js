@@ -9,28 +9,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import * as actions from '../actions';
 
 class WizardForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.nextPage = this.nextPage.bind(this);
-    this.previousPage = this.previousPage.bind(this);
-
-    this.state = {
-      page: 1
-    };
-  }
-
-  nextPage() {
-    this.setState({ page: this.state.page + 1 });
-  }
-
-  previousPage() {
-    this.setState({ page: this.state.page - 1 });
-  }
-
   render() {
-    const { page } = this.state;
-
     const {
       currency,
       currencyData,
@@ -38,6 +17,7 @@ class WizardForm extends Component {
       fetchProduct,
       fetchCurrency,
       loading,
+      page,
       product,
       selectedVariant,
       setTransaction,
@@ -46,6 +26,9 @@ class WizardForm extends Component {
       switchVariant,
       transaction,
       updateProgress,
+      incrementPage,
+      decrementPage,
+      goToPage,
       match: { params: { productId } }
     } = this.props;
 
@@ -69,7 +52,7 @@ class WizardForm extends Component {
             switchCurrency={switchCurrency}
             switchVariant={switchVariant}
             selectedVariant={selectedVariant}
-            onSubmit={this.nextPage}
+            onSubmit={incrementPage}
             transaction={transaction}
             updateProgress={updateProgress}
             fetchCurrency={fetchCurrency}
@@ -80,10 +63,10 @@ class WizardForm extends Component {
           <WizardFormSecondPage
             customer={customer}
             updateProgress={updateProgress}
-            onBack={this.previousPage}
+            onBack={decrementPage}
             onSubmit={values => {
               this.props.setCustomer(values);
-              this.nextPage();
+              incrementPage();
             }}
           />
         )}
@@ -92,8 +75,8 @@ class WizardForm extends Component {
             pageTitle="Almost there!"
             subTitle="The value of crytocurrency changes often, so we need you to confirm the exchange rate by clicking the &quot;Lock In&quot; button."
             updateProgress={updateProgress}
-            onBack={this.previousPage}
-            onSubmit={this.nextPage}
+            onBack={decrementPage}
+            onSubmit={incrementPage}
             currency={currency}
             customer={customer}
             product={product}
@@ -111,14 +94,15 @@ class WizardForm extends Component {
             pageTitle="Last but Important Step!"
             subTitle="Please make sure that all of this information is correct. An e-mail will be sent to you with the wallet address to make payment to."
             updateProgress={updateProgress}
-            onBack={this.previousPage}
-            onSubmit={this.nextPage}
+            onBack={decrementPage}
+            onSubmit={incrementPage}
             selectedVariant={selectedVariant}
             product={product}
             customer={customer}
             currencyData={currencyData}
             transaction={transaction}
             submitForm={submitForm}
+            goToPage={goToPage}
           />
         )}
 
@@ -141,7 +125,8 @@ function mapStateToProps({
     loading,
     selectedVariant,
     customer,
-    transaction
+    transaction,
+    page
   },
   product
 }) {
@@ -150,6 +135,7 @@ function mapStateToProps({
     currencyData,
     customer,
     loading,
+    page,
     product,
     selectedVariant,
     transaction

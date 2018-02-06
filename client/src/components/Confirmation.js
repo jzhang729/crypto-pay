@@ -66,9 +66,7 @@ class Confirmation extends Component {
                   be valid.
                 </em>
               </p>
-              <p>
-                Thanks for supporting Headphones.com and the Crypto community!
-              </p>
+              <p>Thanks for supporting Headphones.com!</p>
             </TextContainer>
           </div>
         </Card>

@@ -14,7 +14,10 @@ import {
   SET_TRANSACTION,
   SWITCH_CURRENCY,
   SWITCH_VARIANT,
-  UPDATE_PROGRESS
+  UPDATE_PROGRESS,
+  INCREMENT_PAGE,
+  DECREMENT_PAGE,
+  GO_TO_PAGE
 } from './types';
 
 export const setLoading = bool => {
@@ -23,6 +26,18 @@ export const setLoading = bool => {
 
 export const setTransaction = transactionData => {
   return { type: SET_TRANSACTION, payload: transactionData };
+};
+
+export const incrementPage = () => {
+  return { type: INCREMENT_PAGE };
+};
+
+export const decrementPage = () => {
+  return { type: DECREMENT_PAGE };
+};
+
+export const goToPage = page => {
+  return { type: GO_TO_PAGE, payload: page };
 };
 
 export const fetchCurrency = currencyId => async dispatch => {

@@ -29,6 +29,8 @@ export const validate = values => {
 
   if (!values.stateProv) {
     errors.stateProv = 'Required';
+  } else if (values.stateProv.length < 2) {
+    errors.stateProv = 'Invalid state/province';
   }
 
   if (!values.postalZip) {
