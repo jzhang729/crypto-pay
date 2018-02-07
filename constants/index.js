@@ -1,7 +1,7 @@
 module.exports = {
   COMPANY_NAME: 'Headphones.com',
   COMPANY_EMAIL: 'info@headphones.com',
-  COMPANY_PHONE: '1-800-438-3191',
+  COMPANY_PHONE: '1-800-554-9443',
   ETHEREUM_WALLET: '0x29e5c42bcaad14eda7abbdbe10109a399a951372',
   LITECOIN_WALLET: 'LWMxo4NA6XjgNpXegKibKb8x1CV2bUHDt4',
   NANO_WALLET:

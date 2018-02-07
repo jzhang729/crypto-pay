@@ -4,8 +4,17 @@
 >
 <mj-head>
   <mj-title>{{ companyName }} - Crypto Pay</mj-title>
+  <mj-preview>{{ companyName }} - Crypto Pay</mj-preview>
   <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
   <mj-style inline="inline">
+    .link-no-style {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+  }
   </mj-style>
 </mj-head>
 <mj-body>
@@ -33,7 +42,7 @@
       </mj-section>
       <mj-section>
         <mj-column>
-          <mj-text>
+          <mj-text css-class="link-no-style">
             Here is everything you need to buy your <strong>{{ productTitle }}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong> from {{ companyName }}.
           </mj-text>
           <mj-text>
@@ -50,7 +59,9 @@
             {{ walletAddress }}</p>
 
           </mj-text>
-          <mj-divider border-color="#000000" border-width="1px"></mj-divider>
+          <mj-divider
+            border-color="#000000"
+            border-width="1px"></mj-divider>
           <mj-text>
             Only send {{ coinName }} to this address otherwise your funds could be lost.
           </mj-text>
@@ -73,7 +84,7 @@
           <mj-text>
             Thanks for the order, we hope you love the new gear!
           </mj-text>
-          <mj-text>
+          <mj-text css-class="link-no-style">
             All the best,<br />
             {{ companyName }}
           </mj-text>
@@ -86,6 +97,7 @@
             color="#FFFFFF"
             font-size="0.8rem"
             padding="1rem"
+            css-class="link-no-style"
           >
             <p style="font-size: 1.25rem">{{ companyName }}</p>
             <p>
