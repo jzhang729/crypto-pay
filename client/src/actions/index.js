@@ -65,11 +65,8 @@ export const switchCurrency = currency => async dispatch => {
   dispatch({ type: SWITCH_CURRENCY, payload: currency });
 };
 
-export const switchVariant = variantId => async dispatch => {
-  const res = await axios.get(`/api/variants/${variantId}`);
-  const payload = res.data.variant;
-  // const payload = variantData.variant;
-  dispatch({ type: SWITCH_VARIANT, payload });
+export const switchVariant = variant => async dispatch => {
+  dispatch({ type: SWITCH_VARIANT, payload: variant });
 };
 
 export const updateProgress = progress => async dispatch => {

@@ -33,12 +33,18 @@ const _getWalletAddress = symbol => {
   }
 };
 
-const _generateOptions = ({
+const _generateMailOptions = ({
   variantTitle,
   variantPriceUSD,
   email,
   firstName,
   lastName,
+  address1,
+  address2,
+  city,
+  stateProv,
+  country,
+  postalZip,
   productTitle,
   coinName,
   coinSymbol,
@@ -53,6 +59,13 @@ const _generateOptions = ({
   const context = {
     _id,
     firstName,
+    lastName,
+    address1,
+    address2,
+    city,
+    stateProv,
+    country,
+    postalZip,
     productTitle,
     variantTitle,
     variantPriceUSD,
@@ -85,7 +98,7 @@ exports.sendEmail = async args => {
     args.variantTitle = '';
   }
 
-  const options = _generateOptions(args);
+  const options = _generateMailOptions(args);
 
   try {
     const message = await transport.messages().send(options);

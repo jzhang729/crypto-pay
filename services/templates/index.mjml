@@ -7,14 +7,15 @@
   <mj-preview>{{ companyName }} - Crypto Pay</mj-preview>
   <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
   <mj-style inline="inline">
-    .link-no-style {
+    .link-no-style, a[x-apple-data-detectors] {
       color: inherit !important;
       text-decoration: none !important;
-      font-size: inherit !important;
       font-family: inherit !important;
       font-weight: inherit !important;
       line-height: inherit !important;
   }
+
+  p { margin: 0; }
   </mj-style>
 </mj-head>
 <mj-body>
@@ -31,8 +32,8 @@
           <mj-text
             container-background-color="#230051"
             color="#FFFFFF"
-            padding="1rem"
             font-size="2rem"
+            padding="1rem"
             text-transform="uppercase"
             align="center"
           >
@@ -42,31 +43,43 @@
       </mj-section>
       <mj-section>
         <mj-column>
-          <mj-text css-class="link-no-style">
-            Here is everything you need to buy your <strong>{{ productTitle }}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong> from {{ companyName }}.
+          <mj-text>
+            <p>Hi {{ firstName }},</p>
           </mj-text>
           <mj-text>
-            Send the specified amount to the wallet address below and we'll send an e-mail confirmation as soon as your payment has been processed.
+            <p class="link-no-style">
+              Here is everything you need to buy your <strong>{{ productTitle }}</strong> with <strong>{{ coinName }} ({{ coinSymbol }})</strong> from {{ companyName }}.
+            </p>
+          </mj-text>
+          <mj-text>
+            <p>Send the specified amount to the wallet address below and we'll send an e-mail confirmation as soon as your payment has been processed.</p>
           </mj-text>
           <mj-divider border-color="#000000" border-width="1px"></mj-divider>
           <mj-text
-            font-size="1rem">
-            <p><strong><span style="text-transform:uppercase;">Price in {{ coinName }}: </span></strong><br />
-            {{ priceInCrypto }} {{ coinSymbol }}<br />
-            <em>= {{ variantPriceUSD }} USD</em></p>
-
-            <p style="word-break: break-word;"><strong><span style="text-transform:uppercase;">Wallet Address: </span></strong><br />
-            {{ walletAddress }}</p>
-
+            font-size="1rem"
+          >
+            <p>
+              <strong><span style="text-transform:uppercase;">Price in {{ coinName }}: </span></strong><br />
+              {{ priceInCrypto }} {{ coinSymbol }}<br />
+              <em>= {{ variantPriceUSD }} USD</em>
+            </p>
+          </mj-text>
+          <mj-text
+            font-size="1rem"
+          >
+            <p style="word-break: break-word;">
+              <strong><span style="text-transform:uppercase;">Wallet Address: </span></strong><br />
+              {{ walletAddress }}
+            </p>
           </mj-text>
           <mj-divider
             border-color="#000000"
             border-width="1px"></mj-divider>
           <mj-text>
-            Only send {{ coinName }} to this address otherwise your funds could be lost.
+            <p>Only send {{ coinName }} to this address otherwise your funds could be lost.</p>
           </mj-text>
           <mj-text>
-            The funds must be received with 30 minutes of:
+            <p>The funds must be received with 30 minutes of:</p>
           </mj-text>
           <mj-text
             align="center"
@@ -76,31 +89,43 @@
           <mj-text>If the funds are not received by the deadline, this transaction will be canceled.</mj-text>
           </mj-text>
           <mj-text>
-            Your order ID is <strong>{{ _id }}</strong>.
+            <h3><strong>Your Order Summary:</strong></h3>
+            <h4>Customer:</h4>
+            <p>{{ firstName }} {{ lastName }}</p>
+
+            <h4>Shipping Address:</h4>
+            <p>
+              {{ address1 }}<br />
+              {{ address2 }}<br />
+              {{ city }}, {{ stateProv }}<br />
+              {{ country }}, {{ postalZip }}
+            </p>
           </mj-text>
           <mj-text>
-            If you have any questions, send an e-mail to <strong>{{ companyEmail }}</strong>.
+            <p class="link-no-style">If you have any questions, send an e-mail to <strong>{{ companyEmail }}</strong>. Your order ID is <strong>{{ _id }}</strong></p>
           </mj-text>
           <mj-text>
             Thanks for the order, we hope you love the new gear!
           </mj-text>
-          <mj-text css-class="link-no-style">
-            All the best,<br />
-            {{ companyName }}
+          <mj-text>
+            <p class="link-no-style">
+              All the best,<br />
+              {{ companyName }}
+            </p>
           </mj-text>
         </mj-column>
       </mj-section>
       <mj-section padding-bottom="0">
         <mj-column>
           <mj-text
-            container-background-color="#230051"
             color="#FFFFFF"
+            text-decoration="none"
             font-size="0.8rem"
+            container-background-color="#230051"
             padding="1rem"
-            css-class="link-no-style"
           >
-            <p style="font-size: 1.25rem">{{ companyName }}</p>
-            <p>
+            <h4 class="link-no-style" style="font-size: 1.25rem;">{{ companyName }}</h4>
+            <p class="link-no-style">
               Email: {{ companyEmail }}<br />
               Tel: {{ companyPhone }}
             </p>

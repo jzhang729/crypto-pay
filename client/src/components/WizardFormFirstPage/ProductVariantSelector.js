@@ -17,7 +17,12 @@ class ProductVariantSelector extends Component {
 
   _handleChange(selectedVariantId) {
     this.setState({ selected: selectedVariantId });
-    this.props.switchVariant(selectedVariantId[0]);
+
+    const variant = this.props.variants.find(variant => {
+      return variant.id === selectedVariantId[0];
+    });
+    this.props.switchVariant(variant);
+    // this.props.switchVariant(selectedVariantId[0]);
   }
 
   _renderProductVariantSelector() {

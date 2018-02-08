@@ -20,14 +20,14 @@ module.exports = app => {
       });
   });
 
-  app.get('/api/variants/:variantId', (req, res) => {
-    const requestUrl = `${baseURI}/admin/variants/${req.params.variantId}.json`;
-
-    rp
-      .get(requestUrl)
-      .then(data => {
-        res.status(200).send(data);
-      })
-      .catch(err => res.status(422).send(err));
-  });
+  // app.get('/api/variants/:variantId', (req, res) => {
+  //   const requestUrl = `${baseURI}/admin/variants/${req.params.variantId}.json`;
+  //
+  //   rp
+  //     .get(requestUrl)
+  //     .then(data => {
+  //       res.status(200).send(data);
+  //     })
+  //     .catch(err => res.status(422).send(err));
+  // });
 };

@@ -80,7 +80,17 @@ exports.updateCustomer = async (req, res, next) => {
 };
 
 exports.sendMail = async (req, res, next) => {
-  const { firstName, lastName, email } = req.body.customerRecord;
+  const {
+    firstName,
+    lastName,
+    email,
+    address1,
+    address2,
+    city,
+    stateProv,
+    country,
+    postalZip
+  } = req.body.customerRecord;
 
   const {
     _id,
@@ -99,6 +109,12 @@ exports.sendMail = async (req, res, next) => {
       email,
       firstName,
       lastName,
+      address1,
+      address2,
+      city,
+      stateProv,
+      country,
+      postalZip,
       productTitle,
       coinName,
       coinSymbol,
