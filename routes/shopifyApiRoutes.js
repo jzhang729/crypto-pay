@@ -30,14 +30,4 @@ module.exports = app => {
       })
       .catch(err => res.status(422).send(err));
   });
-
-  // app.get('/api/countries/', (req, res) => {
-  //   const requestUrl = `${baseURI}/admin/countries.json`;
-  //   rp
-  //     .get(requestUrl)
-  //     .then(data => {
-  //       res.send(data);
-  //     })
-  //     .catch(err => res.send(err));
-  // });
 };

@@ -59,7 +59,7 @@ class WizardFormFirstPage extends Component {
       loading,
       onSubmit,
       pageTitle,
-      product: { info: { title, image, variants } },
+      product: { info: { title, image, variants, images } },
       selectedVariant,
       subTitle,
       switchVariant,
@@ -81,6 +81,7 @@ class WizardFormFirstPage extends Component {
             <Product
               title={title}
               image={image}
+              images={images}
               variants={variants}
               selectedVariant={selectedVariant}
               switchVariant={switchVariant}
