@@ -1,37 +1,52 @@
-import React from 'react';
+// FormSelectDropdown contains logic to render a single label and select dropdown
+import React, { Component } from 'react';
 import { Select } from '@shopify/polaris';
+import classNames from 'classnames';
 
-export default ({ input, label, meta: { error, touched } }) => {
-  const failedValidation = touched && error;
+class FormSelectDropdown extends Component {
+  render() {
+    const {
+      input,
+      label,
+      meta: { error, touched },
+      onCountryChange
+    } = this.props;
 
-  return (
-    <div className="form__field">
-      <div style={{ display: 'block' }}>
-        <label>{label}</label>
-        {failedValidation ? (
-          <span className="form__error--label">{error}</span>
-        ) : null}
-      </div>
+    const failedValidation = touched && error;
 
-      {failedValidation ? (
-        <div className="form__error--input">
+    const inputClasses = classNames({
+      'form__error--input': failedValidation
+    });
+
+    const options = [
+      { label: 'Select from the list', value: '' },
+      { label: 'United States', value: 'USA' },
+      { label: 'Other', value: 'Other' }
+    ];
+
+    return (
+      <div className="form__field">
+        <div style={{ display: 'block' }}>
+          <label>{label}</label>
+          {failedValidation ? (
+            <span className="form__error--label">{error}</span>
+          ) : null}
+        </div>
+        <div className={inputClasses}>
           <Select
             {...input}
-            options={[
-              { label: 'Select from the list', value: '' },
-              { label: 'United States', value: 'USA' }
-            ]}
+            options={options}
+            onChange={value => {
+              if (value === 'Other') {
+                onCountryChange(value);
+              }
+              this.props.input.onChange(value);
+            }}
           />
         </div>
-      ) : (
-        <Select
-          {...input}
-          options={[
-            { label: 'Select from the list', value: '' },
-            { label: 'United States', value: 'USA' }
-          ]}
-        />
-      )}
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
+
+export default FormSelectDropdown;

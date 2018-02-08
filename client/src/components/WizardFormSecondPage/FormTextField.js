@@ -1,34 +1,48 @@
 // FormTextField contains logic to render a single label and text input
-import React from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 
-export default ({
-  input,
-  maxLength,
-  label,
-  small,
-  meta: { error, touched }
-}) => {
-  const failedValidation = touched && error;
+class FormTextField extends Component {
+  componentDidMount() {
+    const { input: { value, onChange } } = this.props;
 
-  const outerDivClasses = classNames({
-    form__field: true,
-    'form__field--small': small
-  });
+    if (value === 'Other') {
+      onChange('');
+    }
+  }
 
-  const inputClasses = classNames({
-    'form__error--input': failedValidation
-  });
+  render() {
+    const {
+      input,
+      maxLength,
+      label,
+      small,
+      meta: { error, touched }
+    } = this.props;
 
-  return (
-    <div className={outerDivClasses}>
-      <div style={{ display: 'block' }}>
-        <label>{label}</label>
-        {failedValidation ? (
-          <span className="form__error--label">{error}</span>
-        ) : null}
+    const failedValidation = touched && error;
+
+    const outerDivClasses = classNames({
+      form__field: true,
+      'form__field--small': small
+    });
+
+    const inputClasses = classNames({
+      'form__error--input': failedValidation
+    });
+
+    return (
+      <div className={outerDivClasses}>
+        <div style={{ display: 'block' }}>
+          <label>{label}</label>
+          {failedValidation ? (
+            <span className="form__error--label">{error}</span>
+          ) : null}
+        </div>
+        <input {...input} maxLength={maxLength} className={inputClasses} />
       </div>
-      <input {...input} maxLength={maxLength} className={inputClasses} />
-    </div>
-  );
-};
+    );
+  }
+}
+
+export default FormTextField;

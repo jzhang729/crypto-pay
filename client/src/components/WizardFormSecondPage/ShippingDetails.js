@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import FormTextField from './FormTextField';
-import FormSelectDropdown from './FormSelectDropdown';
+import CountrySelect from './CountrySelect';
 
 class ShippingDetails extends Component {
   render() {
@@ -73,17 +73,16 @@ class ShippingDetails extends Component {
         </div>
 
         <div className="form__section">
-          <Field
-            name="country"
-            label="Country"
-            component={FormSelectDropdown}
-          />
+          <CountrySelect disclaimer="For countries outside of the US, an extra shipping charge may
+          apply." />
+        </div>
+
+        <div className="form__section">
           <Field
             name="postalZip"
             label="Zip / Postal Code"
             component={FormTextField}
             type="text"
-            small={true}
             maxLength={7}
           />
         </div>
