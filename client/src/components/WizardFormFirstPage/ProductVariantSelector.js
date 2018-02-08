@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, ChoiceList } from '@shopify/polaris';
+import { ChoiceList } from '@shopify/polaris';
 
 class ProductVariantSelector extends Component {
   constructor(props) {
@@ -30,13 +30,11 @@ class ProductVariantSelector extends Component {
     const selected = [selectedVariant.id] || this.state.selected;
 
     return (
-      <Card.Section>
-        <ChoiceList
-          choices={choices}
-          selected={selected}
-          onChange={this._handleChange}
-        />
-      </Card.Section>
+      <ChoiceList
+        choices={choices}
+        selected={selected}
+        onChange={this._handleChange}
+      />
     );
   }
 

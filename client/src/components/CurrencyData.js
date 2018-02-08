@@ -24,19 +24,18 @@ const CurrencyData = ({
             <Card.Section subdued>
               <List>
                 <List.Item>
+                  <strong>Name: </strong>
+                  <br />
+                  {coinName} ({coinSymbol})
+                </List.Item>
+                <List.Item>
                   <strong>{coinSymbol} / USD: </strong>
+                  <br />
                   {coinPriceUSD} USD
                 </List.Item>
                 <List.Item>
-                  <strong>Name: </strong>
-                  {coinName}
-                </List.Item>
-                <List.Item>
-                  <strong>Symbol: </strong>
-                  {coinSymbol}
-                </List.Item>
-                <List.Item>
-                  <strong>Last Updated: </strong>
+                  <strong>Data Last Fetched: </strong>
+                  <br />
                   {unixTimeConverter(coinLastUpdated)}
                 </List.Item>
               </List>

@@ -22,6 +22,7 @@ p {
 
 sub {
   font-size: 1rem;
+  line-height: 1;
 }
 
 .hidden {
@@ -112,19 +113,24 @@ sub {
 }
 
 .product__info {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.product__info--content {
-  padding: 1rem;
-}
-
-.product__info--image {
+.product--left-container,
+.product--right-container {
+  flex: 1 1 50%;
 }
 
 .product__thumbnail {
+  display: block;
   min-width: 200px;
-  width: 50%;
+  width: 30%;
   max-width: 75%;
+}
+
+.product__variant-selector {
+  margin: 2rem 0;
 }
 
 .product__variant-info {

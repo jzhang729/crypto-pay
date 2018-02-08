@@ -29,7 +29,7 @@ class WizardFormSecondPage extends Component {
             <p>{subTitle}</p>
           </Card>
         ) : null}
-        <Step order="3" title="Enter your shipping details">
+        <Step order="2" title="Enter your shipping details">
           <Form onSubmit={handleSubmit(onSubmit)}>
             <ShippingDetails customerId={_id} />
           </Form>

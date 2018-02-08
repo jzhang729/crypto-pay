@@ -1,9 +1,8 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { Button, Card, Layout, Spinner } from '@shopify/polaris';
+import { Card, Layout, Spinner } from '@shopify/polaris';
 import Step from '../Step';
-import CurrencySelector from '../CurrencySelector';
-import CurrencyData from '../CurrencyData';
+import Currency from '../Currency';
 import NavButtons from '../NavButtons';
 import Product from './Product';
 import calculatePriceInCrypto from '../../utils/convert';
@@ -75,34 +74,7 @@ class WizardFormFirstPage extends Component {
           </Card>
         ) : null}
 
-        <Step order="1" title="Choose your cryptocurrency">
-          <CurrencySelector currency={currency} onChange={this._handleChange} />
-          <sub>
-            Don't see a currency listed that you think we should add?{' '}
-            <a href="mailto:info@headphones.com">Let us know</a>!
-          </sub>
-
-          {!currency ? null : (
-            <div style={{ margin: '1rem 0' }}>
-              <CurrencyData
-                loading={loading}
-                currency={currency}
-                coinPriceUSD={coinPriceUSD}
-                coinName={coinName}
-                coinSymbol={coinSymbol}
-                coinLastUpdated={coinLastUpdated}
-              />
-
-              <div style={{ margin: '1rem 0' }}>
-                <Button outline onClick={() => fetchCurrency(currency)}>
-                  Refresh
-                </Button>
-              </div>
-            </div>
-          )}
-        </Step>
-
-        <Step order="2" title="Confirm your product choice">
+        <Step order="1" title="Choose your cryptocurrency and product">
           {!title || !image.src || variants.length === 0 ? (
             <Spinner />
           ) : (
@@ -114,6 +86,18 @@ class WizardFormFirstPage extends Component {
               switchVariant={switchVariant}
               transaction={transaction}
               coinSymbol={coinSymbol}
+              currencyContainer={
+                <Currency
+                  loading={loading}
+                  currency={currency}
+                  onChange={this._handleChange}
+                  coinPriceUSD={coinPriceUSD}
+                  coinName={coinName}
+                  coinSymbol={coinSymbol}
+                  coinLastUpdated={coinLastUpdated}
+                  fetchCurrency={fetchCurrency}
+                />
+              }
             />
           )}
         </Step>

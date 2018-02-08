@@ -82,7 +82,7 @@ class WizardFormThirdPage extends Component {
             <p>{subTitle}</p>
           </Card>
         ) : null}
-        <Step order="4" title="Converting to selected currency">
+        <Step order="3" title="Converting to selected currency">
           {this.state.showingCurrencyDropdown ? (
             <CurrencySelector
               onChange={this._onCurrencySelect}

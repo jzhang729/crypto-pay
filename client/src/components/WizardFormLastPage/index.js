@@ -55,7 +55,7 @@ class WizardFormLastPage extends Component {
           </Card>
         ) : null}
 
-        <Step order="5" title="Confirm details">
+        <Step order="4" title="Confirm details">
           <Card>
             <Card.Section subdued>
               <ReviewDetails
