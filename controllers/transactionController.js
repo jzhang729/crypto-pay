@@ -4,15 +4,15 @@ const Customer = mongoose.model('customers');
 const { sendEmail } = require('../services/mail');
 
 exports.saveCustomer = async (req, res, next) => {
-  if (!req.body.customer._id) {
-    req.body.customer._id = new mongoose.mongo.ObjectID();
-  }
-
-  const customerRecord = new Customer(req.body.customer);
+  const customerQuery = Customer.findOneAndUpdate(
+    { email: req.body.customer.email },
+    req.body.customer,
+    { upsert: true, new: true }
+  );
 
   try {
-    await customerRecord.save();
-    req.body.customerRecord = customerRecord;
+    const customer = await customerQuery.exec();
+    req.body.customerRecord = customer;
     next();
   } catch (err) {
     console.log(err);
@@ -75,7 +75,6 @@ exports.updateCustomer = async (req, res, next) => {
     console.log(err);
     res.status(422).send(err);
   }
-
   next();
 };
 
