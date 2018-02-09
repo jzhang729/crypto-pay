@@ -4,8 +4,8 @@ const template = require('./emailTemplate');
 
 const transport = require('mailgun-js')({
   apiKey: keys.MG_API_SECRET,
-  // domain: 'mg.premiumsound.com'
-  domain: 'sandbox2dfbe3a4b772492dab3d705cc07dd57c.mailgun.org'
+  domain: 'mg.premiumsound.com'
+  // domain: 'sandbox2dfbe3a4b772492dab3d705cc07dd57c.mailgun.org'
 });
 
 const _getWalletAddress = symbol => {
@@ -85,7 +85,7 @@ const _generateMailOptions = ({
   const options = {
     from: `${constants.COMPANY_NAME} <info@headphones.com>`,
     to: email,
-    bcc: 'jordan@headphones.com',
+    bcc: 'jordan@headphones.com, info@headphones.com, andrew@headphones.com',
     subject: `${constants.COMPANY_NAME} - Crypto Pay`,
     html: confirmation
   };
