@@ -13,9 +13,9 @@
       font-family: inherit !important;
       font-weight: inherit !important;
       line-height: inherit !important;
-  }
+    }
 
-  p { margin: 0; }
+    p { margin: 0; }
   </mj-style>
 </mj-head>
 <mj-body>
@@ -124,8 +124,8 @@
             container-background-color="#230051"
             padding="1rem"
           >
-            <h4 class="link-no-style" style="font-size: 1.25rem;">{{ companyName }}</h4>
-            <p class="link-no-style">
+            <h4 class="link-no-style" style="font-size: 1.25rem; color: #FFFFFF !important;">{{ companyName }}</h4>
+            <p class="link-no-style" style="color: #FFFFFF !important;">
               Email: {{ companyEmail }}<br />
               Tel: {{ companyPhone }}
             </p>
