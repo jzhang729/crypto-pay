@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import FormTextField from './FormTextField';
-import FormSelectDropdown from './FormSelectDropdown';
+import CountryDropdown from './CountryDropdown';
 
 class CountrySelect extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class CountrySelect extends Component {
         name="country"
         label="Country"
         onCountryChange={this._handleOtherCountry}
-        component={FormSelectDropdown}
+        component={CountryDropdown}
       />
     );
   }

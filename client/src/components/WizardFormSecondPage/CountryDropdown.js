@@ -1,9 +1,9 @@
-// FormSelectDropdown contains logic to render a single label and select dropdown
+// CountryDropdown contains logic to render a single label and select dropdown
 import React, { Component } from 'react';
 import { Select } from '@shopify/polaris';
 import classNames from 'classnames';
 
-class FormSelectDropdown extends Component {
+class CountryDropdown extends Component {
   render() {
     const {
       input,
@@ -20,6 +20,7 @@ class FormSelectDropdown extends Component {
 
     const options = [
       { label: 'Select from the list', value: '' },
+      { label: 'Canada', value: 'Canada' },
       { label: 'United States', value: 'USA' },
       { label: 'Other', value: 'Other' }
     ];
@@ -49,4 +50,4 @@ class FormSelectDropdown extends Component {
   }
 }
 
-export default FormSelectDropdown;
+export default CountryDropdown;

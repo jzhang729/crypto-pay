@@ -10,20 +10,53 @@ const transport = require('mailgun-js')({
 
 const _getWalletAddress = symbol => {
   switch (symbol) {
+    case 'ADA':
+      return constants.CARDANO_WALLET;
+      break;
+    case 'BTC':
+      return constants.BITCOIN_WALLET;
+      break;
+    case 'EOS':
+      return constants.EOS_WALLET;
+      break;
+    case 'ETC':
+      return constants.ETHEREUM_CLASSIC_WALLET;
+      break;
     case 'ETH':
       return constants.ETHEREUM_WALLET;
+      break;
+    case 'GTO':
+      return constants.GIFTO_WALLET;
+      break;
+    case 'ICX':
+      return constants.ICON_WALLET;
+      break;
+    case 'INS':
+      return constants.INS_WALLET;
+      break;
+    case 'LSK':
+      return constants.LISK_WALLET;
       break;
     case 'LTC':
       return constants.LITECOIN_WALLET;
       break;
+    case 'NEO':
+      return constants.NEO_WALLET;
+      break;
     case 'REQ':
       return constants.REQUEST_WALLET;
+      break;
+    case 'XLM':
+      return constants.STELLAR_WALLET;
       break;
     case 'XRP':
       return constants.RIPPLE_WALLET;
       break;
     case 'XRB':
       return constants.NANO_WALLET;
+      break;
+    case 'VEN':
+      return constants.VEN_WALLET;
       break;
     case 'ZRX':
       return constants.ZRX_WALLET;
