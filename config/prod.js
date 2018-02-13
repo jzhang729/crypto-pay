@@ -10,5 +10,7 @@ module.exports = {
   MAIL_PASS: process.env.MAIL_PASS,
   MG_API_KEY: process.env.MG_API_KEY,
   MG_API_SECRET: process.env.MG_API_SECRET,
-  MONGO_URI: process.env.MONGO_URI
+  MG_INBOX: process.env.MG_INBOX,
+  MONGO_URI: process.env.MONGO_URI,
+  MAIL_RECIPIENTS: process.env.MAIL_RECIPIENTS
 };

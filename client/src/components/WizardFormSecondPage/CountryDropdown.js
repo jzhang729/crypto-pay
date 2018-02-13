@@ -21,8 +21,7 @@ class CountryDropdown extends Component {
     const options = [
       { label: 'Select from the list', value: '' },
       { label: 'Canada', value: 'Canada' },
-      { label: 'United States', value: 'USA' },
-      { label: 'Other', value: 'Other' }
+      { label: 'United States', value: 'USA' }
     ];
 
     return (

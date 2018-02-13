@@ -9,7 +9,7 @@ const CurrencySelector = ({ onChange, currency }) => {
       <Select
         onChange={onChange}
         value={currency}
-        placeholder="Select from the list"
+        placeholder="Choose your currency"
         options={[
           {
             label: '0x',
