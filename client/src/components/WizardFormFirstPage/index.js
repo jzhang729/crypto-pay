@@ -10,7 +10,7 @@ import calculatePriceInCrypto from '../../utils/convert';
 class WizardFormFirstPage extends Component {
   constructor(props) {
     super(props);
-    this._handleChange = this._handleChange.bind(this);
+    this._handleCurrencyChange = this._handleCurrencyChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,12 +34,11 @@ class WizardFormFirstPage extends Component {
 
       const obj = {};
       obj.priceInCrypto = priceInCrypto;
-
       setTransaction(obj);
     }
   }
 
-  _handleChange(value) {
+  _handleCurrencyChange(value) {
     const { fetchCurrency, switchCurrency } = this.props;
 
     switchCurrency(value);
@@ -61,6 +60,7 @@ class WizardFormFirstPage extends Component {
       pageTitle,
       product: { info: { title, image, variants, images } },
       selectedVariant,
+      setTransaction,
       subTitle,
       switchVariant,
       transaction
@@ -84,14 +84,16 @@ class WizardFormFirstPage extends Component {
               images={images}
               variants={variants}
               selectedVariant={selectedVariant}
+              setTransaction={setTransaction}
               switchVariant={switchVariant}
               transaction={transaction}
+              coinPriceUSD={coinPriceUSD}
               coinSymbol={coinSymbol}
               currencyContainer={
                 <Currency
                   loading={loading}
                   currency={currency}
-                  onChange={this._handleChange}
+                  onChange={this._handleCurrencyChange}
                   coinPriceUSD={coinPriceUSD}
                   coinName={coinName}
                   coinSymbol={coinSymbol}

@@ -18,8 +18,9 @@ const initialState = {
   loading: false,
   progress: 0,
   page: 1,
-  currency: undefined,
+  currency: undefined, // The currency that is selected in the dropdown
   currencyData: {
+    // The currency data that gets returned from Coinmarketcap
     price_usd: '',
     name: '',
     symbol: '',

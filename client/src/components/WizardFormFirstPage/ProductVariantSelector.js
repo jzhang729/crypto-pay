@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ChoiceList } from '@shopify/polaris';
+import calculatePriceInCrypto from '../../utils/convert';
 
 class ProductVariantSelector extends Component {
   constructor(props) {
@@ -12,17 +13,25 @@ class ProductVariantSelector extends Component {
     this._renderProductVariantSelector = this._renderProductVariantSelector.bind(
       this
     );
-    this._handleChange = this._handleChange.bind(this);
+    this._handleVariantChange = this._handleVariantChange.bind(this);
   }
 
-  _handleChange(selectedVariantId) {
+  _handleVariantChange(selectedVariantId) {
+    const { setTransaction, switchVariant, coinPriceUSD } = this.props;
+
     this.setState({ selected: selectedVariantId });
 
     const variant = this.props.variants.find(variant => {
       return variant.id === selectedVariantId[0];
     });
-    this.props.switchVariant(variant);
-    // this.props.switchVariant(selectedVariantId[0]);
+
+    switchVariant(variant);
+
+    if (coinPriceUSD) {
+      const obj = {};
+      obj.priceInCrypto = calculatePriceInCrypto(variant.price, coinPriceUSD);
+      setTransaction(obj);
+    }
   }
 
   _renderProductVariantSelector() {
@@ -38,7 +47,7 @@ class ProductVariantSelector extends Component {
       <ChoiceList
         choices={choices}
         selected={selected}
-        onChange={this._handleChange}
+        onChange={this._handleVariantChange}
       />
     );
   }

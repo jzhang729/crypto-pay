@@ -1,6 +1,5 @@
 import axios from 'axios';
 import _ from 'underscore';
-// import changeCase from 'change-case';
 
 // import productData from '../mocks/product';
 // import variantData from '../mocks/variant';
