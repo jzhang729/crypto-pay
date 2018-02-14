@@ -24,6 +24,10 @@ sub {
   font-size: 1rem;
 }
 
+.redirect {
+  margin-left: 3rem;
+}
+
 .hidden {
   display: none;
 }

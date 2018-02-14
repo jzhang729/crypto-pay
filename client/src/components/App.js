@@ -9,6 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <a className="redirect" href="https://headphones.com">&#8592; Back to Headphones.com</a>
         <Page title="Crypto Pay">
           <Layout>
             <BrowserRouter>
