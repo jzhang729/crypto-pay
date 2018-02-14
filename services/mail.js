@@ -134,6 +134,7 @@ exports.sendEmail = async args => {
 
   try {
     const message = await transport.messages().send(options);
+    console.log(message);
   } catch (err) {
     return console.log(err);
   }
