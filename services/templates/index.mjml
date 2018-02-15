@@ -7,7 +7,7 @@
   <mj-preview>{{ companyName }} - Crypto Pay</mj-preview>
   <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
   <mj-style inline="inline">
-    .link-no-style, a[x-apple-data-detectors] {
+    .link-no-style {
       color: inherit !important;
       text-decoration: none !important;
       font-family: inherit !important;
@@ -16,6 +16,15 @@
     }
 
     p { margin: 0; }
+  </mj-style>
+  <mj-style>
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
   </mj-style>
 </mj-head>
 <mj-body>
@@ -54,7 +63,7 @@
           <mj-text>
             <p>Send the specified amount to the wallet address below and we'll send an e-mail confirmation as soon as your payment has been processed.</p>
           </mj-text>
-          <mj-divider border-color="#000000" border-width="1px"></mj-divider>
+          <mj-divider border-color="#3E4155" border-width="1px"></mj-divider>
           <mj-text
             font-size="1rem"
           >
@@ -73,7 +82,7 @@
             </p>
           </mj-text>
           <mj-divider
-            border-color="#000000"
+            border-color="#3E4155"
             border-width="1px"></mj-divider>
           <mj-text>
             <p>Only send {{ coinName }} to this address otherwise your funds could be lost.</p>
@@ -124,8 +133,8 @@
             container-background-color="#230051"
             padding="1rem"
           >
-            <h4 class="link-no-style" style="font-size: 1.25rem; color: #FFFFFF !important;">{{ companyName }}</h4>
-            <p class="link-no-style" style="color: #FFFFFF !important;">
+            <h4 class="link-no-style" style="font-size: 1.25rem">{{ companyName }}</h4>
+            <p class="link-no-style">
               Email: {{ companyEmail }}<br />
               Tel: {{ companyPhone }}
             </p>

@@ -1,7 +1,8 @@
 {
   "name": "shopify-crypto-pay",
   "version": "1.0.0",
-  "description": "",
+  "description":
+    "Crypto Pay is an app designed to take a user through the process of making a purchase for a product using crytocurrency. It calculates the conversion from fiat to crypto based on data from the Coinmarketcap.com API.",
   "main": "index.js",
   "engine": {
     "node": "8.1.0",
@@ -9,18 +10,20 @@
   },
   "scripts": {
     "build": "npm run build --prefix client",
-    "client": "npm run start --prefix client",    
+    "client": "npm run start --prefix client",
     "server": "nodemon index.js --ignore public/",
     "dev":
       "NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
     "ssh": "ssh jordan@165.227.215.149",
     "deploy": "npm run build && forever restart index.js",
     "email-build":
-      "mjml ./services/templates/index.mjml -o ./services/emails/index.html",
+      "mjml ./services/templates/index.mjml -m -o ./services/emails/index.html",
     "email-watch":
-      "mjml --watch ./services/templates/index.mjml -o ./services/emails/index.html"
+      "mjml --watch ./services/templates/index.mjml -m -o ./services/emails/index.html",
+    "email-validate": "mjml -l strict ./services/templates/index.mjml"
   },
   "author": "Jordan Zhang",
+  "email": "jordanzhang@gmail.com",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",

@@ -122,6 +122,14 @@ const _generateMailOptions = ({
     html: confirmation
   };
 
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(
+      `inside development mode, sending email to ${email} and BCC ${
+        keys.MAIL_RECIPIENTS
+      }`
+    );
+  }
+
   return options;
 };
 

@@ -1,4 +1,4 @@
-# Project Title
+# Crypto Pay
 
 Crypto Pay is an app designed to take a user through the process of making a purchase for a product using crytocurrency. It calculates the conversion from fiat to crypto based on data from the [Coinmarketcap.com ](http://coinmarketcap.com) API.
 

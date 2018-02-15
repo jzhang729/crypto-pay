@@ -37,9 +37,7 @@ class CountryDropdown extends Component {
             {...input}
             options={options}
             onChange={value => {
-              if (value === 'Other') {
-                onCountryChange(value);
-              }
+              onCountryChange(value);
               this.props.input.onChange(value);
             }}
           />
