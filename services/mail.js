@@ -12,6 +12,9 @@ const _getWalletAddress = symbol => {
     case 'ADA':
       return constants.CARDANO_WALLET;
       break;
+    case 'ARK':
+      return constants.ARK_WALLET;
+      break;
     case 'BTC':
       return constants.BITCOIN_WALLET;
       break;

@@ -2,6 +2,7 @@ module.exports = {
   COMPANY_NAME: 'Headphones.com',
   COMPANY_EMAIL: 'info@headphones.com',
   COMPANY_PHONE: '1-800-554-9443',
+  ARK_WALLET: 'AWUbcwZog78AKRkysBcUAozZPqiBMidF1S',
   BITCOIN_WALLET: '1HsbWMgZy5PmEq61UNiMgZjVAsvhuKp3qc',
   CARDANO_WALLET:
     'DdzFFzCqrhspLbeu2HGBtJpLFXrn6nnT4RoExJ8SLoSo3T5SvKWrJvAHmBdRznvjUVviuwFCa4cxdeNUbR4HNF6Gbg9JXfJwxqRFoYp9',
