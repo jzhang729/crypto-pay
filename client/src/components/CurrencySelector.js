@@ -61,7 +61,7 @@ const CurrencySelector = ({ onChange, currency }) => {
           },
           {
             label: 'Nano',
-            value: 'raiblocks'
+            value: 'nano'
           },
           {
             label: 'Neo',
