@@ -4,6 +4,8 @@ import _ from 'underscore';
 // import productData from '../mocks/product';
 // import variantData from '../mocks/variant';
 // import customerData from '../mocks/customer';
+// import currencyData from '../mocks/currency';
+// import transactionData from '../mocks/transaction';
 
 import {
   FETCH_PRODUCT,
@@ -42,14 +44,15 @@ export const goToPage = page => {
 export const fetchCurrency = currencyId => async dispatch => {
   dispatch(setLoading(true));
   const res = await axios.get(`/api/currency/${currencyId}`);
+  // const res = currencyData;
   const payload = res.data[0];
   dispatch({ type: FETCH_CURRENCY, payload });
   dispatch(setLoading(false));
 };
 
 export const fetchProduct = productId => async dispatch => {
-  const res = await axios.get(`/api/product/${productId}`);
   // const res = productData;
+  const res = await axios.get(`/api/product/${productId}`);
   const payload = _.omit(res.data.product, 'body_html');
   dispatch({ type: FETCH_PRODUCT, payload });
   const firstVariant = payload.variants[0];
@@ -58,6 +61,7 @@ export const fetchProduct = productId => async dispatch => {
 
 export const setCustomer = customer => async dispatch => {
   dispatch({ type: SET_CUSTOMER, payload: customer });
+  // dispatch({ type: SET_CUSTOMER, payload: customerData });
 };
 
 export const switchCurrency = currency => async dispatch => {
@@ -66,6 +70,7 @@ export const switchCurrency = currency => async dispatch => {
 
 export const switchVariant = variant => async dispatch => {
   dispatch({ type: SWITCH_VARIANT, payload: variant });
+  // dispatch({ type: SWITCH_VARIANT, payload: variantData });
 };
 
 export const updateProgress = progress => async dispatch => {

@@ -99,6 +99,10 @@
           </mj-text>
           <mj-text>
             <h3><strong>Your Order Summary:</strong></h3>
+            <h4>Product:</h4>
+            <p>{{ productTitle }}</p>
+            <p>{{ variantTitle }}</p>
+
             <h4>Customer:</h4>
             <p>{{ firstName }} {{ lastName }}</p>
 

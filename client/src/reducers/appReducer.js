@@ -1,5 +1,6 @@
 // import variantData from '../mocks/variant';
 // import customerData from '../mocks/customer';
+// import transactionData from '../mocks/transaction';
 
 import {
   SET_CUSTOMER,
@@ -37,8 +38,9 @@ const initialState = {
       coinLastUpdated: ''
     }
   }
-  // customer: customerData.customer,
-  // selectedVariant: variantData.variant,
+  // customer: customerData,
+  // selectedVariant: variantData,
+  // transaction: transactionData
 };
 
 export default function(state = initialState, { payload, type }) {
