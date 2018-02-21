@@ -54,7 +54,7 @@ const _getWalletAddress = symbol => {
     case 'XRP':
       return constants.RIPPLE_WALLET;
       break;
-    case 'XRB':
+    case 'NANO':
       return constants.NANO_WALLET;
       break;
     case 'VEN':
