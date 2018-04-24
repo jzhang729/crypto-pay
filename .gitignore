@@ -1,3 +1,4 @@
 .env
 config/dev.js
 .DS_Store
+mongo-db-exports
